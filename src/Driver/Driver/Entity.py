@@ -1,5 +1,5 @@
 class Entity:
 
-    def __init__(self, xpos, ypos):
-        self.x = xpos
-        self.y = ypos
+    def __init__(self, xPos, yPos):
+        self.x = xPos
+        self.y = yPos
