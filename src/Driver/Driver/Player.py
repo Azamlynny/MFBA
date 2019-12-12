@@ -33,6 +33,7 @@ class Player(Mob):
         super().__init__(**kwds)
         self.xp = 0
         self.lvl = 1
+        self.gold = 0
     
     def ability1(self, target):
         #remove and check mana

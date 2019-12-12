@@ -14,3 +14,5 @@ class Tower(Structure):
     def __init__(self, **kwds):
         super().__init__(**kwds)
         self.range = 1000
+    
+    #TODO: player targeting - needs movemment system first
