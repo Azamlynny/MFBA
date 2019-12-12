@@ -1,9 +1,12 @@
-# class Map():
+class Map():
     
-#     def __init__(self):
+    def __init__(self):
+        self.objects = []
         
+    # def loadMap(self):
+    #     print("")
         
-#     def loadMap(self):
-        
-        
-#     def drawMap(self):
+    def drawMap(self):
+        background(0)
+        fill(245)
+        rect(0,0,10000,10000)

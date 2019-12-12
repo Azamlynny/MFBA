@@ -8,7 +8,8 @@ class KeyManager():
             self.inputs.append(input)    
     
     def keyRemove(self, input):
-        self.inputs.remove(input)
+        if(input in self.inputs):
+            self.inputs.remove(input)    
         
     def runActions(self, Cam):
         if('w' in self.inputs):
