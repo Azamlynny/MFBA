@@ -2,7 +2,9 @@ from Entity import *
 import math
 
 class Attackable(Entity):
-    def __init__(self, strength, speed, hp, hpRegen, atk, armor, atkRange): #TODO: add debuffs
+    
+    def __init__(self, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance, **kwds): #TODO: add debuffs
+        super().__init__(**kwds)
         self.hp = hp
         self.strength = strength
         self.speed = speed
@@ -10,11 +12,21 @@ class Attackable(Entity):
         self.atk = atk
         self.armor = armor
         self.atkRange = atkRange
-        
+        self.alliance = alliance
+    
+    def distance(self, target):
+        return round(math.sqrt( (self.xPos - target.xPos)**2 + (self.yPos - target.yPos)**2))
+
+    def checkRange(self, target):
+        if self.distance(target) > self.atkRange:
+            return True
+        return False
+
     def basicAttack(self, target):
         """self does damage to a target"""
-        distance = round(math.sqrt( (self.xPos - target.xPos)**2 + (self.yPos - target.yPos)**2))
-        if distance > self.atkRange:
+        if self.checkRange(target):
+            pass
+        elif self.alliance == target.alliance:
             pass
         else:
             mainDmg = (self.atk + self.strength)
