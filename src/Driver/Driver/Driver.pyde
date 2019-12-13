@@ -3,12 +3,15 @@ from KeyManager import *
 from MouseManager import *
 from Camera import *
 from Map import * 
-
+from Alliance import *
 
 MManage = MouseManager()
 KManage = KeyManager()
 Cam = Camera(0,0)
 Map = Map()
+TeamA = Alliance("A")
+TeamB = Alliance("B")
+TeamN = Alliance("N") # Neutral creep
 
 def setup():
     frameRate(60)
@@ -18,9 +21,9 @@ def setup():
 def draw():
     KManage.runActions(Cam)
     Cam.updateCam()
-    Map.drawMap()
+    Map.drawMap(TeamA)
     fill(0)
-    
+    rect(50,50,200,200)
 
 def keyPressed():
     KManage.keyInput(str(key))
