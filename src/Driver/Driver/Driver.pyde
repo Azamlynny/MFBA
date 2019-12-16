@@ -4,6 +4,7 @@ from MouseManager import *
 from Camera import *
 from Map import * 
 from Alliance import *
+from GameTracker import *
 
 MManage = MouseManager()
 KManage = KeyManager()
@@ -12,6 +13,7 @@ Map = Map()
 TeamA = Alliance("A")
 TeamB = Alliance("B")
 TeamN = Alliance("N") # Neutral creep
+Game = GameTracker()
 
 def setup():
     frameRate(60)
