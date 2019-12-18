@@ -1,8 +1,8 @@
 from Attackable import *
 
 class Structure(Attackable, object):
-    def __init__(self, xPos, yPos, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance):
-        super(Structure, self).__init__(xPos, yPos, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance)
+    def __init__(self, **kwds):
+        super(Structure, self).__init__(xPos, yPos, **kwds)
         self.speed = 0
     
 class Nexus(Structure):
