@@ -23,10 +23,12 @@ def setup():
 def draw():
     KManage.runActions(Cam)
     Cam.updateCam()
-    Map.drawMap(TeamA)
+    Map.drawMap()
     Game.PT.drawPlayers()
     fill(0)
     rect(500,500,200,200)
+    TeamA.updateVision(Game)
+    TeamA.drawVision()
 
 def keyPressed():
     KManage.keyInput(str(key))

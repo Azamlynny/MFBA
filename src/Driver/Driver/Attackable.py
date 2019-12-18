@@ -3,7 +3,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, xPos, yPos, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance): #TODO: add debuffs
+    def __init__(self, xPos, yPos, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance, visionRange): #TODO: add debuffs
         super(Attackable, self).__init__(xPos, yPos)
         self.hp = hp
         self.strength = strength
@@ -13,9 +13,7 @@ class Attackable(Entity, object):
         self.armor = armor
         self.atkRange = atkRange
         self.alliance = alliance
-    
-    def distance(self, target):
-        return round(math.sqrt( (self.xPos - target.xPos)**2 + (self.yPos - target.yPos)**2))
+        self.visionRange = visionRange
 
     def checkRange(self, target):
         if self.distance(target) > self.atkRange:

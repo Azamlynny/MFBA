@@ -9,9 +9,17 @@ class Alliance():
         self.structures = []
         #self.structures.append(Structure(xPos = 6, yPos = 6, strength = 5, speed = 100, hp = 250, hpRegen = 1.5, atk = 10, armor = 3, atkRange = 100, alliance = "a"))
         
-    def updateVision(self):
-        self.vision[self.structures[0].xPos][self.structures[0].yPos] = True
-    
+    def updateVision(self, Game):
+        scale = 10000 / self.resolution
+        for y in range (self.resolution):
+            for x in range (self.resolution):
+                for p in Game.PT.players:
+                    if(p.visionRange > p.distance(x * scale, y * scale)):
+                        self.vision[x][y] = True
+                        break
+                    else:
+                        self.vision[x][y] = False
+                        
     def drawVision(self):
         fill(0,200)
         noStroke()
