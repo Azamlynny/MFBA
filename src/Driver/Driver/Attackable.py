@@ -3,8 +3,9 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, xPos, yPos, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance, visionRange): #TODO: add debuffs
+    def __init__(self, xPos, yPos, strength, speed, hp, hpMax, hpRegen, atk, armor, atkRange, alliance, visionRange): #TODO: add debuffs
         super(Attackable, self).__init__(xPos, yPos)
+        self.hpMax = hpMax
         self.hp = hp
         self.strength = strength
         self.speed = speed
@@ -43,3 +44,14 @@ class Attackable(Entity, object):
             #TODO: add flat and percent bonuses after adding effects and debuffs
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
             target.hp -= round(mainDmg * armorMultiplier)
+            
+    def drawHealth(self):
+        fill(0,0,0)
+        rect(self.x - self.wd/2, self.y - 51, 50, 5, 5, 5, 5, 5)
+        
+        if(self.alliance == "a"):
+            fill(0,204,20)
+        else:
+            fill(255,0,0)
+        if self.hp >= 0:
+            rect(self.x - self.wd/2, self.y - 51, round(50 * self.hp/self.hpMax), 5, 5, 5, 5, 5)
