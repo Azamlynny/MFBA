@@ -18,7 +18,7 @@ class Attackable(Entity, object):
         self.target = None
     
     def distance(self, target):
-        return round(math.sqrt( (self.xPos - target.xPos)**2 + (self.yPos - target.yPos)**2))
+        return round(math.sqrt( (self.x - target.x)**2 + (self.y - target.y)**2))
 
     def checkRange(self, target):
         if self.distance(target) > self.atkRange:

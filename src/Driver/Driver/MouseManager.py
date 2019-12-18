@@ -16,5 +16,5 @@ class MouseManager():
         for i in Game.PT.players:
             if(i == Game.PT.players[0]):
                 continue
-            if(i.distancePT(mouseX + Cam.xshift, mouseY + Cam.yshift) <= i.atkRange):
+            if(mouseX + Cam.xshift >= i.x - i.wd/2 and mouseX + Cam.xshift <= i.x + i.wd/2 and mouseY + Cam.yshift >= i.y - i.ht/2 and mouseY + Cam.yshift <= i.y + i.ht/2):
                 Game.PT.players[0].target = i 
