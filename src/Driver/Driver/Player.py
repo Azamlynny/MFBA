@@ -42,7 +42,7 @@ class Player(Mob, object):
             fill(255,0,0)
         else:
             fill(0,255,0)
-        rect(self.x,self.y,50,50)
+        rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
     
     def ability1(self, target):
         #remove and check mana
