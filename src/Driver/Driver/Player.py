@@ -28,12 +28,16 @@ xpToLevel = {
     25:3500
 }
 
-class Player(Mob):
+class Player(Mob, object):
     def __init__(self, **kwds):
-        super().__init__(**kwds)
+        super(Player, self).__init__(**kwds)
         self.xp = 0
         self.lvl = 1
         self.gold = 0
+    
+    def drawPlayer(self):
+        fill(0,0,255);
+        rect(self.x,self.y,50,50);
     
     def ability1(self, target):
         #remove and check mana

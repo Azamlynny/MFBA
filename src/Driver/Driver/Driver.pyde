@@ -24,8 +24,9 @@ def draw():
     KManage.runActions(Cam)
     Cam.updateCam()
     Map.drawMap(TeamA)
+    Game.PT.drawPlayers()
     fill(0)
-    rect(50,50,200,200)
+    rect(500,500,200,200)
 
 def keyPressed():
     KManage.keyInput(str(key))
@@ -38,7 +39,7 @@ def mouseClicked():
     if(mouseButton == 37): # Left click
         MManage.leftClick()    
     if(mouseButton == 39): # Right click
-        MManage.rightClick()
+        MManage.rightClick(Game, Cam)
 
 def mouseDragged(): 
     if(mouseButton == 3): # Middle click

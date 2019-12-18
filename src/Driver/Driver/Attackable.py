@@ -1,10 +1,10 @@
 from Entity import *
 import math
 
-class Attackable(Entity):
+class Attackable(Entity, object):
     
-    def __init__(self, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance, **kwds): #TODO: add debuffs
-        super().__init__(**kwds)
+    def __init__(self, xPos, yPos, strength, speed, hp, hpRegen, atk, armor, atkRange, alliance): #TODO: add debuffs
+        super(Attackable, self).__init__(xPos, yPos)
         self.hp = hp
         self.strength = strength
         self.speed = speed

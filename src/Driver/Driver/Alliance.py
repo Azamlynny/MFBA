@@ -7,10 +7,10 @@ class Alliance():
         self.resolution = 100
         self.vision = [[0 for i in range(self.resolution)] for j in range(self.resolution)] 
         self.structures = []
-        #self.structures.append(Structure(xPos = 50, yPos = 50, strength = 5, speed = 100, hp = 250, hpRegen = 1.5, atk = 10, armor = 3, atkRange = 100, alliance = "a"))
+        #self.structures.append(Structure(xPos = 6, yPos = 6, strength = 5, speed = 100, hp = 250, hpRegen = 1.5, atk = 10, armor = 3, atkRange = 100, alliance = "a"))
         
     def updateVision(self):
-        return
+        self.vision[self.structures[0].xPos][self.structures[0].yPos] = True
     
     def drawVision(self):
         fill(0,200)
