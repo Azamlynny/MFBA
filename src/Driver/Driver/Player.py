@@ -36,8 +36,13 @@ class Player(Mob, object):
         self.gold = 0
     
     def drawPlayer(self):
-        fill(0,0,255);
-        rect(self.x,self.y,50,50);
+        if(self.alliance == "a"):
+            fill(0,0,255)
+        elif(self.alliance == "b"):
+            fill(255,0,0)
+        else:
+            fill(0,255,0)
+        rect(self.x,self.y,50,50)
     
     def ability1(self, target):
         #remove and check mana

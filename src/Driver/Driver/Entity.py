@@ -6,6 +6,6 @@ class Entity:
         self.x = xPos
         self.y = yPos
         
-    def distance(self, x, y): 
-        """Find the distance between two objects"""
+    def distancePT(self, x, y): 
+        """Find the distance between an object and a point"""
         return ((self.x - x)**2 + (self.y - y)**2)**0.5

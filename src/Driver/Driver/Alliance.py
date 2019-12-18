@@ -4,7 +4,7 @@ class Alliance():
     
     def __init__(self, teamName):
         self.name = teamName
-        self.resolution = 100
+        self.resolution = 100a
         self.vision = [[0 for i in range(self.resolution)] for j in range(self.resolution)] 
         self.structures = []
         #self.structures.append(Structure(xPos = 6, yPos = 6, strength = 5, speed = 100, hp = 250, hpRegen = 1.5, atk = 10, armor = 3, atkRange = 100, alliance = "a"))
@@ -15,7 +15,7 @@ class Alliance():
             for x in range (self.resolution):
                 for p in Game.PT.players:
                     if(p.alliance == "a"):
-                        if(p.visionRange > p.distance(x * scale, y * scale)):
+                        if(p.visionRange > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
                             break
                         else:

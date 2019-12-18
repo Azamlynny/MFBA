@@ -14,6 +14,10 @@ class Attackable(Entity, object):
         self.atkRange = atkRange
         self.alliance = alliance
         self.visionRange = visionRange
+        self.target = None
+    
+    def distance(self, target):
+        return round(math.sqrt( (self.xPos - target.xPos)**2 + (self.yPos - target.yPos)**2))
 
     def checkRange(self, target):
         if self.distance(target) > self.atkRange:

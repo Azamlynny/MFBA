@@ -12,3 +12,5 @@ class MouseManager():
         
     def rightClick(self, Game, Cam):
         Game.PT.players[0].pathfindTo(mouseX - Cam.xshift, mouseY - Cam.yshift)
+        for i in Game.PT.players:
+            

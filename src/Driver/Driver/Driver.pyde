@@ -24,7 +24,7 @@ def draw():
     KManage.runActions(Cam)
     Cam.updateCam()
     Map.drawMap()
-    Game.PT.drawPlayers()
+    Game.PT.drawPlayers(TeamA)
     fill(0)
     rect(500,500,200,200)
     TeamA.updateVision(Game)
