@@ -18,4 +18,3 @@ class MouseManager():
                 continue
             if(i.distancePT(mouseX + Cam.xshift, mouseY + Cam.yshift) <= i.atkRange):
                 Game.PT.players[0].target = i 
-                print(i.alliance)

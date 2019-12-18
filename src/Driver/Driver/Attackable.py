@@ -23,7 +23,15 @@ class Attackable(Entity, object):
         if self.distance(target) > self.atkRange:
             return True
         return False
-
+    
+    def defaultAttack(self, Game):
+        if(self.target != None):
+            for i in range (0, len(Game.PT.players)):
+                if(self.target == Game.PT.players[i]):
+                    targetIndex = i
+            self.basicAttack(Game.PT.players[i])
+        
+            
     def basicAttack(self, target):
         """self does damage to a target"""
         if self.checkRange(target):

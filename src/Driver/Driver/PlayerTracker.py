@@ -12,3 +12,8 @@ class PlayerTracker():
         for i in self.players:
             if(Alliance.vision[i.x / scale][i.y / scale]):
                 i.drawPlayer();
+                
+    def runPlayerActions(self, Game):
+        for i in self.players:
+            i.defaultAttack(Game)
+        
