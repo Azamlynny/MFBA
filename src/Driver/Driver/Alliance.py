@@ -14,12 +14,15 @@ class Alliance():
         for y in range (self.resolution):
             for x in range (self.resolution):
                 for p in Game.PT.players:
-                    if(p.visionRange > p.distance(x * scale, y * scale)):
-                        self.vision[x][y] = True
-                        break
+                    if(p.alliance == "a"):
+                        if(p.visionRange > p.distance(x * scale, y * scale)):
+                            self.vision[x][y] = True
+                            break
+                        else:
+                            self.vision[x][y] = False
                     else:
-                        self.vision[x][y] = False
-                        
+                        break    
+                    
     def drawVision(self):
         fill(0,200)
         noStroke()
