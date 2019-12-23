@@ -3,8 +3,8 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, xPos, yPos, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange): #TODO: add debuffs
-        super(Attackable, self).__init__(xPos, yPos)
+    def __init__(self, xPos, yPos, wd, ht, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange): #TODO: add debuffs
+        super(Attackable, self).__init__(xPos, yPos, wd, ht)
         self.hpMax = hpMax
         self.hp = hp
         self.strength = strength
