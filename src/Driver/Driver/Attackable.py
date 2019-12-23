@@ -53,11 +53,13 @@ class Attackable(Entity, object):
             
     def drawHealth(self):
         fill(0,0,0)
-        rect(self.x - self.wd/2, self.y - 51, 50, 5, 5, 5, 5, 5)
+        rect(self.x - 25, self.y - 51, 50, 5, 5, 5, 5, 5)
         
         if(self.alliance == "a"):
             fill(0,204,20)
         else:
             fill(255,0,0)
         if self.hp >= 0:
-            rect(self.x - self.wd/2, self.y - 51, round(50 * self.hp/self.hpMax), 5, 5, 5, 5, 5)
+            rect(self.x - 25, self.y - 51, round(50 * self.hp/self.hpMax), 5, 5, 5, 5, 5)
+            
+            
