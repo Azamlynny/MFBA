@@ -24,11 +24,12 @@ def draw():
     KManage.runActions(Cam)
     Cam.updateCam()
     Map.drawMap()
-    Game.PT.drawPlayers(TeamA)
     Game.PT.runPlayerActions(Game)
-    
+    Game.PT.drawPlayers(TeamA)
+
     fill(0)
     rect(500,500,200,200)
+    
     TeamA.updateVision(Game)
     TeamA.drawVision()
 
@@ -39,7 +40,7 @@ def keyReleased():
     KManage.keyRemove(str(key))
     
     
-def mouseClicked():
+def mousePressed():
     if(mouseButton == 37): # Left click
         MManage.leftClick()    
     if(mouseButton == 39): # Right click

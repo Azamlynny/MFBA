@@ -3,7 +3,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, xPos, yPos, strength, speed, hp, hpMax, hpRegen, atk, armor, atkRange, alliance, visionRange): #TODO: add debuffs
+    def __init__(self, xPos, yPos, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange): #TODO: add debuffs
         super(Attackable, self).__init__(xPos, yPos)
         self.hpMax = hpMax
         self.hp = hp
@@ -11,14 +11,16 @@ class Attackable(Entity, object):
         self.speed = speed
         self.hpRegen = hpRegen
         self.atk = atk
+        self.atkSpeed = atkSpeed
         self.armor = armor
         self.atkRange = atkRange
         self.alliance = alliance
         self.visionRange = visionRange
         self.target = None
+        self.atkCooldown = 0
     
     def distance(self, target):
-        return round(math.sqrt( (self.x - target.x)**2 + (self.y - target.y)**2))
+        return round(math.sqrt((self.x - target.x)**2 + (self.y - target.y)**2))
 
     def checkRange(self, target):
         if self.distance(target) > self.atkRange:
@@ -27,11 +29,15 @@ class Attackable(Entity, object):
     
     def defaultAttack(self, Game):
         if(self.target != None):
-            for i in range (0, len(Game.PT.players)):
-                if(self.target == Game.PT.players[i]):
-                    targetIndex = i
-            self.basicAttack(Game.PT.players[i])
-        
+            if(self.atkCooldown <= 0):
+                for i in range (0, len(Game.PT.players)):
+                    if(self.target == Game.PT.players[i]):
+                        targetIndex = i
+                self.basicAttack(Game.PT.players[i])
+                self.atkCooldown += self.atkSpeed * 60     
+            else:
+                self.atkCooldown -= 1  
+            
             
     def basicAttack(self, target):
         """self does damage to a target"""
