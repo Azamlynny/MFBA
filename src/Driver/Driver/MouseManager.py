@@ -8,10 +8,10 @@ class MouseManager():
         Cam.yshift += mouseY - pmouseY
     
     def leftClick(self):
-        print("temp")
+        return
         
     def rightClick(self, Game, Cam):
-        Game.PT.players[0].pathfindTo(mouseX - Cam.xshift, mouseY - Cam.yshift)
+        Game.PT.players[0].pathfindTo(mouseX - Cam.xshift, mouseY - Cam.yshift, Game)
         Game.PT.players[0].target = None
         for i in Game.PT.players:
             if(i == Game.PT.players[0]):

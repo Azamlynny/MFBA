@@ -73,3 +73,5 @@ class Player(Mob, object):
             self.xp -= xpToLevel[self.lvl]
             self.lvl += 1
             
+        
+            
