@@ -27,6 +27,7 @@ def draw():
     Map.drawMap()
     Game.updateGrid(Game.PT, Map)
     Game.runDebuffs()
+    Game.runProjectiles(Game)
     Game.PT.runPlayerActions(Game)
     Game.PT.updateMoving(Game)
     Game.PT.drawPlayers(TeamA)

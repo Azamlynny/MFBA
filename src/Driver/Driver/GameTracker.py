@@ -33,3 +33,7 @@ class GameTracker():
         if(self.time % 60 == 0):
             for i in self.PT.players:
                 i.runDebuffs()
+                
+    def runProjectiles(self,Game):
+        for i in self.PT.players:
+            i.moveProjectiles(Game)

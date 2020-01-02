@@ -1,4 +1,6 @@
 from Entity import *
+from Projectile import *
+from Debuff import *
 import math
 
 class Attackable(Entity, object):
@@ -19,6 +21,7 @@ class Attackable(Entity, object):
         self.target = None
         self.atkCooldown = 0
         self.debuffs = []
+        self.projectiles = []
     
     def distance(self, target):
         return round(math.sqrt((self.x - target.x)**2 + (self.y - target.y)**2))
@@ -34,7 +37,7 @@ class Attackable(Entity, object):
                 for i in range (0, len(Game.PT.players)):
                     if(self.target == Game.PT.players[i]):
                         targetIndex = i
-                self.basicAttack(Game.PT.players[i])
+                self.projectileAttack(Game, Game.PT.players[i])
                 self.atkCooldown += self.atkSpeed * 60     
             else:
                 self.atkCooldown -= 1  
@@ -53,6 +56,16 @@ class Attackable(Entity, object):
             #TODO: add flat and percent bonuses after adding effects and debuffs
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
             target.hp -= round(mainDmg * armorMultiplier)
+
+    def projectileAttack(self, Game, Target):
+        self.xvel = 0
+        self.yvel = 0
+        if self.checkRange(Target):
+            pass
+        elif self.alliance == Target.alliance:
+            pass
+        else:
+            self.projectiles.append(Projectile(self.x,self.y, 10, Game, Target))
 
     def drawHealth(self):
         fill(0,0,0)
@@ -78,4 +91,13 @@ class Attackable(Entity, object):
             if(i.time <= 0):
                 # Reset Stats after debuff expires
                 debuffs.remove(i)
+    
+    def moveProjectiles(self,Game):
+        for i in self.projectiles:
+            i.move(Game)
+            i.drawProjectile()
+            if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
+                self.basicAttack(i.Target)
+                self.projectiles.remove(i)
+
             
