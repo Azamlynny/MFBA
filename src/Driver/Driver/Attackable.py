@@ -5,7 +5,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, xPos, yPos, wd, ht, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange): #TODO: add debuffs
+    def __init__(self, xPos, yPos, wd, ht, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType): #TODO: add debuffs
         super(Attackable, self).__init__(xPos, yPos, wd, ht)
         self.hpMax = hpMax
         self.hp = hp
@@ -18,6 +18,7 @@ class Attackable(Entity, object):
         self.atkRange = atkRange
         self.alliance = alliance
         self.visionRange = visionRange
+        self.atkType = atkType
         self.target = None
         self.atkCooldown = 0
         self.debuffs = []
@@ -37,7 +38,10 @@ class Attackable(Entity, object):
                 for i in range (0, len(Game.PT.players)):
                     if(self.target == Game.PT.players[i]):
                         targetIndex = i
-                self.projectileAttack(Game, Game.PT.players[i])
+                if(self.atkType == "ranged"):
+                    self.projectileAttack(Game, Game.PT.players[i])
+                else:
+                    self.basicAttack(Game.PT.players[i])
                 self.atkCooldown += self.atkSpeed * 60     
             else:
                 self.atkCooldown -= 1  
