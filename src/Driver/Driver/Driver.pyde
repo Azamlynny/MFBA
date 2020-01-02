@@ -28,7 +28,6 @@ def draw():
     Game.PT.runPlayerActions(Game)
     Game.PT.updateMoving(Game)
     Game.PT.drawPlayers(TeamA)
-
     fill(0)
     rect(500,500,200,200)
     

@@ -46,18 +46,20 @@ class Attackable(Entity, object):
         elif self.alliance == target.alliance:
             pass
         else:
+            self.xvel = 0
+            self.yvel = 0
             mainDmg = (self.atk + self.strength)
             #TODO: add flat and percent bonuses after adding effects and debuffs
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
             target.hp -= round(mainDmg * armorMultiplier)
-            
+
     def drawHealth(self):
         fill(0,0,0)
-        rect(self.x - self.wd/2, self.y - 51, 50, 5, 5, 5, 5, 5)
+        rect(self.x - self.wd/2, self.y - (self.ht - 5), self.wd, 5, 5, 5, 5, 5)
         
         if(self.alliance == "a"):
             fill(0,204,20)
         else:
             fill(255,0,0)
         if self.hp >= 0:
-            rect(self.x - self.wd/2, self.y - 51, round(50 * self.hp/self.hpMax), 5, 5, 5, 5, 5)
+            rect(self.x - self.wd/2, self.y - (self.ht-5), round(self.wd * self.hp/self.hpMax), 5, 5, 5, 5, 5)
