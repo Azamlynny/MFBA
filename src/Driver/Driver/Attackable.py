@@ -71,5 +71,11 @@ class Attackable(Entity, object):
         else:
             self.hp = self.hpMax
         
+        # Debuff effects locally change stats in players skills
+        
         for i in self.debuffs:
             i.dec()
+            if(i.time <= 0):
+                # Reset Stats after debuff expires
+                debuffs.remove(i)
+            
