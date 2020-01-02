@@ -31,11 +31,15 @@ class Mob(Attackable, object):
                 scly = int(tempy / 25)
                 if(self.xvel > 0 and Game.grid[sclx + int(self.wd / (25 * 2)) + 1][scly] == True):
                     self.xvel = 0
+                    self.yvel = 0
                 if(self.xvel < 0 and Game.grid[sclx - int(self.wd / (25 * 2)) - 1][scly] == True):
                     self.xvel = 0
+                    self.yvel = 0
                 if(self.yvel > 0 and Game.grid[sclx][scly + int(self.ht / (25 * 2)) + 1] == True):
                     self.yvel = 0
+                    self.xvel = 0
                 if(self.yvel < 0 and Game.grid[sclx][scly - int(self.ht / (25 * 2)) - 1] == True):
                     self.yvel = 0
+                    self.xvel = 0
                 self.x += self.xvel
                 self.y += self.yvel
