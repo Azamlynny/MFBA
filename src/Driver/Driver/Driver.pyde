@@ -21,10 +21,12 @@ def setup():
     fullScreen()
 
 def draw():
+    Game.incTime()
     KManage.runActions(Cam, Game)
     Cam.updateCam()
     Map.drawMap()
     Game.updateGrid(Game.PT, Map)
+    Game.runDebuffs()
     Game.PT.runPlayerActions(Game)
     Game.PT.updateMoving(Game)
     Game.PT.drawPlayers(TeamA)

@@ -18,6 +18,7 @@ class Attackable(Entity, object):
         self.visionRange = visionRange
         self.target = None
         self.atkCooldown = 0
+        self.debuffs = []
     
     def distance(self, target):
         return round(math.sqrt((self.x - target.x)**2 + (self.y - target.y)**2))
@@ -63,3 +64,12 @@ class Attackable(Entity, object):
             fill(255,0,0)
         if self.hp >= 0:
             rect(self.x - self.wd/2, self.y - (self.ht-5), round(self.wd * self.hp/self.hpMax), 5, 5, 5, 5, 5)
+            
+    def runDebuffs(self):
+        if(self.hp + self.hpRegen <= self.hpMax):
+            self.hp += self.hpRegen
+        else:
+            self.hp = self.hpMax
+        
+        for i in self.debuffs:
+            i.dec()

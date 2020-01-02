@@ -6,6 +6,7 @@ class GameTracker():
         self.PT = PlayerTracker() 
         self.res = 200 # resolution 
         self.grid = [[False for i in range(self.res)] for j in range(self.res)] 
+        self.time = 0
         
     def updateGrid(self, PT, Map):
         for o in range(self.res): # Reset grid
@@ -24,4 +25,11 @@ class GameTracker():
                     self.grid[j][o] = True
                     # fill(0)                    # Draw hitboxes
                     # rect(j * 10,o * 10,10,10)
+        
+    def incTime(self):
+        self.time += 1
                     
+    def runDebuffs(self):
+        if(self.time % 60 == 0):
+            for i in self.PT.players:
+                i.runDebuffs()
