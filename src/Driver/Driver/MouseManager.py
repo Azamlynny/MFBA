@@ -14,7 +14,7 @@ class MouseManager():
             Game.PT.players[0].ability2(Cam)
         else:
             for i in Game.PT.players:
-                if(mouseX + Cam.xshift >= i.x - i.wd/2 and mouseX + Cam.xshift <= i.x + i.wd/2 and mouseY + Cam.yshift >= i.y - i.ht/2 and mouseY + Cam.yshift <= i.y + i.ht/2):
+                if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
                     GUI.playerSlot = Game.PT.players.index(i)
         
     def rightClick(self, Game, Cam):
@@ -25,6 +25,6 @@ class MouseManager():
         for i in Game.PT.players:
             if(i == Game.PT.players[0]):
                 continue
-            if(mouseX + Cam.xshift >= i.x - i.wd/2 and mouseX + Cam.xshift <= i.x + i.wd/2 and mouseY + Cam.yshift >= i.y - i.ht/2 and mouseY + Cam.yshift <= i.y + i.ht/2):
+            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
                 Game.PT.players[0].target = i 
                 
