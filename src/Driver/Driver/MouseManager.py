@@ -14,6 +14,8 @@ class MouseManager():
             Game.PT.players[0].ability2(Cam)
         
     def rightClick(self, Game, Cam):
+        Game.PT.players[0].ab1select = False
+        Game.PT.players[0].ab2select = False
         Game.PT.players[0].pathfindTo(mouseX - Cam.xshift, mouseY - Cam.yshift, Game)
         Game.PT.players[0].target = None
         for i in Game.PT.players:

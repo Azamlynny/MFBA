@@ -36,6 +36,7 @@ class Player(Mob, object):
         self.gold = 0
         self.ab1select = False
         self.ab2select = False
+        self.name = "Player"
 
     def drawPlayer(self):
         if(self.alliance == "a"):
