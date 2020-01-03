@@ -23,6 +23,7 @@ def setup():
     size(1960, 1080)
     fullScreen()
 
+
 def draw():
     Game.incTime()
     KManage.runActions(Cam, Game)
@@ -50,7 +51,7 @@ def keyReleased():
     
 def mousePressed():
     if(mouseButton == 37): # Left click
-        MManage.leftClick(Game, Cam)    
+        MManage.leftClick(Game, Cam, GUI)    
     if(mouseButton == 39): # Right click
         MManage.rightClick(Game, Cam)
 
