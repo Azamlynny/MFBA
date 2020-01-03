@@ -1,4 +1,3 @@
-add_library('net')
 from Entity import *
 from KeyManager import *
 from MouseManager import *

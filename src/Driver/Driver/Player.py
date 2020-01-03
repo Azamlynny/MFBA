@@ -47,6 +47,23 @@ class Player(Mob, object):
             fill(0,255,0)
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
     
+    def basicAttack(self, target):
+        """self does damage to a target"""
+        if self.checkRange(target):
+            pass
+        elif self.alliance == target.alliance:
+            pass
+        else:
+            self.xvel = 0
+            self.yvel = 0                
+            mainDmg = (self.atk + self.strength)
+            #TODO: add flat and percent bonuses after adding effects and debuffs
+            armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
+            target.hp -= round(mainDmg * armorMultiplier)
+            if(target.hp <= 0):
+                self.xp += target.lvl * 50 + 60
+                self.checkLevelUp()
+    
     def ability1(self, Cam):
         return
         #remove and check mana
