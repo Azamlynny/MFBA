@@ -37,6 +37,10 @@ class Player(Mob, object):
         self.ab1select = False
         self.ab2select = False
         self.name = "Player"
+        self.ab1name = "Ability 1"
+        self.ab2name = "Ability 2"
+        self.ab1cooldown = 10
+        self.ab2cooldown = 10
 
     def drawPlayer(self):
         if(self.alliance == "a"):
