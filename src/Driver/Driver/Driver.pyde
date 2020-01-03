@@ -1,3 +1,4 @@
+add_library('net')
 from Entity import *
 from KeyManager import *
 from MouseManager import *
@@ -46,7 +47,7 @@ def keyReleased():
     
 def mousePressed():
     if(mouseButton == 37): # Left click
-        MManage.leftClick()    
+        MManage.leftClick(Game, Cam)    
     if(mouseButton == 39): # Right click
         MManage.rightClick(Game, Cam)
 

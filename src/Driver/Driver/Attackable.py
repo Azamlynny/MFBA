@@ -33,18 +33,17 @@ class Attackable(Entity, object):
         return False
     
     def defaultAttack(self, Game):
-        if(self.target != None):
-            if(self.atkCooldown <= 0):
-                for i in range (0, len(Game.PT.players)):
-                    if(self.target == Game.PT.players[i]):
-                        targetIndex = i
-                if(self.atkType == "ranged"):
-                    self.projectileAttack(Game, Game.PT.players[i])
-                else:
-                    self.basicAttack(Game.PT.players[i])
-                self.atkCooldown += self.atkSpeed * 60     
+        if(self.atkCooldown <= 0 and self.target != None):
+            for i in range (0, len(Game.PT.players)):
+                if(self.target == Game.PT.players[i]):
+                    targetIndex = i
+            if(self.atkType == "ranged"):
+                self.projectileAttack(Game, Game.PT.players[i])
             else:
-                self.atkCooldown -= 1  
+                self.basicAttack(Game.PT.players[i])
+            self.atkCooldown += 60 / self.atkSpeed    
+        else:
+            self.atkCooldown -= 1  
             
             
     def basicAttack(self, target):
@@ -55,7 +54,7 @@ class Attackable(Entity, object):
             pass
         else:
             self.xvel = 0
-            self.yvel = 0
+            self.yvel = 0                
             mainDmg = (self.atk + self.strength)
             #TODO: add flat and percent bonuses after adding effects and debuffs
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
@@ -94,7 +93,7 @@ class Attackable(Entity, object):
             i.dec()
             if(i.time <= 0):
                 # Reset Stats after debuff expires
-                debuffs.remove(i)
+                self.debuffs.remove(i)
     
     def moveProjectiles(self,Game):
         for i in self.projectiles:

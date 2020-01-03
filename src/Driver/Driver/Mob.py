@@ -41,5 +41,7 @@ class Mob(Attackable, object):
                 if(self.yvel < 0 and Game.grid[sclx][scly - int(self.ht / (25 * 2)) - 1] == True):
                     self.yvel = 0
                     self.xvel = 0
-                self.x += self.xvel
-                self.y += self.yvel
+                if(self.atkCooldown < 10):
+                    # Backswing to prevent attacking then instantly moving
+                    self.x += self.xvel
+                    self.y += self.yvel

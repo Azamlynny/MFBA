@@ -24,3 +24,9 @@ class KeyManager():
             # TODO: bug needs fixing where nostroke() stops working once space is pressed
             Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
             Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
+        if('q' in self.inputs and not (any(i.debuff == "ab1cd" for i in Game.PT.players[0].debuffs))):
+            Game.PT.players[0].ab1select = True
+            Game.PT.players[0].ab2select = False
+        if('e' in self.inputs and not (any(i.debuff == "ab2cd" for i in Game.PT.players[0].debuffs))):
+            Game.PT.players[0].ab2select = True
+            Game.PT.players[0].ab1select = False
