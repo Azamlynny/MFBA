@@ -15,7 +15,7 @@ class GUI():
         p1 = Game.PT.players[self.playerSlot]
         rect(x,y, w, h) # GUI panel
 
-        
+    
         # Game Time bar
         gtbx = -Cam.xshift + width/2
         gtby = -Cam.yshift

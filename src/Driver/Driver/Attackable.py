@@ -42,7 +42,7 @@ class Attackable(Entity, object):
             else:
                 self.basicAttack(Game.PT.players[i])
             self.atkCooldown += 60 / self.atkSpeed    
-        else:
+        elif(self.atkCooldown > 0):
             self.atkCooldown -= 1  
             
             
