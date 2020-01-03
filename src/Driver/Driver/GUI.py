@@ -32,7 +32,8 @@ class GUI():
         rect(x + 250, y + 70, 600, 50, 5, 5, 5, 5)
         # Health bar foreground
         fill(0,204,20)
-        rect(x + 250, y + 70, round(600 * p1.hp/p1.hpMax), 50, 5, 5, 5, 5)
+        if(p1.hp >= 0):
+            rect(x + 250, y + 70, round(600 * p1.hp/p1.hpMax), 50, 5, 5, 5, 5)
         
         # Experience bar background 
         fill(0,0,0, 100)
@@ -52,16 +53,16 @@ class GUI():
         # Ability bar foreground
         fill(0,0,0,150)
         index = -1
-        for i in range(0,len(Game.PT.players[0].debuffs)):
-            if(Game.PT.players[0].debuffs[i].debuff == "ab1cd"):
+        for i in range(0,len(Game.PT.players[self.playerSlot].debuffs)):
+            if(Game.PT.players[self.playerSlot].debuffs[i].debuff == "ab1cd"):
                 index = int(i)
                 break
         if(index != -1):
             rect(x + 850 + 20, y + 35, 100, int((100 * (float(p1.debuffs[index].time) / p1.ab1cooldown))) + 1)
          
         index = -1
-        for i in range(0,len(Game.PT.players[0].debuffs)):
-            if(Game.PT.players[0].debuffs[i].debuff == "ab2cd"):
+        for i in range(0,len(Game.PT.players[self.playerSlot].debuffs)):
+            if(Game.PT.players[self.playerSlot].debuffs[i].debuff == "ab2cd"):
                 index = int(i)
                 break
         if(index != -1):
