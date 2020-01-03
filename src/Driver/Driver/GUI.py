@@ -14,6 +14,7 @@ class GUI():
         h = 150
         p1 = Game.PT.players[self.playerSlot]
         rect(x,y, w, h) # GUI panel
+
         
         # Game Time bar
         gtbx = -Cam.xshift + width/2
@@ -78,3 +79,8 @@ class GUI():
         
         # Experience bar text
         text("Level " + str(p1.lvl), x + 125, y + 105)
+        
+        # Frames per second
+        textSize(12)
+        fill(0,0,0, 100)
+        text(int(frameRate), 10 - Cam.xshift, 10 - Cam.yshift)
