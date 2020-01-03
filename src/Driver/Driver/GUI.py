@@ -21,8 +21,9 @@ class GUI():
         gtby = -Cam.yshift
         quad(gtbx - 75, gtby, gtbx + 75, gtby, gtbx + 55, gtby+55,  gtbx - 55, gtby+55)
         
-        # Game Time
+        # Game Time text
         fill(255)
+        textSize(20)
         time = datetime.timedelta(seconds = Game.time)
         text(str(time), gtbx, gtby + 35)
         
