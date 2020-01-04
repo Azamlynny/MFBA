@@ -5,7 +5,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, xPos, yPos, wd, ht, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType): #TODO: add debuffs
+    def __init__(self, xPos, yPos, wd, ht, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, projWidth = 10): #TODO: add debuffs
         super(Attackable, self).__init__(xPos, yPos, wd, ht)
         self.hpMax = hpMax
         self.hp = hp
@@ -19,6 +19,7 @@ class Attackable(Entity, object):
         self.alliance = alliance
         self.visionRange = visionRange
         self.atkType = atkType
+        self.projWidth = projWidth
         self.target = None
         self.atkCooldown = 0
         self.debuffs = []
@@ -63,7 +64,7 @@ class Attackable(Entity, object):
     def projectileAttack(self, Game, Target):
         self.xvel = 0
         self.yvel = 0
-        self.projectiles.append(Projectile(self.x,self.y, 10, Game, Target))
+        self.projectiles.append(Projectile(self.x,self.y, self.projWidth, 10, Game, Target))
 
     def drawHealth(self):
         fill(0,0,0)

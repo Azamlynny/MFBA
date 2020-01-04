@@ -82,6 +82,11 @@ class GUI():
         # Experience bar text
         text("Level " + str(p1.lvl), x + 125, y + 105)
         
+        # Ability name text
+        textSize(12)
+        text(p1.ab1name, x + 850 + 20 + 50, y + 30)
+        text(p1.ab2name, x + 850 + 130 + 50, y + 30)
+        
         # Frames per second
         textSize(12)
         fill(0,0,0, 100)

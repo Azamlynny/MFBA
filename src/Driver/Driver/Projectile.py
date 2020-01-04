@@ -2,9 +2,10 @@ import math
 
 class Projectile:
 
-    def __init__(self, x, y, speed, Game, Target): # time is measured in seconds
+    def __init__(self, x, y, wd, speed, Game, Target): # time is measured in seconds
         self.x = x
         self.y = y
+        self.wd = wd
         self.speed = speed
         self.Target = Target
         for i in range(0,len(Game.PT.players)):
@@ -25,5 +26,5 @@ class Projectile:
         
     def drawProjectile(self):
         fill(0)
-        ellipse(self.x-5,self.y-5,10,10)
+        ellipse(self.x-5, self.y-5, self.wd, self.wd)
     
