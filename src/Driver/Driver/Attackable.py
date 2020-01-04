@@ -34,9 +34,9 @@ class Attackable(Entity, object):
     
     def defaultAttack(self, Game):
         if(self.atkCooldown <= 0 and self.target != None):
-            if self.checkRange(target):
+            if self.checkRange(self.target):
                 pass
-            elif self.alliance == target.alliance:
+            elif self.alliance == self.target.alliance:
                 pass
             else:
                 for i in range (0, len(Game.PT.players)):
