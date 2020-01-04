@@ -34,12 +34,13 @@ class Fang(Player, object):
         return
     
     def ability2(self, Game, Cam):
-        silenceDuration = 10
+        silenceProcent = 0.5
         for i in range(1, len(Game.PT.players)):
             if(self.distance(Game.PT.players[i]) <= self.ab2range):
                 # TODO Implement check so that cooldown doesn't decrease
-                Game.PT.players[i].debuffs.append(Debuff("ab1cd", 1, silenceDuration))
-                Game.PT.players[i].debuffs.append(Debuff("ab2cd", 1, silenceDuration))
+                Game.PT.players[i].debuffs.append(Debuff("ab1cd", 1, Game.PT.players[i].ab1cooldown * silenceProcent))
+                Game.PT.players[i].debuffs.append(Debuff("ab2cd", 1, Game.PT.players[i].ab2cooldown * silenceProcent))
+                self.ab2select = False
                 self.debuffs.append(Debuff("ab2cd", 1, self.ab2cooldown))
         return
         
