@@ -68,7 +68,7 @@ class Player(Mob, object):
                 self.xp += target.lvl * 50 + 60
                 self.checkLevelUp()
     
-    def ability1(self, Cam):
+    def ability1(self, Game, Cam):
         return
         #remove and check mana
         # if self.checkRange(target):
@@ -81,7 +81,7 @@ class Player(Mob, object):
         #     armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
         #     target.hp -= round(mainDmg * armorMultiplier)
     
-    def ability2(self, Cam):
+    def ability2(self, Game, Cam):
         return
         #remove and check mana
         # if self.checkRange(target):
