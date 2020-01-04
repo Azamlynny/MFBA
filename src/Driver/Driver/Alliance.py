@@ -19,7 +19,7 @@ class Alliance():
                             self.vision[x][y] = True
                             break
                         else:
-                            self.vision[x][y] = False
+                            self.vision[x][y] = True # Change back to false
                     else:
                         break    
                     

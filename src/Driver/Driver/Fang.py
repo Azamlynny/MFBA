@@ -9,7 +9,7 @@ class Fang(Player, object):
         self.ab2cooldown = 120
         self.name = "Dr. Fang"
         self.ab1name = "Wormhole"
-        self.ab2name = "Magnetic Attractor"
+        self.ab2name = "EMP"
         
     def drawPlayer(self):
         fill(255,255,0)
