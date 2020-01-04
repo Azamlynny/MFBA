@@ -1,9 +1,11 @@
 from PlayerTracker import *
+from StructureTracker import *
 
 class GameTracker():
     
     def __init__(self):
         self.PT = PlayerTracker() 
+        self.ST = StructureTracker()
         self.res = 200 # resolution 
         self.grid = [[False for i in range(self.res)] for j in range(self.res)] 
         self.time = 0
@@ -36,4 +38,6 @@ class GameTracker():
                 
     def runProjectiles(self,Game):
         for i in self.PT.players:
+            i.moveProjectiles(Game)
+        for i in self.ST.structures:
             i.moveProjectiles(Game)

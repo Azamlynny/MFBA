@@ -6,6 +6,7 @@ from Map import *
 from Alliance import *
 from GameTracker import *
 from GUI import *
+from StructureTracker import *
 
 MManage = MouseManager()
 KManage = KeyManager()
@@ -31,6 +32,8 @@ def draw():
     Game.updateGrid(Game.PT, Map)
     Game.runDebuffs()
     Game.runProjectiles(Game)
+    Game.ST.drawStructures()
+    Game.ST.runTowerActions(Game)
     Game.PT.runPlayerActions(Game)
     Game.PT.updateMoving(Game)
     Game.PT.drawPlayers(TeamA)

@@ -34,41 +34,36 @@ class Attackable(Entity, object):
     
     def defaultAttack(self, Game):
         if(self.atkCooldown <= 0 and self.target != None):
-            for i in range (0, len(Game.PT.players)):
-                if(self.target == Game.PT.players[i]):
-                    targetIndex = i
-            if(self.atkType == "ranged"):
-                self.projectileAttack(Game, Game.PT.players[i])
+            if self.checkRange(target):
+                pass
+            elif self.alliance == target.alliance:
+                pass
             else:
-                self.basicAttack(Game.PT.players[i])
-            self.atkCooldown += 60 / self.atkSpeed    
+                for i in range (0, len(Game.PT.players)):
+                    if(self.target == Game.PT.players[i]):
+                        targetIndex = i
+                if(self.atkType == "ranged"):
+                    self.projectileAttack(Game, Game.PT.players[i])
+                else:
+                    self.basicAttack(Game.PT.players[i])
+                self.atkCooldown += 60 / self.atkSpeed    
         elif(self.atkCooldown > 0):
             self.atkCooldown -= 1  
             
             
     def basicAttack(self, target):
         """self does damage to a target"""
-        if self.checkRange(target):
-            pass
-        elif self.alliance == target.alliance:
-            pass
-        else:
-            self.xvel = 0
-            self.yvel = 0                
-            mainDmg = (self.atk + self.strength)
-            #TODO: add flat and percent bonuses after adding effects and debuffs
-            armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
-            target.hp -= round(mainDmg * armorMultiplier)
+        self.xvel = 0
+        self.yvel = 0                
+        mainDmg = (self.atk + self.strength)
+        #TODO: add flat and percent bonuses after adding effects and debuffs
+        armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
+        target.hp -= round(mainDmg * armorMultiplier)
 
     def projectileAttack(self, Game, Target):
         self.xvel = 0
         self.yvel = 0
-        if self.checkRange(Target):
-            pass
-        elif self.alliance == Target.alliance:
-            pass
-        else:
-            self.projectiles.append(Projectile(self.x,self.y, 10, Game, Target))
+        self.projectiles.append(Projectile(self.x,self.y, 10, Game, Target))
 
     def drawHealth(self):
         fill(0,0,0)
