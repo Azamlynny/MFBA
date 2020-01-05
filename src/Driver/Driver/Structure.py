@@ -15,7 +15,7 @@ class Tower(Structure, object):
 
     def lockTarget(self, Game):
         for i in Game.PT.players:
-            if self.distance(i) <= self.atkRange and self.alliance != i.alliance:
+            if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
                 # print(self.distance(i))
                 # print(self.atkRange)
                 # print(i)

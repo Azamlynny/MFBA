@@ -17,7 +17,7 @@ class Alliance():
                 visionSucess = False
                 for p in Game.PT.players:
                     if(p.alliance == "a"):
-                        if(p.visionRange > p.distancePT(x * scale, y * scale)):
+                        if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
                             visionSucess = True
                             break
@@ -25,7 +25,7 @@ class Alliance():
                     continue
                 for p in Game.ST.structures:
                     if(p.alliance == "a"):
-                        if(p.visionRange > p.distancePT(x * scale, y * scale)):
+                        if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
                             break
                         else:

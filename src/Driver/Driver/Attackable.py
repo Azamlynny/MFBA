@@ -27,10 +27,10 @@ class Attackable(Entity, object):
         self.projectiles = []
     
     def distance(self, target):
-        return round(math.sqrt((self.x - target.x)**2 + (self.y - target.y)**2))
+        return (self.x - target.x)**2 + (self.y - target.y)**2
 
     def checkRange(self, target):
-        if self.distance(target) > self.atkRange:
+        if self.distance(target) > self.atkRange**2:
             return True
         return False
     
@@ -95,7 +95,7 @@ class Attackable(Entity, object):
     def moveProjectiles(self, Cam, Game):
         for i in self.projectiles:
             i.move(Game)
-            if(sd(Cam,i.x,i.y,i.wd,i.ht)):
+            if(sd(Cam,i.x,i.y,i.wd,i.wd)):
                 i.drawProjectile()
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)

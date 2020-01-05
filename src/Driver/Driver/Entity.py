@@ -10,4 +10,4 @@ class Entity:
     
     def distancePT(self, x, y): 
         """Find the distance between an object and a point"""
-        return ((self.x - x)**2 + (self.y - y)**2)**0.5
+        return (self.x - x)**2 + (self.y - y)**2
