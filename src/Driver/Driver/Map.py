@@ -1,4 +1,5 @@
 from Tree import *
+from Util import *
 
 class Map():
     
@@ -15,11 +16,12 @@ class Map():
         # self.img = loadImage("MFBAMap.png")
         print("Map Loaded")
         
-    def drawMap(self):
+    def drawMap(self, Cam):
         fill(245)
         rect(0,0,5000,5000)
         # image(self.img, 0,0, 5000, 5000)
         for i in self.objects:
-            i.drawTree()
+            if(sd(Cam, i.x,i.y,i.wd,i.ht)):
+                i.drawTree()
         
         

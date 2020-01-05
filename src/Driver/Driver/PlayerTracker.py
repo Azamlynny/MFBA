@@ -1,5 +1,6 @@
 from Player import * 
 from Fang import *
+from Util import *
 
 class PlayerTracker():
 
@@ -8,12 +9,13 @@ class PlayerTracker():
         self.players.append(Fang(xPos = 700, yPos = 700, wd = 50, ht = 50, strength = 5, speed = 6, hp = 250, hpMax = 250, hpRegen = 1.5, atk = 5, atkSpeed = 2.0, armor = 3, atkRange = 350, alliance = "a", visionRange = 700, atkType = "ranged"))
         self.players.append(Player(xPos = 500, yPos = 200, wd = 70, ht = 70, strength = 5, speed = 3, hp = 450, hpMax = 500, hpRegen = 5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee"))        
         
-    def drawPlayers(self, Alliance):
+    def drawPlayers(self, Cam, Alliance):
         scale = 5000 / Alliance.resolution
         for i in self.players:
-            if(Alliance.vision[int(i.x / scale)][int(i.y / scale)]):
-                i.drawPlayer()
-                i.drawHealth()
+            if(sd(Cam,i.x,i.y,i.wd,i.ht)):
+                if(Alliance.vision[int(i.x / scale)][int(i.y / scale)]):
+                    i.drawPlayer()
+                    i.drawHealth()
                 
     def runPlayerActions(self, Game):
         for i in self.players:

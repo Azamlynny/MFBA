@@ -1,6 +1,7 @@
 from Entity import *
 from Projectile import *
 from Debuff import *
+from Util import *
 import math
 
 class Attackable(Entity, object):
@@ -91,10 +92,11 @@ class Attackable(Entity, object):
                 # Reset Stats after debuff expires
                 self.debuffs.remove(i)
     
-    def moveProjectiles(self,Game):
+    def moveProjectiles(self, Cam, Game):
         for i in self.projectiles:
             i.move(Game)
-            i.drawProjectile()
+            if(sd(Cam,i.x,i.y,i.wd,i.ht)):
+                i.drawProjectile()
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)
                 self.projectiles.remove(i)

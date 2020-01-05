@@ -47,8 +47,8 @@ class GameTracker():
             for i in self.PT.players:
                 i.runDebuffs()
                 
-    def runProjectiles(self,Game):
+    def runProjectiles(self,Cam, Game):
         for i in self.PT.players:
-            i.moveProjectiles(Game)
+            i.moveProjectiles(Cam, Game)
         for i in self.ST.structures:
-            i.moveProjectiles(Game)
+            i.moveProjectiles(Cam, Game)
