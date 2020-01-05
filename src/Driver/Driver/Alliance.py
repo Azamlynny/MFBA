@@ -22,7 +22,16 @@ class Alliance():
                             self.vision[x][y] = False # Change back to False
                     else:
                         break    
-                    
+                for p in Game.ST.structures:
+                    if(p.alliance == "a"):
+                        if(p.visionRange > p.distancePT(x * scale, y * scale)):
+                            self.vision[x][y] = True
+                            break
+                        else:
+                            self.vision[x][y] = False # Change back to False
+                    else:
+                        break    
+                       
     def drawVision(self):
         fill(0,200)
         noStroke()
