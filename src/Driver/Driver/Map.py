@@ -19,7 +19,7 @@ class Map():
         background(0)
         fill(245)
         rect(0,0,5000,5000)
-        image(self.img, 0,0, 5000, 5000)
+        # image(self.img, 0,0, 5000, 5000)
         for i in self.objects:
             i.drawTree()
         

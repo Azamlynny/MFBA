@@ -5,7 +5,7 @@ class Fang(Player, object):
         super(Fang, self).__init__(**kwds)
         self.ab1range = 400
         self.ab2range = 250
-        self.ab1cooldown = 12
+        self.ab1cooldown = 2
         self.ab2cooldown = 120
         self.name = "Dr. Fang"
         self.ab1name = "Wormhole"
