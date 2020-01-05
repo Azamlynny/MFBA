@@ -41,13 +41,10 @@ class Attackable(Entity, object):
             elif self.alliance == self.target.alliance:
                 pass
             else:
-                for i in range (0, len(Game.PT.players)):
-                    if(self.target == Game.PT.players[i]):
-                        targetIndex = i
                 if(self.atkType == "ranged"):
-                    self.projectileAttack(Game, Game.PT.players[i])
+                    self.projectileAttack(Game, self.target)
                 else:
-                    self.basicAttack(Game.PT.players[i])
+                    self.basicAttack(self.target)
                 self.atkCooldown += 60 / self.atkSpeed    
         elif(self.atkCooldown > 0):
             self.atkCooldown -= 1  

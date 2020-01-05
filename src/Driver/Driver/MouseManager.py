@@ -36,5 +36,6 @@ class MouseManager():
             if(i == Game.PT.players[0]):
                 continue
             if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
-                Game.PT.players[0].target = i 
+                Game.PT.players[0].target = i
+                break
                 

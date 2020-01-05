@@ -23,6 +23,10 @@ def setup():
     size(1960, 1080)
     fullScreen()
     Map.loadMap()
+    
+    # Focuses the Camera on the player
+    Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
+    Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
 
 def draw():
     background(0)
