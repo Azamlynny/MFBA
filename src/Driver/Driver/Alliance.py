@@ -1,3 +1,4 @@
+from Util import *
 from Structure import * 
 
 class Alliance():
@@ -13,15 +14,15 @@ class Alliance():
         scale = 5000 / self.resolution
         for y in range (self.resolution):
             for x in range (self.resolution):
+                visionSucess = False
                 for p in Game.PT.players:
                     if(p.alliance == "a"):
                         if(p.visionRange > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
+                            visionSucess = True
                             break
-                        else:
-                            self.vision[x][y] = False # Change back to False
-                    else:
-                        break    
+                if(visionSucess):
+                    continue
                 for p in Game.ST.structures:
                     if(p.alliance == "a"):
                         if(p.visionRange > p.distancePT(x * scale, y * scale)):
@@ -29,15 +30,14 @@ class Alliance():
                             break
                         else:
                             self.vision[x][y] = False # Change back to False
-                    else:
-                        break    
                        
-    def drawVision(self):
+    def drawVision(self, Cam):
         fill(0,200)
         noStroke()
         scale = 5000 / self.resolution
         for y in range (0,self.resolution):
             for x in range (0,self.resolution):
                 if(self.vision[x][y] == 0): 
-                    rect(scale * x, scale * y, scale, scale) 
+                    if(sd(Cam, x * scale,y * scale,scale,scale)):
+                        rect(scale * x, scale * y, scale, scale) 
         
