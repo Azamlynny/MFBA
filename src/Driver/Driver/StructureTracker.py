@@ -24,9 +24,9 @@ class StructureTracker():
         self.structures.append(Tower(xPos = 4700, yPos = 500, alliance = "b"))
         self.structures.append(Tower(xPos = 4450, yPos = 250, alliance = "b"))
         #top
-        self.structures.append(Tower(xPos = 3700, yPos = 400, alliance = "b"))
-        self.structures.append(Tower(xPos = 2700, yPos = 400, alliance = "b"))
-        self.structures.append(Tower(xPos = 1700, yPos = 400, alliance = "b"))
+        self.structures.append(Tower(xPos = 3700, yPos = 500, alliance = "b"))
+        self.structures.append(Tower(xPos = 2700, yPos = 500, alliance = "b"))
+        self.structures.append(Tower(xPos = 1700, yPos = 500, alliance = "b"))
         #bot
         self.structures.append(Tower(xPos = 4500, yPos = 1200, alliance = "b"))
         self.structures.append(Tower(xPos = 4500, yPos = 2200, alliance = "b"))
