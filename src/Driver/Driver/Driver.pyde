@@ -20,7 +20,8 @@ GUI = GUI()
 
 def setup():
     frameRate(60)
-    size(1960, 1080)
+    size(1960, 1080, P2D)
+    smooth(3)
     fullScreen()
     Map.loadMap()
     

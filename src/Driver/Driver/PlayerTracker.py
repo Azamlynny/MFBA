@@ -7,7 +7,7 @@ class PlayerTracker():
     def __init__(self):
         self.players = []
         # Team A
-        self.players.append(Fang(xPos = 100, yPos = 4500, wd = 50, ht = 50, strength = 5, speed = 6, hp = 250, hpMax = 250, hpRegen = 1.5, atk = 5, atkSpeed = 2.0, armor = 3, atkRange = 350, alliance = "a", visionRange = 700, atkType = "ranged"))
+        self.players.append(Fang(xPos = 100, yPos = 4500, wd = 50, ht = 50, strength = 5, speed = 12, hp = 250, hpMax = 250, hpRegen = 1.5, atk = 5, atkSpeed = 2.0, armor = 3, atkRange = 350, alliance = "a", visionRange = 700, atkType = "ranged"))
         self.players.append(Player(xPos = 200, yPos = 4600, wd = 70, ht = 70, strength = 5, speed = 3, hp = 450, hpMax = 500, hpRegen = 5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee"))        
         self.players.append(Player(xPos = 300, yPos = 4700, wd = 70, ht = 70, strength = 5, speed = 3, hp = 450, hpMax = 500, hpRegen = 5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee"))
         self.players.append(Player(xPos = 400, yPos = 4800, wd = 70, ht = 70, strength = 5, speed = 3, hp = 450, hpMax = 500, hpRegen = 5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee"))        
