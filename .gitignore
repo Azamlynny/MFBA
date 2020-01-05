@@ -1,2 +1,4 @@
 *.class
 *.autosave
+*.pyc
+src/Driver/Driver/__pycache__/
