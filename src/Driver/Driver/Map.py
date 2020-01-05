@@ -13,13 +13,13 @@ class Map():
         for aline in fin:
             values = aline.split()
             self.objects.append(Tree(xPos = int(values[0]), yPos = int(values[1]), treeType = int(values[2])))
-        # self.img = loadImage("MFBAMap.png")
+        self.img = loadImage("MFBAMap.png")
         print("Map Loaded")
         
     def drawMap(self, Cam):
         fill(245)
         rect(0,0,5000,5000)
-        # image(self.img, 0,0, 5000, 5000)
+        image(self.img, 0,0, 5000, 5000)
         for i in self.objects:
             if(sd(Cam, i.x,i.y,i.wd,i.ht)):
                 i.drawTree()
