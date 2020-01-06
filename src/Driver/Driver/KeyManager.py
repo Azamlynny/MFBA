@@ -47,3 +47,4 @@ class KeyManager():
                 Game.editing = True
             else:
                 Game.editing = False
+        # if('65535' in self.inputs): # Alt
