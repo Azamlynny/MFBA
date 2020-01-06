@@ -42,10 +42,10 @@ class GameTracker():
     def incTime(self):
         self.time += 1
                     
-    def runDebuffs(self):
+    def runDebuffs(self, Cam):
         if(self.time % 60 == 0):
             for i in self.PT.players:
-                i.runDebuffs()
+                i.runDebuffs(self, Cam)
                 
     def runProjectiles(self,Cam, Game):
         for i in self.PT.players:

@@ -27,10 +27,12 @@ xpToLevel = {
     24:2600,
     25:3500
 }
+respawnCooldown = [6, 8, 10, 14, 16, 26, 28, 30, 32, 34, 36, 44, 46, 48, 50, 52, 54, 65, 70, 75, 80, 85, 90, 95, 100]
+
 
 class Player(Mob, object):
     def __init__(self, **kwds):
-        super(Player, self).__init__(**kwds)
+        super(Player, self).__init__(type = "player", **kwds)
         self.xp = 0
         self.lvl = 1
         self.gold = 0
@@ -41,6 +43,8 @@ class Player(Mob, object):
         self.ab2name = "Ability 2"
         self.ab1cooldown = 10
         self.ab2cooldown = 10
+        self.respawnX = self.x
+        self.respawnY = self.y
 
     def drawPlayer(self):
         if(self.alliance == "a"):
@@ -98,6 +102,11 @@ class Player(Mob, object):
         if self.xp >= xpToLevel[self.lvl]:
             self.xp -= xpToLevel[self.lvl]
             self.lvl += 1
-            
-        
-            
+    
+    def checkHealth(self, Game, Cam):
+        if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):
+            self.debuffs.append(Debuff("dead", 1, respawnCooldown[self.lvl - 1]))
+        elif any(i.debuff == "dead" for i in self.debuffs):
+            self.x = self.respawnX
+            self.y = self.respawnY
+            self.hp = self.hpMax
