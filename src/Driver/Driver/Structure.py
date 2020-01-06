@@ -35,7 +35,7 @@ class Tower(Structure, object):
         elif(self.atkCooldown > 0):
             self.atkCooldown -= 1  
     
-    def drawStructure(self):
+    def drawStructure(self, Cam):
         if(self.alliance == "a"):
             fill(0,0,255)
         elif(self.alliance == "b"):
@@ -51,6 +51,7 @@ class Tower(Structure, object):
             stroke(255,0,0)
         else:
             stroke(0,255,0)
-        circle(self.x, self.y, self.atkRange * 2)
+        if(Cam.drawRings):
+            circle(self.x, self.y, self.atkRange * 2)
         noStroke()
         self.drawHealth()

@@ -32,9 +32,9 @@ class StructureTracker():
         self.structures.append(Tower(xPos = 3950, yPos = 1000, alliance = "b"))
         self.structures.append(Tower(xPos = 3150, yPos = 1700, alliance = "b"))
 
-    def drawStructures(self):
+    def drawStructures(self, Cam):
         for i in self.structures:
-            i.drawStructure()
+            i.drawStructure(Cam)
                 
     def runTowerActions(self, Game):
         # return

@@ -47,4 +47,7 @@ class KeyManager():
                 Game.editing = True
             else:
                 Game.editing = False
-        # if('65535' in self.inputs): # Alt
+        if('65535' in self.inputs): # Alt
+            Cam.drawRings = True
+        else:
+            Cam.drawRings = False
