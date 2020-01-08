@@ -10,6 +10,7 @@ class Fang(Player, object):
         self.name = "Dr. Fang"
         self.ab1name = "Wormhole"
         self.ab2name = "EMP"
+        self.type = "player"
         
     def drawPlayer(self):
         fill(255,255,0)

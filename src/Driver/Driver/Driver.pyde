@@ -26,8 +26,8 @@ def setup():
     Map.loadMap()
     
     # Focuses the Camera on the player
-    Cam.xshift = -1 * Game.PT.players[0].x + 1960 / 2
-    Cam.yshift = -1 * Game.PT.players[0].y + 1080 / 2
+    Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
+    Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
 
 def draw():
     background(0)
@@ -36,14 +36,13 @@ def draw():
     Cam.updateCam()
     Map.drawMap(Cam)
     Game.updateGrid(Game.PT, Map)
-    Game.runDebuffs()
+    Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
-    Game.ST.drawStructures(Cam)
+    Game.ST.drawStructures()
     Game.ST.runTowerActions(Game)
-    Game.PT.runPlayerActions(Game)
+    Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
     Game.PT.drawPlayers(Cam, TeamA)
-    
     TeamA.updateVision(Game)
     TeamA.drawVision(Cam)
     GUI.drawGui(Game, Cam)

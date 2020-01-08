@@ -6,7 +6,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, projWidth = 10, **kwds): #TODO: add debuffs
+    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type = "", projWidth = 10, **kwds): #TODO: add debuffs
         super(Attackable, self).__init__(**kwds)
         self.hpMax = hpMax
         self.hp = hp
@@ -25,7 +25,7 @@ class Attackable(Entity, object):
         self.atkCooldown = 0
         self.debuffs = []
         self.projectiles = []
-        
+
         # For GUI to function
         self.ab1select = False
         self.ab2select = False
@@ -84,7 +84,7 @@ class Attackable(Entity, object):
         if self.hp >= 0:
             rect(self.x - self.wd/2, self.y - (self.ht-5), round(self.wd * self.hp/self.hpMax), 5, 5, 5, 5, 5)
             
-    def runDebuffs(self):
+    def runDebuffs(self, Game, Cam):
         if(self.hp + self.hpRegen <= self.hpMax):
             self.hp += self.hpRegen
         else:
@@ -96,10 +96,16 @@ class Attackable(Entity, object):
             i.dec()
             if(i.time <= 0):
                 # Reset Stats after debuff expires
+                if self.type == "player" and i.debuff == "dead":
+                    Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
+                    Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
+                
                 self.debuffs.remove(i)
     
     def moveProjectiles(self, Cam, Game):
         for i in self.projectiles:
+            if any(j.debuff == "dead" for j in i.Target.debuffs):
+                self.projectiles.remove(i)
             i.move(Game)
             if(sd(Cam,i.x,i.y,i.wd,i.wd)):
                 i.drawProjectile()

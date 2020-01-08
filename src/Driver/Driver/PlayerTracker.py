@@ -24,13 +24,16 @@ class PlayerTracker():
         for i in self.players:
             if(sd(Cam,i.x,i.y,i.wd,i.ht)):
                 if(Alliance.vision[int(i.x / scale)][int(i.y / scale)]):
-                    i.drawPlayer()
-                    i.drawHealth()
+                    if any(j.debuff == "dead" for j in i.debuffs):
+                        pass
+                    else:
+                        i.drawPlayer()
+                        i.drawHealth()
                 
-    def runPlayerActions(self, Game):
+    def runPlayerActions(self, Game, Cam):
         for i in self.players:
             i.defaultAttack(Game)
-            
+            i.checkHealth(Game, Cam)
     def updateMoving(self, Game):
         for i in self.players:
             i.move(Game)
