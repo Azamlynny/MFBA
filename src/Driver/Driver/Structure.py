@@ -59,7 +59,7 @@ class Tower(Structure, object):
             stroke(255,0,0)
         else:
             stroke(0,255,0)
-        if(Cam.drawRings):
+        if(Cam.drawRings and self.hp > 0):
             circle(self.x, self.y, self.atkRange * 2)
         noStroke()
         if(self.hp > 0):

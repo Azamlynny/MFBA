@@ -25,8 +25,6 @@ class Fang(Player, object):
         tpx = mouseX - Cam.xshift
         tpy = mouseY - Cam.yshift
         if(self.distancePT(tpx,tpy) < self.ab1range ** 2 and (tpx <= 5000 and tpx >= 0) and (tpy <= 5000 and tpy >= 0)):
-            print(tpx)
-            print(tpy)
             self.x = tpx
             self.y = tpy
             self.xvel = 0
