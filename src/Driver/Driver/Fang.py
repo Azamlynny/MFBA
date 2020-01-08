@@ -24,7 +24,7 @@ class Fang(Player, object):
     def ability1(self, Game, Cam):
         tpx = mouseX - Cam.xshift
         tpy = mouseY - Cam.yshift
-        if(self.distancePT(tpx,tpy) < self.ab1range ** 2 and tpx in range(0, 5001) and tpy in range(0, 5001)):
+        if(self.distancePT(tpx,tpy) < self.ab1range ** 2 and (tpx <= 5000 or tpx >= 0) and (tpy <= 5000 or tpy >= 0)):
             self.x = tpx
             self.y = tpy
             self.xvel = 0
