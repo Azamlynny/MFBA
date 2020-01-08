@@ -68,11 +68,15 @@ class Attackable(Entity, object):
         #TODO: add flat and percent bonuses after adding effects and debuffs
         armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
         target.hp -= round(mainDmg * armorMultiplier)
+        if(target.hp <= 0):
+            self.target = None
 
     def projectileAttack(self, Game, Target):
         self.xvel = 0
         self.yvel = 0
         self.projectiles.append(Projectile(self.x,self.y, self.projWidth, 10, Game, Target))
+        if(Target.hp <= 0):
+            self.target = None
 
     def drawHealth(self):
         fill(0,0,0)
