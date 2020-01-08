@@ -38,7 +38,7 @@ def draw():
     Game.updateGrid(Game.PT, Map)
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
-    Game.ST.drawStructures()
+    Game.ST.drawStructures(Cam)
     Game.ST.runTowerActions(Game)
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
