@@ -25,6 +25,7 @@ class Attackable(Entity, object):
         self.atkCooldown = 0
         self.debuffs = []
         self.projectiles = []
+        self.type = type
 
         # For GUI to function
         self.ab1select = False

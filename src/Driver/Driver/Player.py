@@ -69,7 +69,7 @@ class Player(Mob, object):
             #TODO: add flat and percent bonuses after adding effects and debuffs
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
             target.hp -= round(mainDmg * armorMultiplier)
-            if(target.hp <= 0):
+            if(target.hp <= 0 and target.type == "player"):
                 self.xp += target.lvl * 50 + 60
                 self.checkLevelUp()
     
