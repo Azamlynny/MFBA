@@ -110,4 +110,3 @@ class Player(Mob, object):
         elif any(i.debuff == "dead" for i in self.debuffs):
             self.x = self.respawnX
             self.y = self.respawnY
-            self.hp = self.hpMax

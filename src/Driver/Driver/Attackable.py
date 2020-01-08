@@ -97,8 +97,11 @@ class Attackable(Entity, object):
             if(i.time <= 0):
                 # Reset Stats after debuff expires
                 if self.type == "player" and i.debuff == "dead":
-                    Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
-                    Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
+                    self.target = None
+                    self.hp = self.hpMax
+                    if Game.PT.players[0] == self:
+                        Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
+                        Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
                 
                 self.debuffs.remove(i)
     
