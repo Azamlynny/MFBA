@@ -14,19 +14,23 @@ class Tower(Structure, object):
     def __init__(self, **kwds):
         super(Tower, self).__init__(wd = 100, ht = 100, strength = 5, speed = 5, hp = 1000, hpMax = 1000, hpRegen = 0, atk = 50, atkSpeed = 1.0, armor = 5, atkRange = 500, visionRange = 650, atkType = "ranged", projWidth = 25, type = "tower", **kwds)
         self.name = "Tower"
+        self.type = "tower"
 
     def lockTarget(self, Game):
-        for i in Game.PT.players:
-            if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
-                # print(self.distance(i))
-                # print(self.atkRange)
-                # print(i)
-                self.target = i
-                break
-            else:
-                self.target = None
-        # print(i)
-    
+        if(self.hp > 0):
+            for i in Game.PT.players:
+                if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
+                    # print(self.distance(i))
+                    # print(self.atkRange)
+                    # print(i)
+                    self.target = i
+                    break
+                else:
+                    self.target = None
+        else:
+            self.target = None
+            
+                
     def defaultAttack(self, Game):
         if(self.atkCooldown <= 0 and self.target != None):
             if(self.atkType == "ranged"):
@@ -44,6 +48,8 @@ class Tower(Structure, object):
             fill(255,0,0)
         else:
             fill(0,255,0)
+        if(self.hp <= 0):
+            fill(50)
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
         #draw range
         noFill()
@@ -56,4 +62,5 @@ class Tower(Structure, object):
         if(Cam.drawRings):
             circle(self.x, self.y, self.atkRange * 2)
         noStroke()
-        self.drawHealth()
+        if(self.hp > 0):
+            self.drawHealth()
