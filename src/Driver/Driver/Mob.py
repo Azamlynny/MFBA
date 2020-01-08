@@ -27,18 +27,18 @@ class Mob(Attackable, object):
                 # Check hitbox collisions before moving the object
                 tempx = self.x + self.xvel
                 tempy = self.y + self.yvel
-                sclx = int(tempx / 25)
-                scly = int(tempy / 25)
-                if(self.xvel > 0 and Game.grid[sclx + int(self.wd / (25 * 2)) + 1][scly] == True):
+                sclx = int(tempx / Game.divis)
+                scly = int(tempy / Game.divis)
+                if(self.xvel > 0 and Game.grid[sclx + int(self.wd / (Game.divis * 2)) + 1][scly] == True):
                     self.xvel = 0
                     self.yvel = 0
-                if(self.xvel < 0 and Game.grid[sclx - int(self.wd / (25 * 2)) - 1][scly] == True):
+                if(self.xvel < 0 and Game.grid[sclx - int(self.wd / (Game.divis * 2)) - 1][scly] == True):
                     self.xvel = 0
                     self.yvel = 0
-                if(self.yvel > 0 and Game.grid[sclx][scly + int(self.ht / (25 * 2)) + 1] == True):
+                if(self.yvel > 0 and Game.grid[sclx][scly + int(self.ht / (Game.divis * 2)) + 1] == True):
                     self.yvel = 0
                     self.xvel = 0
-                if(self.yvel < 0 and Game.grid[sclx][scly - int(self.ht / (25 * 2)) - 1] == True):
+                if(self.yvel < 0 and Game.grid[sclx][scly - int(self.ht / (Game.divis * 2)) - 1] == True):
                     self.yvel = 0
                     self.xvel = 0
                 if(self.atkCooldown < 10):
