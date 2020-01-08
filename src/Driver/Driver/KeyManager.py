@@ -31,6 +31,9 @@ class KeyManager():
         if('e' in self.inputs and not (any(i.debuff == "ab2cd" for i in Game.PT.players[0].debuffs))):
             Game.PT.players[0].ab2select = True
             Game.PT.players[0].ab1select = False
+        if('`' in self.inputs):
+            Game.PT.players[0].ab2select = False
+            Game.PT.players[0].ab1select = False
         if('o' in self.inputs and Game.editing):
             if(self.outputted == False):
                 self.fo = open("map.txt", "w")
