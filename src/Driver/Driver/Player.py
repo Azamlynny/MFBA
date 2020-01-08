@@ -45,6 +45,7 @@ class Player(Mob, object):
         self.ab2cooldown = 10
         self.respawnX = self.x
         self.respawnY = self.y
+        self.type = "player"
 
     def drawPlayer(self):
         if(self.alliance == "a"):
