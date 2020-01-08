@@ -3,12 +3,13 @@ import math
 from Attackable import *
 
 class Mob(Attackable, object):
-    def __init__(self, **kwds):
+    def __init__(self, searchRadius, **kwds):
         super(Mob, self).__init__(**kwds)
         self.xvel = 0
         self.yvel = 0
         self.goalx = None
         self.goaly = None
+        self.searchRadius = searchRadius
       
     def pathfindTo(self,x,y,Game):
         self.goalx = x
@@ -45,3 +46,8 @@ class Mob(Attackable, object):
                     # Backswing to prevent attacking then instantly moving
                     self.x += self.xvel
                     self.y += self.yvel
+                    
+    def camp(self, Game):
+        
+        return
+    
