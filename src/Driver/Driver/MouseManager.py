@@ -26,6 +26,14 @@ class MouseManager():
                 for i in Game.PT.players:
                     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
                         GUI.playerSlot = Game.PT.players.index(i)
+                        GUI.type = "player"
+                        return
+                for i in Game.ST.structures:
+                    if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
+                        GUI.playerSlot = Game.ST.structures.index(i)
+                        GUI.type = "structure"
+                        return
+                    
         
     def rightClick(self, Game, Cam):
         Game.PT.players[0].ab1select = False

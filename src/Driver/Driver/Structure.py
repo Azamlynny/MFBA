@@ -3,7 +3,8 @@ from Attackable import *
 class Structure(Attackable, object):
     def __init__(self, **kwds):
         super(Structure, self).__init__(**kwds)
-    
+        self.name = "Structure"    
+                
 class Nexus(Structure):
     def __init__(self, **kwds):
         super().__init__(**kwds)
@@ -12,6 +13,7 @@ class Nexus(Structure):
 class Tower(Structure, object):
     def __init__(self, **kwds):
         super(Tower, self).__init__(wd = 100, ht = 100, strength = 5, speed = 5, hp = 1000, hpMax = 1000, hpRegen = 0, atk = 50, atkSpeed = 1.0, armor = 5, atkRange = 500, visionRange = 650, atkType = "ranged", projWidth = 25, **kwds)
+        self.name = "Tower"
 
     def lockTarget(self, Game):
         for i in Game.PT.players:
