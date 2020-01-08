@@ -25,6 +25,15 @@ class Attackable(Entity, object):
         self.atkCooldown = 0
         self.debuffs = []
         self.projectiles = []
+        
+        # For GUI to function
+        self.ab1select = False
+        self.ab2select = False
+        self.name = "Attackable"
+        self.ab1name = " "
+        self.ab2name = " "
+        self.ab1cooldown = 10
+        self.ab2cooldown = 10
     
     def distance(self, target):
         return (self.x - target.x)**2 + (self.y - target.y)**2

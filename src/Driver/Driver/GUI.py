@@ -5,6 +5,7 @@ class GUI():
     
     def __init__(self):
         self.playerSlot = 0
+        self.type = None
         
     def drawGui(self, Game, Cam):
         fill(103, 108, 126, 200)
@@ -12,7 +13,13 @@ class GUI():
         y = -Cam.yshift + 930
         w = 1100
         h = 150
-        p1 = Game.PT.players[self.playerSlot]
+        if(self.type == "player"):
+            p1 = Game.PT.players[self.playerSlot]
+        elif(self.type == "structure"):
+            p1 = Game.ST.structures[self.playerSlot]
+        else:
+            p1 = Game.PT.players[0]
+
         rect(x,y, w, h) # GUI panel
 
     
@@ -35,38 +42,40 @@ class GUI():
         if(p1.hp >= 0):
             rect(x + 250, y + 70, round(600 * p1.hp/p1.hpMax), 50, 5, 5, 5, 5)
         
-        # Experience bar background 
-        fill(0,0,0, 100)
-        rect(x + 25, y + 70, 200, 50, 5, 5, 5, 5)
-        # Experience bar foreground 
-        fill(255, 190, 0)
-        if(p1.lvl < 25):
-            rect(x + 25, y + 70, round(200 * p1.xp/xpToLevel[p1.lvl]), 50, 5, 5, 5, 5)
-        else:
+        if(self.type == "player"):        
+            # Experience bar background 
+            fill(0,0,0, 100)
             rect(x + 25, y + 70, 200, 50, 5, 5, 5, 5)
-                         
+            # Experience bar foreground 
+            fill(255, 190, 0)
+            if(p1.lvl < 25):
+                rect(x + 25, y + 70, round(200 * p1.xp/xpToLevel[p1.lvl]), 50, 5, 5, 5, 5)
+            else:
+                rect(x + 25, y + 70, 200, 50, 5, 5, 5, 5)
+        
         # Ability bar background                                
         fill(0,0,0, 50)
         rect(x + 850 + 20, y + 35, 100, 100)
         rect(x + 850 + 130, y + 35, 100, 100)
         
-        # Ability bar foreground
-        fill(0,0,0,150)
-        index = -1
-        for i in range(0,len(Game.PT.players[self.playerSlot].debuffs)):
-            if(Game.PT.players[self.playerSlot].debuffs[i].debuff == "ab1cd"):
-                index = int(i)
-                break
-        if(index != -1):
-            rect(x + 850 + 20, y + 35, 100, int((100 * (float(p1.debuffs[index].time) / p1.ab1cooldown))) + 1)
-         
-        index = -1
-        for i in range(0,len(Game.PT.players[self.playerSlot].debuffs)):
-            if(Game.PT.players[self.playerSlot].debuffs[i].debuff == "ab2cd"):
-                index = int(i)
-                break
-        if(index != -1):
-            rect(x + 850 + 130, y + 35, 100, int((100 * (float(p1.debuffs[index].time) / p1.ab2cooldown))) + 1)    
+        if(self.type == "player"): # Only players have ability cooldowns       
+            # Ability bar foreground
+            fill(0,0,0,150)
+            index = -1
+            for i in range(0,len(Game.PT.players[self.playerSlot].debuffs)):
+                if(Game.PT.players[self.playerSlot].debuffs[i].debuff == "ab1cd"):
+                    index = int(i)
+                    break
+            if(index != -1):
+                rect(x + 850 + 20, y + 35, 100, int((100 * (float(p1.debuffs[index].time) / p1.ab1cooldown))) + 1)
+            
+            index = -1
+            for i in range(0,len(Game.PT.players[self.playerSlot].debuffs)):
+                if(Game.PT.players[self.playerSlot].debuffs[i].debuff == "ab2cd"):
+                    index = int(i)
+                    break
+            if(index != -1):
+                rect(x + 850 + 130, y + 35, 100, int((100 * (float(p1.debuffs[index].time) / p1.ab2cooldown))) + 1)    
                   
         textAlign(CENTER)
         fill(255)
@@ -80,7 +89,8 @@ class GUI():
         text(str(int(p1.hp)) + "/" + str(p1.hpMax), x + 550, y + 105)
         
         # Experience bar text
-        text("Level " + str(p1.lvl), x + 125, y + 105)
+        if(self.type == "player"):
+            text("Level " + str(p1.lvl), x + 125, y + 105)
         
         # Ability name text
         textSize(12)

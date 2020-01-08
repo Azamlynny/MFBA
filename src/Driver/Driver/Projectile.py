@@ -8,12 +8,21 @@ class Projectile:
         self.wd = wd
         self.speed = speed
         self.Target = Target
+        self.type = None
         for i in range(0,len(Game.PT.players)):
             if(self.Target == Game.PT.players[i]):
                 self.index = i
+                self.type = "player"
+        for i in range(0,len(Game.ST.structures)):
+            if(self.Target == Game.ST.structures[i]):
+                self.index = i
+                self.type = "structure"
         
     def move(self, Game):
-        self.Target = Game.PT.players[self.index]
+        if(self.type == "player"):
+            self.Target = Game.PT.players[self.index]
+        elif(self.type == "structure"):
+            self.Target = Game.ST.structures[self.index]
         xdist = self.Target.x - self.x
         ydist = self.Target.y - self.y
         distance = round(math.sqrt((self.x - self.Target.x)**2 + (self.y - self.Target.y)**2))
