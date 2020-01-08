@@ -106,7 +106,8 @@ class Player(Mob, object):
     
     def checkHealth(self, Game, Cam):
         if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):
-            self.debuffs.append(Debuff("dead", 1, respawnCooldown[self.lvl - 1]))
+            self.debuffs.append(Debuff("dead", self.hpRegen, respawnCooldown[self.lvl - 1]))
+            self.hpRegen = 0
         elif any(i.debuff == "dead" for i in self.debuffs):
             self.x = self.respawnX
             self.y = self.respawnY
