@@ -7,6 +7,7 @@ from Alliance import *
 from GameTracker import *
 from GUI import *
 from StructureTracker import *
+from Creep import *
 
 MManage = MouseManager()
 KManage = KeyManager()
@@ -17,6 +18,7 @@ TeamB = Alliance("B")
 TeamN = Alliance("N") # Neutral creep
 Game = GameTracker()
 GUI = GUI()
+Crp1 = Creep(xPos = 340, yPos = 3601, wd = 40, ht = 40, strength = 5, speed = 5, hp = 100, hpMax = 100, hpRegen = 0.5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee")
 
 def setup():
     frameRate(60)
@@ -47,6 +49,8 @@ def draw():
     TeamA.drawVision(Cam)
     Map.drawNodes(Game, Cam, MManage)
     GUI.drawGui(Game, Cam)
+    Crp1.runAI(Game, Map)
+    Crp1.drawCreep()
     
 def keyPressed():
     KManage.keyInput(str(key))

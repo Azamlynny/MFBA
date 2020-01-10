@@ -107,7 +107,7 @@ class Attackable(Entity, object):
                     if Game.PT.players[0] == self:
                         Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-                        self.hpRegen = self.debuffs.modifier
+                        self.hpRegen = self.modifier
                 
                 self.debuffs.remove(i)
     

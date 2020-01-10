@@ -5,7 +5,7 @@ class Map():
     
     def __init__(self):
         self.objects = []
-        self.laneNodesNum = 80
+        self.laneNodesNum = 70
         self.laneNodes = [[0 for i in range(2)] for j in range(self.laneNodesNum)] 
         #print(self.laneNodes[80][1])
         #self.objects.append(Tree(xPos = 80, yPos = 800))
