@@ -5,7 +5,25 @@ class MouseManager():
     def __init__(self):
         self.player = 1
         self.treePlaceIndex = 0
-                
+    
+    
+    def lockPlayerTarget(self, Game, Cam):
+        player = Game.PT.players[0]
+        for i in Game.PT.players:
+            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2): #if you clicked on a player
+                if i.alliance != player.alliance:
+                    player.target = i
+                return
+        for i in Game.ST.structures:
+            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
+                if i.alliance != player.alliance:
+                    player.target = i
+                return
+        # for i in Game.CT.creeps:
+        #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
+        #         if i.alliance != player.alliance:
+        #             player.target = i
+        #         return
     def middleClick(self, Cam):
         Cam.xshift += mouseX - pmouseX
         Cam.yshift += mouseY - pmouseY
@@ -19,8 +37,12 @@ class MouseManager():
                 self.treePlaceIndex-=5
         else:
             if(Game.PT.players[0].ab1select):
+                if Game.PT.players[0].ab1targetable:
+                    self.lockPlayerTarget(Game, Cam)
                 Game.PT.players[0].ability1(Game, Cam)
             elif(Game.PT.players[0].ab2select):
+                if Game.PT.players[0].ab1targetable:
+                    self.lockPlayerTarget(Game, Cam)
                 Game.PT.players[0].ability2(Game, Cam)
             else:
                 for i in Game.PT.players:
