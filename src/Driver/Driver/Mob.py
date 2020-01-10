@@ -19,9 +19,6 @@ class Mob(Attackable, object):
         self.yvel = (y - self.y) / time
     
     def move(self, Game):
-        Game.PT.players[5].yvel = 1
-        Game.PT.players[5].goalx = 500
-        Game.PT.players[5].goaly = 5000
         if(self.xvel != 0 or self.yvel != 0) and not any(i.debuff == "stun" for i in self.debuffs): # Only performs hitbox checks for moving objects
             if(abs(self.x - self.goalx) < 5 and abs(self.y - self.goaly) < 5): # Stop the object when it reaches its goal with a small tolerance
                 self.xvel = 0

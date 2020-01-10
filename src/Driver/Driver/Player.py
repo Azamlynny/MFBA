@@ -43,6 +43,8 @@ class Player(Mob, object):
         self.ab2name = "Ability 2"
         self.ab1cooldown = 10
         self.ab2cooldown = 10
+        self.ab1targetable = False
+        self.ab2targetable = False
         self.respawnX = self.x
         self.respawnY = self.y
         self.type = "player"
@@ -55,6 +57,14 @@ class Player(Mob, object):
         else:
             fill(0,255,0)
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
+        
+    def drawRings(self):
+        stroke(170, 178, 191)
+        noFill()
+        if(self.ab1select):
+            ellipse(self.x, self.y, self.ab1range * 2, self.ab1range * 2)
+        if(self.ab2select):
+            ellipse(self.x, self.y, self.ab2range * 2, self.ab2range * 2)
     
     def basicAttack(self, target):
         """self does damage to a target"""
@@ -111,3 +121,10 @@ class Player(Mob, object):
         elif any(i.debuff == "dead" for i in self.debuffs):
             self.x = self.respawnX
             self.y = self.respawnY
+            for i in Game.PT.players:
+                print(i)
+                if i.target == self:
+                    i.target = None
+            for i in Game.ST.structures:
+                if i.target == self:
+                    i.target = None

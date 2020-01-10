@@ -14,12 +14,7 @@ class Fang(Player, object):
     def drawPlayer(self):
         fill(255,255,0)
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
-        stroke(170, 178, 191)
-        noFill()
-        if(self.ab1select):
-            ellipse(self.x, self.y, self.ab1range * 2, self.ab1range * 2)
-        if(self.ab2select):
-            ellipse(self.x, self.y, self.ab2range * 2, self.ab2range * 2)
+        self.drawRings()
     
     def ability1(self, Game, Cam):
         tpx = mouseX - Cam.xshift

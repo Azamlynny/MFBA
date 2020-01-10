@@ -5,7 +5,7 @@ class GUI():
     
     def __init__(self):
         self.playerSlot = 0
-        self.type = None
+        self.type = "player"
         
     def drawGui(self, Game, Cam):
         fill(103, 108, 126, 200)

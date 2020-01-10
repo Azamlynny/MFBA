@@ -6,7 +6,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type = "", projWidth = 10, **kwds): #TODO: add debuffs
+    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type, projWidth = 10, **kwds): #TODO: add debuffs
         super(Attackable, self).__init__(**kwds)
         self.hpMax = hpMax
         self.hp = hp
@@ -107,7 +107,6 @@ class Attackable(Entity, object):
                     if Game.PT.players[0] == self:
                         Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-                        self.hpRegen = self.debuffs.modifier
                 
                 self.debuffs.remove(i)
     
@@ -121,21 +120,3 @@ class Attackable(Entity, object):
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)
                 self.projectiles.remove(i)
-
-    def lockPlayerTarget(self, Game, Cam):
-        for i in Game.PT.players:
-            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2): #if you clicked on a player
-                if i.alliance != self.alliance:
-                    self.target = i
-                return
-        for i in Game.ST.structures:
-            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
-                if i.alliance != self.alliance:
-                    self.target = i
-                return
-        # for i in Game.CT.creeps:
-        #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
-        #         if i.alliance != self.alliance:
-        #             self.target = i
-        #         return
-            
