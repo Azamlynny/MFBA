@@ -125,14 +125,17 @@ class Attackable(Entity, object):
     def lockPlayerTarget(self, Game, Cam):
         for i in Game.PT.players:
             if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2): #if you clicked on a player
-                self.target = i
+                if i.alliance != self.alliance:
+                    self.target = i
                 return
         for i in Game.ST.structures:
             if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
-                self.target = i
+                if i.alliance != self.alliance:
+                    self.target = i
                 return
         # for i in Game.CT.creeps:
         #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
-        #         self.target = i
+        #         if i.alliance != self.alliance:
+        #             self.target = i
         #         return
             
