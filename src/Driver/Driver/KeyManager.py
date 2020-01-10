@@ -12,7 +12,7 @@ class KeyManager():
         if(input in self.inputs):
             self.inputs.remove(input)    
         
-    def runActions(self, Cam, Game, Map):
+    def runActions(self, Cam, Game, Map, MManage):
         if('w' in self.inputs):
             Cam.yshift += Cam.moveSpeed
         if('a' in self.inputs):
@@ -67,6 +67,10 @@ class KeyManager():
                     self.fo.write(output)
                 self.fo.close()
                 print("Saved Lane Nodes")
+        if('-' in self.inputs and Game.editingNodes):
+            MManage.nodePlaceIndex-=1
+        if('=' in self.inputs and Game.editingNodes):
+            MManage.nodePlaceIndex+=1
         if('65535' in self.inputs): # Alt
             Cam.drawRings = True
         else:

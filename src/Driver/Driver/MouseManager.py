@@ -5,6 +5,7 @@ class MouseManager():
     def __init__(self):
         self.player = 1
         self.treePlaceIndex = 0
+        self.nodePlaceIndex = 0
                 
     def middleClick(self, Cam):
         Cam.xshift += mouseX - pmouseX
@@ -17,6 +18,16 @@ class MouseManager():
             self.treePlaceIndex+=1
             if(self.treePlaceIndex >= 5):
                 self.treePlaceIndex-=5
+        elif(Game.editingNodes):
+            # Lane Node editor
+            x = int(mouseX - Cam.xshift)
+            y = int(mouseY - Cam.yshift)
+            Map.laneNodes[self.nodePlaceIndex][0] = x
+            Map.laneNodes[self.nodePlaceIndex][1] = y
+            self.nodePlaceIndex+=1
+            if(self.nodePlaceIndex >= 90):
+                self.nodePlaceIndex = 0
+                
         else:
             if(Game.PT.players[0].ab1select):
                 Game.PT.players[0].ability1(Game, Cam)

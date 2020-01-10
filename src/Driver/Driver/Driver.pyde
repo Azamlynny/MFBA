@@ -32,7 +32,7 @@ def setup():
 def draw():
     background(0)
     Game.incTime()
-    KManage.runActions(Cam, Game, Map)
+    KManage.runActions(Cam, Game, Map, MManage)
     Cam.updateCam()
     Map.drawMap(Cam)
     Game.updateGrid(Game.PT, Map)
@@ -45,7 +45,7 @@ def draw():
     Game.PT.drawPlayers(Cam, TeamA)
     TeamA.updateVision(Game)
     TeamA.drawVision(Cam)
-    Map.drawNodes(Game, Cam)
+    Map.drawNodes(Game, Cam, MManage)
     GUI.drawGui(Game, Cam)
     
 def keyPressed():

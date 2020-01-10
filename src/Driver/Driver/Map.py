@@ -5,7 +5,7 @@ class Map():
     
     def __init__(self):
         self.objects = []
-        self.laneNodesNum = 90
+        self.laneNodesNum = 80
         self.laneNodes = [[0 for i in range(2)] for j in range(self.laneNodesNum)] 
         #print(self.laneNodes[80][1])
         #self.objects.append(Tree(xPos = 80, yPos = 800))
@@ -37,9 +37,15 @@ class Map():
             if(sd(Cam, i.x,i.y,i.wd,i.ht)):
                 i.drawTree()
     
-    def drawNodes(self, Game, Cam):
+    def drawNodes(self, Game, Cam, MouseManager):
         if(Game.editingNodes):
-            fill(255)
+            count = 0
             for i in self.laneNodes:
+                fill(255)
                 ellipse(i[0],i[1],30,30)
+                fill(0)
+                text(count, i[0], i[1])
+                count += 1
+            fill(255)
+            text(MouseManager.nodePlaceIndex, 50-Cam.xshift, 50-Cam.yshift)
         
