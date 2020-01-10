@@ -45,6 +45,7 @@ def draw():
     Game.PT.drawPlayers(Cam, TeamA)
     TeamA.updateVision(Game)
     TeamA.drawVision(Cam)
+    Map.drawNodes(Game, Cam)
     GUI.drawGui(Game, Cam)
     
 def keyPressed():

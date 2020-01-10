@@ -11,7 +11,7 @@ class MouseManager():
         Cam.yshift += mouseY - pmouseY
     
     def leftClick(self, Game, Cam, GUI, Map):
-        if(Game.editing):
+        if(Game.editingTree):
             # Map Tree editor
             Map.objects.append(Tree(xPos = mouseX - Cam.xshift, yPos = mouseY - Cam.yshift, treeType = self.treePlaceIndex))
             self.treePlaceIndex+=1

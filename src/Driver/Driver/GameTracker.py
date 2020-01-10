@@ -10,7 +10,8 @@ class GameTracker():
         self.divis = 5000 / self.res
         self.grid = [[False for i in range(self.res)] for j in range(self.res)] 
         self.time = 0
-        self.editing = False
+        self.editingTree = False
+        self.editingNodes = False
         
     def updateGrid(self, PT, Map):
         for o in range(self.res): # Reset grid
