@@ -38,11 +38,13 @@ def draw():
     KManage.runActions(Cam, Game, Map, MManage)
     Cam.updateCam()
     Map.drawMap(Cam)
-    Game.updateGrid(Game.PT, Map)
+    Game.updateGrid(Game.PT, Game.CT, Map)
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
     Game.ST.runTowerActions(Game)
+    Game.CT.runCreepActions(Game, Map, GUI)
+    Game.CT.drawCreep(Cam, TeamA)
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
     Game.PT.drawPlayers(Cam, TeamA)
@@ -50,8 +52,7 @@ def draw():
     TeamA.drawVision(Cam)
     Map.drawNodes(Game, Cam, MManage)
     GUI.drawGui(Game, Cam)
-    Game.CT.runCreepActions(Game, Map)
-    Game.CT.drawCreep(Cam, TeamA)
+    
     
 def keyPressed():
     KManage.keyInput(str(key))

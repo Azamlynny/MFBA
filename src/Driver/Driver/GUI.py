@@ -24,7 +24,6 @@ class GUI():
 
         rect(x,y, w, h) # GUI panel
 
-    
         # Game Time bar
         gtbx = -Cam.xshift + width/2
         gtby = -Cam.yshift

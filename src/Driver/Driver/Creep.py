@@ -9,6 +9,7 @@ class Creep(Mob, object):
         self.NODE_TRAVERSAL_ERROR = 25
         self.AGRO_RANGE = 300
         self.name = "Creep"
+        self.type = "creep"
 
     def runAI(self, Game, Map):
         self.checkAgro(Game, Map)
