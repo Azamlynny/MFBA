@@ -44,7 +44,6 @@ class Creep(Mob, object):
         
     def checkAgro(self, Game, Map):
         if(self.target != None):
-            print(self.target)
             if(self.distance(self.target) > self.AGRO_RANGE ** 2):
                 self.target = None
                 self.atkCooldown = 0

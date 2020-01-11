@@ -45,6 +45,8 @@ class Player(Mob, object):
         self.respawnX = self.x
         self.respawnY = self.y
         self.type = "player"
+        self.ab1targetable = False
+        self.ab2targetable = False
 
     def drawPlayer(self):
         if(self.alliance == "a"):
@@ -81,6 +83,7 @@ class Player(Mob, object):
                 self.checkLevelUp()
             if(target.hp <= 0 and target.type == "creep"):
                 self.xp += 60
+                self.target = None
                 self.checkLevelUp()
     
     def ability1(self, Game, Cam):

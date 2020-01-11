@@ -72,4 +72,21 @@ class MouseManager():
             if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
                 Game.PT.players[0].target = i
                 return    
-     
+            
+    def lockPlayerTarget(self, Game, Cam):
+        player = Game.PT.players[0]
+        for i in Game.PT.players:
+            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2): #if you clicked on a player
+                if i.alliance != player.alliance:
+                    player.target = i
+                return
+        for i in Game.ST.structures:
+            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
+                if i.alliance != player.alliance:
+                    player.target = i
+                return
+        # for i in Game.CT.creeps:
+        #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
+        #         if i.alliance != player.alliance:
+        #             player.target = i
+        #         return
