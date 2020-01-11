@@ -1,11 +1,13 @@
 from PlayerTracker import *
 from StructureTracker import *
+from CreepTracker import *
 
 class GameTracker():
     
     def __init__(self):
         self.PT = PlayerTracker() 
         self.ST = StructureTracker()
+        self.CT = CreepTracker()
         self.res = 100 # resolution
         self.divis = 5000 / self.res
         self.grid = [[False for i in range(self.res)] for j in range(self.res)] 

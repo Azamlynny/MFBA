@@ -19,6 +19,9 @@ class Creep(Mob, object):
             self.pathfindTo(self.target.x, self.target.y, Game)
             self.move(Game)
             self.defaultAttack(Game)
+            if(self.target == None): # Creep killed
+                self.atkCooldown = 0
+                self.pathfindTo(Map.laneNodes[self.currentNode][0], Map.laneNodes[self.currentNode][1], Game)
         
     def moveNode(self, Game, Map):
         if(self.distancePT(Map.laneNodes[self.currentNode][0], Map.laneNodes[self.currentNode][1]) <= self.NODE_TRAVERSAL_ERROR**2):
@@ -37,10 +40,6 @@ class Creep(Mob, object):
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
         
     def checkAgro(self, Game, Map):
-        # if(self.target != None): # To return to the previous node when the player takes the creep out of the lane
-        #     hadTarget = True
-        # else:
-        #     hadTarget = False
         if(self.target != None):
             if(self.distance(self.target) > self.AGRO_RANGE ** 2):
                 self.target = None
@@ -50,7 +49,19 @@ class Creep(Mob, object):
         
         if(self.target == None):
             for i in Game.PT.players:
-                if(self.distance(i) <= self.AGRO_RANGE ** 2):
-                    print(i)
-                    self.target = i
+                if(i.alliance != self.alliance):
+                    if(self.distance(i) <= self.AGRO_RANGE ** 2):
+                        self.target = i
+                        return
+            for i in Game.CT.creep:
+                if(i.alliance != self.alliance):
+                    if(self.distance(i) <= self.AGRO_RANGE ** 2):
+                        self.target = i
+                        return
+            for i in Game.ST.structures:
+                if(i.alliance != self.alliance):
+                    if(self.distance(i) <= self.AGRO_RANGE ** 2):
+                        self.target = i
+                        return
+                    
                 

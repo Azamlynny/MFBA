@@ -18,8 +18,6 @@ TeamB = Alliance("B")
 TeamN = Alliance("N") # Neutral creep
 Game = GameTracker()
 GUI = GUI()
-Crp1 = Creep(xPos = 340, yPos = 3601, wd = 40, ht = 40, strength = 5, speed = 5, hp = 100, hpMax = 100, hpRegen = 0.5, atk = 9, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 4)
-Crp2 = Creep(xPos = 3345, yPos = 519, wd = 40, ht = 40, strength = 5, speed = 5, hp = 100, hpMax = 100, hpRegen = 0.5, atk = 9, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 20)
 
 
 def setup():
@@ -29,7 +27,7 @@ def setup():
     fullScreen()
     Map.loadMap()
     
-    # Focuses the Camera on the player
+    # Focuses the Camera on the pl)ayer
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
     
@@ -52,10 +50,8 @@ def draw():
     TeamA.drawVision(Cam)
     Map.drawNodes(Game, Cam, MManage)
     GUI.drawGui(Game, Cam)
-    Crp1.runAI(Game, Map)
-    Crp1.drawCreep()
-    Crp2.runAI(Game, Map)
-    Crp2.drawCreep()
+    Game.CT.runCreepActions(Game, Map)
+    Game.CT.drawCreep(Cam, TeamA)
     
 def keyPressed():
     KManage.keyInput(str(key))

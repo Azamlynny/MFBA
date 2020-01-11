@@ -20,9 +20,12 @@ class Tower(Structure, object):
         if(self.hp > 0):
             for i in Game.PT.players:
                 if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
-                    # print(self.distance(i))
-                    # print(self.atkRange)
-                    # print(i)
+                    self.target = i
+                    break
+                else:
+                    self.target = None
+            for i in Game.CT.creep:
+                if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
                     self.target = i
                     break
                 else:
