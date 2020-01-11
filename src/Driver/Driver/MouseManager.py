@@ -29,8 +29,12 @@ class MouseManager():
                 self.nodePlaceIndex = 0
         else:
             if(Game.PT.players[0].ab1select):
+                if Game.PT.players[0].ab1targetable:
+                    self.lockPlayerTarget(Game, Cam)
                 Game.PT.players[0].ability1(Game, Cam)
             elif(Game.PT.players[0].ab2select):
+                if Game.PT.players[0].ab2targetable:
+                    self.lockPlayerTarget(Game, Cam)
                 Game.PT.players[0].ability2(Game, Cam)
             else:
                 for i in Game.PT.players:
@@ -49,7 +53,6 @@ class MouseManager():
                         GUI.type = "creep"
                         return
                     
-        
     def rightClick(self, Game, Cam):
         Game.PT.players[0].ab1select = False
         Game.PT.players[0].ab2select = False
@@ -69,5 +72,4 @@ class MouseManager():
             if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
                 Game.PT.players[0].target = i
                 return    
-            
-                
+     

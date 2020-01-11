@@ -107,10 +107,9 @@ class Attackable(Entity, object):
                     if Game.PT.players[0] == self:
                         Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-                        self.hpRegen = self.modifier
-                
-                self.debuffs.remove(i)
-    
+                    self.hpRegen = i.modifier
+            self.debuffs.remove(i)
+            
     def moveProjectiles(self, Cam, Game):
         for i in self.projectiles:
             if any(j.debuff == "dead" for j in i.Target.debuffs):
@@ -122,4 +121,3 @@ class Attackable(Entity, object):
                 self.basicAttack(i.Target)
                 self.projectiles.remove(i)
 
-            

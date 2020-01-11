@@ -29,7 +29,6 @@ xpToLevel = {
 }
 respawnCooldown = [6, 8, 10, 14, 16, 26, 28, 30, 32, 34, 36, 44, 46, 48, 50, 52, 54, 65, 70, 75, 80, 85, 90, 95, 100]
 
-
 class Player(Mob, object):
     def __init__(self, **kwds):
         super(Player, self).__init__(type = "player", **kwds)
@@ -55,6 +54,14 @@ class Player(Mob, object):
         else:
             fill(0,255,0)
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
+    
+    def drawRings(self):
+        stroke(170, 178, 191)
+        noFill()
+        if(self.ab1select):
+            ellipse(self.x, self.y, self.ab1range * 2, self.ab1range * 2)
+        if(self.ab2select):
+            ellipse(self.x, self.y, self.ab2range * 2, self.ab2range * 2)
     
     def basicAttack(self, target):
         """self does damage to a target"""
@@ -114,3 +121,11 @@ class Player(Mob, object):
         elif any(i.debuff == "dead" for i in self.debuffs):
             self.x = self.respawnX
             self.y = self.respawnY
+            for i in Game.PT.players:
+                print(i)
+                if i.target == self:
+                    i.target = None
+            for i in Game.ST.structures:
+                if i.target == self:
+                    i.target = None
+                    
