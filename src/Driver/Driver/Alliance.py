@@ -14,16 +14,24 @@ class Alliance():
         scale = 5000 / self.resolution
         for y in range (self.resolution):
             for x in range (self.resolution):
-                visionSucess = False
+                visionSuccess = False
                 for p in Game.PT.players:
                     if(p.alliance == "a"):
                         if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
-                            visionSucess = True
+                            visionSuccess = True
                             break
-                if(visionSucess):
+                if(visionSuccess):
                     continue
                 for p in Game.ST.structures:
+                    if(p.alliance == "a"):
+                        if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
+                            self.vision[x][y] = True
+                            visionSuccess = True
+                            break
+                if(visionSuccess):
+                    continue
+                for p in Game.CT.creep:
                     if(p.alliance == "a"):
                         if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True

@@ -29,7 +29,6 @@ xpToLevel = {
 }
 respawnCooldown = [6, 8, 10, 14, 16, 26, 28, 30, 32, 34, 36, 44, 46, 48, 50, 52, 54, 65, 70, 75, 80, 85, 90, 95, 100]
 
-
 class Player(Mob, object):
     def __init__(self, **kwds):
         super(Player, self).__init__(type = "player", **kwds)
@@ -43,8 +42,6 @@ class Player(Mob, object):
         self.ab2name = "Ability 2"
         self.ab1cooldown = 10
         self.ab2cooldown = 10
-        self.ab1targetable = False
-        self.ab2targetable = False
         self.respawnX = self.x
         self.respawnY = self.y
         self.type = "player"
@@ -57,7 +54,7 @@ class Player(Mob, object):
         else:
             fill(0,255,0)
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
-        
+    
     def drawRings(self):
         stroke(170, 178, 191)
         noFill()
@@ -81,6 +78,9 @@ class Player(Mob, object):
             target.hp -= round(mainDmg * armorMultiplier)
             if(target.hp <= 0 and target.type == "player"):
                 self.xp += target.lvl * 50 + 60
+                self.checkLevelUp()
+            if(target.hp <= 0 and target.type == "creep"):
+                self.xp += 60
                 self.checkLevelUp()
     
     def ability1(self, Game, Cam):
@@ -128,3 +128,4 @@ class Player(Mob, object):
             for i in Game.ST.structures:
                 if i.target == self:
                     i.target = None
+                    

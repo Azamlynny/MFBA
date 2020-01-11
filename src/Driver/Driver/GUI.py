@@ -17,12 +17,13 @@ class GUI():
             p1 = Game.PT.players[self.playerSlot]
         elif(self.type == "structure"):
             p1 = Game.ST.structures[self.playerSlot]
+        elif(self.type == "creep"):
+            p1 = Game.CT.creep[self.playerSlot]
         else:
             p1 = Game.PT.players[0]
 
         rect(x,y, w, h) # GUI panel
 
-    
         # Game Time bar
         gtbx = -Cam.xshift + width/2
         gtby = -Cam.yshift
