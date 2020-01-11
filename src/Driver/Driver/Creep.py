@@ -3,7 +3,7 @@ from Mob import *
 class Creep(Mob, object):
     
     def __init__(self, startNode, **kwds):
-        super(Creep, self).__init__(type = "creep", **kwds)
+        super(Creep, self).__init__(type = "creep", strength = 5, speed = 5, hp = 100, hpMax = 100, hpRegen = 0.5, atk = 9, atkSpeed = 1.0, armor = 3, **kwds)
         self.startNode = startNode
         self.currentNode = self.startNode
         self.NODE_TRAVERSAL_ERROR = 25

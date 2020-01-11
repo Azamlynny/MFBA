@@ -27,7 +27,7 @@ def setup():
     fullScreen()
     Map.loadMap()
     
-    # Focuses the Camera on the pl)ayer
+    # Focuses the Camera on the player
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
     
@@ -38,7 +38,7 @@ def draw():
     KManage.runActions(Cam, Game, Map, MManage)
     Cam.updateCam()
     Map.drawMap(Cam)
-    Game.updateGrid(Game.PT, Game.CT, Map)
+    Game.updateGrid(Game, Map)
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)

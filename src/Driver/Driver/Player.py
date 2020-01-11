@@ -72,6 +72,9 @@ class Player(Mob, object):
             if(target.hp <= 0 and target.type == "player"):
                 self.xp += target.lvl * 50 + 60
                 self.checkLevelUp()
+            if(target.hp <= 0 and target.type == "creep"):
+                self.xp += 60
+                self.checkLevelUp()
     
     def ability1(self, Game, Cam):
         return

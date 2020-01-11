@@ -15,12 +15,12 @@ class GameTracker():
         self.editingTree = False
         self.editingNodes = False
         
-    def updateGrid(self, PT, CT, Map):
+    def updateGrid(self, Game, Map):
         for o in range(self.res): # Reset grid
             for j in range(self.res):
                 self.grid[j][o] = False
         
-        for i in PT.players:
+        for i in Game.PT.players:
             x = int(i.x / self.divis)
             y = int(i.y / self.divis)
             wd = int(i.wd / self.divis)
@@ -35,12 +35,12 @@ class GameTracker():
             y = int(i.y / self.divis)
             wd = int(i.wd / self.divis)
             ht = int(i.ht / self.divis)
-            x -= wd / 2
-            y -= ht / 2    
+            # x -= wd / 2
+            # y -= ht / 2    
             for o in range(y, y+ht):
                 for j in range(x, x+wd):
                     self.grid[j][o] = True
-        for i in CT.creep:
+        for i in Game.CT.creep:
             x = int(i.x / self.divis)
             y = int(i.y / self.divis)
             wd = int(i.wd / self.divis)
@@ -52,7 +52,7 @@ class GameTracker():
                     self.grid[j][o] = True
         
     def incTime(self):
-        if(self.time % 3600 == 0):
+        if(self.time % 1800 == 0):
             self.CT.spawnCreep()
         self.time += 1
         
