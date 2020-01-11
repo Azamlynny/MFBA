@@ -27,9 +27,12 @@ class Projectile:
         ydist = self.Target.y - self.y
         distance = round(math.sqrt((self.x - self.Target.x)**2 + (self.y - self.Target.y)**2))
         time = distance / self.speed
-        
-        self.xvel =  xdist / time
-        self.yvel =  ydist / time
+        if(time > 0):
+            self.xvel =  xdist / time
+            self.yvel =  ydist / time
+        else:
+            self.xvel = 0
+            self.yvel = 0
         self.x += self.xvel
         self.y += self.yvel            
         

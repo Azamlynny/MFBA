@@ -8,6 +8,7 @@ class Creep(Mob, object):
         self.currentNode = self.startNode
         self.NODE_TRAVERSAL_ERROR = 25
         self.AGRO_RANGE = 300
+        self.name = "Creep"
 
     def runAI(self, Game, Map):
         self.checkAgro(Game, Map)
@@ -19,7 +20,8 @@ class Creep(Mob, object):
             self.pathfindTo(self.target.x, self.target.y, Game)
             self.move(Game)
             self.defaultAttack(Game)
-            if(self.target == None): # Creep killed
+            if(self.target == None or self.target.hp <= 0): # Creep/Tower/Player killed
+                self.Target = None
                 self.atkCooldown = 0
                 self.pathfindTo(Map.laneNodes[self.currentNode][0], Map.laneNodes[self.currentNode][1], Game)
         
@@ -41,6 +43,7 @@ class Creep(Mob, object):
         
     def checkAgro(self, Game, Map):
         if(self.target != None):
+            print(self.target)
             if(self.distance(self.target) > self.AGRO_RANGE ** 2):
                 self.target = None
                 self.atkCooldown = 0
@@ -48,18 +51,19 @@ class Creep(Mob, object):
                 return
         
         if(self.target == None):
+            self.atkCooldown = 0
             for i in Game.PT.players:
-                if(i.alliance != self.alliance):
+                if(i.alliance != self.alliance and i.hp > 0):
                     if(self.distance(i) <= self.AGRO_RANGE ** 2):
                         self.target = i
                         return
             for i in Game.CT.creep:
-                if(i.alliance != self.alliance):
+                if(i.alliance != self.alliance and i.hp > 0):
                     if(self.distance(i) <= self.AGRO_RANGE ** 2):
                         self.target = i
                         return
             for i in Game.ST.structures:
-                if(i.alliance != self.alliance):
+                if(i.alliance != self.alliance and i.hp > 0):
                     if(self.distance(i) <= self.AGRO_RANGE ** 2):
                         self.target = i
                         return

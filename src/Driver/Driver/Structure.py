@@ -18,16 +18,16 @@ class Tower(Structure, object):
 
     def lockTarget(self, Game):
         if(self.hp > 0):
-            for i in Game.PT.players:
-                if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
-                    self.target = i
-                    break
-                else:
-                    self.target = None
             for i in Game.CT.creep:
                 if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
                     self.target = i
-                    break
+                    return
+                else:
+                    self.target = None
+            for i in Game.PT.players:
+                if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:
+                    self.target = i
+                    return
                 else:
                     self.target = None
         else:

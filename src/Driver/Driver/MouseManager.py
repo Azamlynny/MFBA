@@ -27,7 +27,6 @@ class MouseManager():
             self.nodePlaceIndex+=1
             if(self.nodePlaceIndex >= 90):
                 self.nodePlaceIndex = 0
-                
         else:
             if(Game.PT.players[0].ab1select):
                 Game.PT.players[0].ability1(Game, Cam)
@@ -43,6 +42,11 @@ class MouseManager():
                     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
                         GUI.playerSlot = Game.ST.structures.index(i)
                         GUI.type = "structure"
+                        return
+                for i in Game.CT.creep:
+                    if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2):
+                        GUI.playerSlot = Game.CT.creep.index(i)
+                        GUI.type = "creep"
                         return
                     
         
@@ -61,4 +65,9 @@ class MouseManager():
             if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
                 Game.PT.players[0].target = i
                 return
+        for i in Game.CT.creep:
+            if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
+                Game.PT.players[0].target = i
+                return    
+            
                 
