@@ -6,5 +6,5 @@ class Debuff:
         self.modifier = modifier
     
     def dec(self): 
-        self.time -= 1
+        self.time -= 1 
         
