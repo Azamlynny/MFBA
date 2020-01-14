@@ -99,7 +99,7 @@ class Attackable(Entity, object):
         
         for i in self.debuffs:
             i.dec()
-            if(i.time <= 0):
+            if(i.time <= 0 and i.time%60 == 0):
                 # Reset Stats after debuff expires
                 if self.type == "player" and i.debuff == "dead":
                     self.target = None
@@ -109,7 +109,7 @@ class Attackable(Entity, object):
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
                     self.hpRegen = i.modifier
             self.debuffs.remove(i)
-            
+
     def moveProjectiles(self, Cam, Game):
         for i in self.projectiles:
             if any(j.debuff == "dead" for j in i.Target.debuffs):
@@ -120,4 +120,3 @@ class Attackable(Entity, object):
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)
                 self.projectiles.remove(i)
-
