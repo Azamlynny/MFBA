@@ -23,7 +23,7 @@ class Node:
         self.drawConnections(Map)
         
     def drawConnections(self, Map):
-        stroke(255)
+        stroke(255,50)
         strokeWeight(4)
         for i in self.adj:
             for o in Map.pathNodes:

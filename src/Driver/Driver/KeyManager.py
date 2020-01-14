@@ -94,6 +94,14 @@ class KeyManager():
                     self.fo.write("\n")
                 self.fo.close()
                 print("Saved Path Nodes")
+        if('1' in self.inputs and Game.editingPaths):
+            MManage.currNode += 1
+        if('2' in self.inputs and Game.editingPaths):
+            MManage.currNode -= 1
+        if('3' in self.inputs and Game.editingPaths):
+            MManage.coneNode += 1
+        if('4' in self.inputs and Game.editingPaths):
+            MManage.coneNode -= 1
         if('-' in self.inputs and Game.editingNodes):
             MManage.nodePlaceIndex-=1
         if('=' in self.inputs and Game.editingNodes):
@@ -102,3 +110,4 @@ class KeyManager():
             Cam.drawRings = True
         else:
             Cam.drawRings = False
+                        
