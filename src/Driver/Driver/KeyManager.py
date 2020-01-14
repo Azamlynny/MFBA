@@ -67,6 +67,19 @@ class KeyManager():
                     self.fo.write(output)
                 self.fo.close()
                 print("Saved Lane Nodes")
+        if('m' in self.inputs and 'n' in self.inputs):
+            if(Game.editingPaths == False):
+                Game.editingPaths = True
+                print("editing paths")
+            else:
+                Game.editingPaths = False
+                print("stopped editing paths")
+        if('b' in self.inputs):
+            if(Game.editingPaths):
+                if(not MManage.makingConnections):
+                    MManage.makingConnections = True
+                else:
+                    MManage.makingConnections = False
         if('-' in self.inputs and Game.editingNodes):
             MManage.nodePlaceIndex-=1
         if('=' in self.inputs and Game.editingNodes):

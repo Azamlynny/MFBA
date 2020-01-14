@@ -51,6 +51,7 @@ def draw():
     TeamA.updateVision(Game)
     TeamA.drawVision(Cam)
     Map.drawNodes(Game, Cam, MManage)
+    Map.drawPaths(Game, Cam, MManage)
     GUI.drawGui(Game, Cam)
     
     

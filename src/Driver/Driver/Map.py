@@ -7,6 +7,8 @@ class Map():
         self.objects = []
         self.laneNodesNum = 70
         self.laneNodes = [[0 for i in range(2)] for j in range(self.laneNodesNum)] 
+        self.pathNodesNum = 200
+        self.pathNodes = []
         
     def loadMap(self):
         print("Loading Map")
@@ -46,4 +48,12 @@ class Map():
                 count += 1
             fill(255)
             text(MouseManager.nodePlaceIndex, 50-Cam.xshift, 50-Cam.yshift)
-        
+    
+    def drawPaths(self, Game, Cam, MouseManager):
+        if(Game.editingPaths):
+            for i in self.pathNodes:
+                i.drawNode()
+            fill(255)
+            text(MouseManager.currNode, 25-Cam.xshift, 25-Cam.yshift)
+            text(MouseManager.coneNode, 25-Cam.xshift, 50-Cam.yshift)
+            text(MouseManager.makingConnections, 25-Cam.xshift, 75-Cam.yshift)

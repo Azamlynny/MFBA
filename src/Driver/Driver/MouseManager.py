@@ -1,4 +1,5 @@
 from Tree import *
+from Node import *
 
 class MouseManager():
     
@@ -6,6 +7,9 @@ class MouseManager():
         self.player = 1
         self.treePlaceIndex = 0
         self.nodePlaceIndex = 0
+        self.currNode = 0
+        self.coneNode = 0
+        self.makingConnections = False
                 
     def middleClick(self, Cam):
         Cam.xshift += mouseX - pmouseX
@@ -24,9 +28,19 @@ class MouseManager():
             y = int(mouseY - Cam.yshift)
             Map.laneNodes[self.nodePlaceIndex][0] = x
             Map.laneNodes[self.nodePlaceIndex][1] = y
-            self.nodePlaceIndex+=1
+            self.nodePlaceIndex += 1
             if(self.nodePlaceIndex >= 90):
                 self.nodePlaceIndex = 0
+        elif(Game.editingPaths):
+            x = int(mouseX - Cam.xshift)
+            y = int(mouseY - Cam.yshift)
+            if(self.makingConnections == False):
+                # Path Node editor
+                Map.pathNodes.append(Node(x,y,self.currNode))
+                self.currNode+=1
+            else:
+                # self.currNode-=1
+                Map.pathNodes[self.currNode].app(Map.pathNodes[self.coneNode])
         else:
             if(Game.PT.players[0].ab1select):
                 if Game.PT.players[0].ab1targetable:
