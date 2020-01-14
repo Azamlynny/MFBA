@@ -39,8 +39,9 @@ class MouseManager():
                 Map.pathNodes.append(Node(x,y,self.currNode))
                 self.currNode+=1
             else:
-                # self.currNode-=1
+                self.currNode-=1
                 Map.pathNodes[self.currNode].app(Map.pathNodes[self.coneNode])
+                Map.pathNodes[self.coneNode].app(Map.pathNodes[self.currNode])
         else:
             if(Game.PT.players[0].ab1select):
                 if Game.PT.players[0].ab1targetable:

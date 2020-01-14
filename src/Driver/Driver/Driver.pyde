@@ -25,7 +25,7 @@ def setup():
     size(1960, 1080, P2D)
     smooth(3)
     fullScreen()
-    Map.loadMap()
+    Map.loadMap(MouseManager)
     
     # Focuses the Camera on the player
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
@@ -51,7 +51,7 @@ def draw():
     TeamA.updateVision(Game)
     TeamA.drawVision(Cam)
     Map.drawNodes(Game, Cam, MManage)
-    Map.drawPaths(Game, Cam, MManage)
+    Map.drawPaths(Game, Cam, MManage, Map)
     GUI.drawGui(Game, Cam)
     
     

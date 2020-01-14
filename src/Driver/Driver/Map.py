@@ -1,5 +1,6 @@
 from Tree import *
 from Util import *
+from Node import *
 
 class Map():
     
@@ -10,13 +11,14 @@ class Map():
         self.pathNodesNum = 200
         self.pathNodes = []
         
-    def loadMap(self):
+    def loadMap(self, MouseManager):
         print("Loading Map")
         fin = open("map.txt", 'r')
         for aline in fin:
             values = aline.split()
             self.objects.append(Tree(xPos = int(values[0]), yPos = int(values[1]), treeType = int(values[2])))
         self.img = loadImage("MFBAMap.png")
+        fin.close()
         print("Map Loaded")
         
         print("Loading Nodes")
@@ -27,7 +29,22 @@ class Map():
             self.laneNodes[count][0] = int(values[0])
             self.laneNodes[count][1] = int(values[1])
             count+=1
+        fin.close()
         print("Nodes Loaded")
+        
+        print("Loading Paths")
+        fin = open("path_nodes.txt", 'r')
+        for aline in fin:
+            values = aline.split()
+            n = Node(int(values[0]), int(values[1]), int(values[2]))
+            self.pathNodes.append(n)
+            for i in range(3, len(values)):
+                n = Node(0,0,int(values[i]))
+                self.pathNodes[int(values[2])].app(n)
+            last = int(values[2])
+        MouseManager.currNode = last + 1
+        fin.close()
+        print("Paths Loaded")
         
     def drawMap(self, Cam):
         fill(245)
@@ -49,10 +66,10 @@ class Map():
             fill(255)
             text(MouseManager.nodePlaceIndex, 50-Cam.xshift, 50-Cam.yshift)
     
-    def drawPaths(self, Game, Cam, MouseManager):
+    def drawPaths(self, Game, Cam, MouseManager, Map):
         if(Game.editingPaths):
             for i in self.pathNodes:
-                i.drawNode()
+                i.drawNode(Map)
             fill(255)
             text(MouseManager.currNode, 25-Cam.xshift, 25-Cam.yshift)
             text(MouseManager.coneNode, 25-Cam.xshift, 50-Cam.yshift)

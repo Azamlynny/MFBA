@@ -80,6 +80,20 @@ class KeyManager():
                     MManage.makingConnections = True
                 else:
                     MManage.makingConnections = False
+        if('p' in self.inputs and Game.editingPaths):
+            if(self.outputted == False):
+                self.fo = open("path_nodes.txt", "w")
+                self.outputted = True
+                for i in Map.pathNodes:
+                    output = str(i.x) + " " + str(i.y) + " " + str(i.name) + " "
+                    self.fo.write(output)
+                    output = ""
+                    for o in i.adj:
+                        output += str(o) + " "
+                        self.fo.write(output)
+                    self.fo.write("\n")
+                self.fo.close()
+                print("Saved Path Nodes")
         if('-' in self.inputs and Game.editingNodes):
             MManage.nodePlaceIndex-=1
         if('=' in self.inputs and Game.editingNodes):

@@ -15,14 +15,19 @@ class Node:
         """Find the distance between an object and a point"""
         return Math.sqrt((self.x - x)**2 + (self.y - y)**2)
     
-    def drawNode(self):
+    def drawNode(self, Map):
         fill(255)
         ellipse(self.x, self.y, 25, 25)
         fill(0)
         text(self.name, self.x, self.y)
-        self.drawConnections()
+        self.drawConnections(Map)
         
-    def drawConnections(self):
+    def drawConnections(self, Map):
+        stroke(255)
+        strokeWeight(4)
         for i in self.adj:
-            stroke(255)
-            line(self.x, self.y, i.x, i.y)
+            for o in Map.pathNodes:
+                if(o.name == i):
+                    line(self.x, self.y, o.x, o.y)
+        noStroke()
+    
