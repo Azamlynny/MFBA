@@ -37,7 +37,7 @@ class Alliance():
                             self.vision[x][y] = True
                             break
                         else:
-                            self.vision[x][y] = False # Change back to False
+                            self.vision[x][y] = True # Change back to False
                        
     def drawVision(self, Cam):
         fill(0,200)
