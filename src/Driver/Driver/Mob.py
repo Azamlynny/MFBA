@@ -15,8 +15,12 @@ class Mob(Attackable, object):
         self.goaly = y
         dist = math.sqrt((y-self.y)**2 + (x-self.x)**2)
         time = dist / self.speed
-        self.xvel = (x - self.x) / time
-        self.yvel = (y - self.y) / time
+        if(time > 0): 
+            self.xvel = (x - self.x) / time
+            self.yvel = (y - self.y) / time
+        else:
+            self.xvel = 0
+            self.yvel = 0
     
     def move(self, Game):
         if(self.xvel != 0 or self.yvel != 0) and not any(i.debuff == "stun" for i in self.debuffs): # Only performs hitbox checks for moving objects
@@ -45,3 +49,6 @@ class Mob(Attackable, object):
                     # Backswing to prevent attacking then instantly moving
                     self.x += self.xvel
                     self.y += self.yvel
+    
+    def astar(self, startNode, endNode, Map):
+        return

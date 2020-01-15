@@ -7,6 +7,12 @@ class Node:
         self.y = yPos
         self.name = num
         self.adj = []
+        
+        # Pathfinding 
+        self.parent = None
+        self.f = 0
+        self.g = 0
+        self.h = 0
     
     def app(self, Node): # Append a node
         self.adj.append(Node.name)    
