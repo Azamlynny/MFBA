@@ -10,7 +10,7 @@ def setup():
     frameRate(30) #Slow it down a little
     #Connect to the server’s IP address and port­
     global c
-    c = Client(this, "127.0.0.1", 12345); #Replace with your server’s IP and port
+    c = Client(this, "172.17.19.128", 12345); #Replace with your server’s IP and port
     
 def draw():
     global c
@@ -21,6 +21,6 @@ def draw():
     if c.available() > 0:
         input = c.readString()
         input_s = input.split("\n")
-        data = int(input_s[0].encode('utf8').split(' '))
+        data = input_s[0].encode('utf8').split(' ')
         stroke(0);
-        line(data[0], data[1], data[2], data[3])
+        line(float(data[0]), float(data[1]), float(data[2]), float(data[3]))
