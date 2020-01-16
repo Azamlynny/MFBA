@@ -35,10 +35,15 @@ def setup():
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
     
     # Connect to the server’s IP address and port
-    global c
-    c = Client(this, "172.17.16.230", 5204); #Replace with your server’s IP and port
+    global C
+    C = Client(this, "172.17.16.230", 5204); #Replace with your server’s IP and port
     
 def draw():
+    if(C.available() > 0):
+        if(CM.caughtUp):
+            CM.manageInput(C.readString(), Game)
+        else:
+            CM.setUpClient(C.readString(), Game)
     background(0)
     Game.incTime()
     KManage.runActions(Cam, Game, Map, MManage)
@@ -49,7 +54,6 @@ def draw():
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
     Game.ST.runTowerActions(Game)
-    Game.CT.runCreepActions(Game, Map, GUI)
     Game.CT.drawCreep(Cam, TeamA)
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)

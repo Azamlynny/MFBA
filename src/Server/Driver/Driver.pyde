@@ -41,6 +41,7 @@ def setup():
     
 def draw():
     global S # Server
+    SM.sendData(S, Game)
     
     background(0)
     

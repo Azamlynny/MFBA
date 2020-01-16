@@ -16,7 +16,8 @@ class CreepTracker():
                     else:
                         i.drawCreep()
                         i.drawHealth()
-                
+                        
+        # Action offloaded to the server    
     def runCreepActions(self, Game, Map, GUI):
         for i in self.creep:
             if(i.hp <= 0):
@@ -26,6 +27,7 @@ class CreepTracker():
                 self.creep.remove(i)
             i.runAI(Game, Map)
     
+        # Action offloaded to the server    
     def spawnCreep(self):
         
         # Top Lane

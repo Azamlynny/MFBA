@@ -52,8 +52,9 @@ class GameTracker():
                     self.grid[j][o] = True
         
     def incTime(self):
-        if(self.time % 1800 == 0):
-            self.CT.spawnCreep()
+             # Action offloaded onto the server
+        # if(self.time % 1800 == 0):
+        #     self.CT.spawnCreep()
         self.time += 1
         
                     
