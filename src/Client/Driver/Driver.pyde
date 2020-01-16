@@ -1,3 +1,5 @@
+add_library('net')
+
 from Entity import *
 from KeyManager import *
 from MouseManager import *
@@ -8,6 +10,7 @@ from GameTracker import *
 from GUI import *
 from StructureTracker import *
 from Creep import *
+from ClientManager import *
 
 MManage = MouseManager()
 KManage = KeyManager()
@@ -18,7 +21,7 @@ TeamB = Alliance("B")
 TeamN = Alliance("N") # Neutral creep
 Game = GameTracker()
 GUI = GUI()
-
+CM = ClientManager()
 
 def setup():
     frameRate(60)
@@ -31,6 +34,9 @@ def setup():
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
     
+    # Connect to the server’s IP address and port
+    global c
+    c = Client(this, "172.17.16.230", 5204); #Replace with your server’s IP and port
     
 def draw():
     background(0)
