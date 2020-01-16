@@ -21,19 +21,25 @@ class KeyManager():
             Cam.yshift -= Cam.moveSpeed
         if('d' in self.inputs):
             Cam.xshift -= Cam.moveSpeed
-        if(' ' in self.inputs): # Space
-            # TODO: bug needs fixing where nostroke() stops working once space is pressed
-            Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
-            Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-        if('q' in self.inputs and not (any(i.debuff == "ab1cd" for i in Game.PT.players[0].debuffs))):
-            Game.PT.players[0].ab1select = True
-            Game.PT.players[0].ab2select = False
-        if('e' in self.inputs and not (any(i.debuff == "ab2cd" for i in Game.PT.players[0].debuffs))):
-            Game.PT.players[0].ab2select = True
-            Game.PT.players[0].ab1select = False
-        if('`' in self.inputs):
-            Game.PT.players[0].ab2select = False
-            Game.PT.players[0].ab1select = False
+        
+            # Keyboard keys for player input - Server does not control a player    
+            
+        # if(' ' in self.inputs): # Space
+        #     # TODO: bug needs fixing where nostroke() stops working once space is pressed
+        #     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
+        #     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
+        # if('q' in self.inputs and not (any(i.debuff == "ab1cd" for i in Game.PT.players[0].debuffs))):
+        #     Game.PT.players[0].ab1select = True
+        #     Game.PT.players[0].ab2select = False
+        # if('e' in self.inputs and not (any(i.debuff == "ab2cd" for i in Game.PT.players[0].debuffs))):
+        #     Game.PT.players[0].ab2select = True
+        #     Game.PT.players[0].ab1select = False
+        # if('`' in self.inputs):
+        #     Game.PT.players[0].ab2select = False
+        #     Game.PT.players[0].ab1select = False
+        
+        # Developer map editing tools exclusive to Server
+        
         if('o' in self.inputs and Game.editingTree):
             if(self.outputted == False):
                 self.fo = open("map.txt", "w")
@@ -71,6 +77,9 @@ class KeyManager():
             MManage.nodePlaceIndex-=1
         if('=' in self.inputs and Game.editingNodes):
             MManage.nodePlaceIndex+=1
+            
+        # View tower range as a spectator Server client
+        
         if('65535' in self.inputs): # Alt
             Cam.drawRings = True
         else:
