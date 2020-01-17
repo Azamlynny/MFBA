@@ -42,7 +42,7 @@ def draw():
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
-    Game.ST.runTowerActions(Game)
+    Game.ST.runTowerActions(Game, Cam)
     Game.CT.runCreepActions(Game, Map, GUI)
     Game.CT.drawCreep(Cam, TeamA)
     Game.PT.runPlayerActions(Game, Cam)

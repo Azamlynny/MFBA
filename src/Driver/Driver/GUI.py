@@ -102,3 +102,15 @@ class GUI():
         textSize(12)
         fill(0,0,0, 100)
         text(int(frameRate), 10 - Cam.xshift, 10 - Cam.yshift)
+        
+        #End of game message
+        if Game.winner != None:
+            textSize(128)
+            textAlign(CENTER, CENTER)
+            if Game.winner == "a":
+                fill(0, 0, 255)
+                text("Blue Alliance Wins", x+540, y-480)
+            if Game.winner == "b":
+                fill(255, 0, 0)
+                text("Red Alliance Wins", x+540, y-480)
+            

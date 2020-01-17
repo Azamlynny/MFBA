@@ -14,6 +14,7 @@ class GameTracker():
         self.time = 0
         self.editingTree = False
         self.editingNodes = False
+        self.winner = None
         
     def updateGrid(self, Game, Map):
         for o in range(self.res): # Reset grid

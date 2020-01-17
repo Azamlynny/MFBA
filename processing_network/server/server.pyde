@@ -47,6 +47,7 @@ def setup():
     frameRate(float(framerate)) #Slow it down a little
     global s
     s = Server(this, 12345)
+    print(s.ip())
 def draw():
     background(204)
     global s

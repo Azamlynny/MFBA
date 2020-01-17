@@ -1,10 +1,12 @@
-from Structure import * 
+from Structure import *  
 
 class StructureTracker():
 
     def __init__(self):
         self.structures = []
         # Team A
+        #Nexus
+        self.structures.append(Nexus(xPos = 575, yPos = 4425, alliance = "b"))
         # Nexus towers
         self.structures.append(Tower(xPos = 500, yPos = 4350, alliance = "a"))
         self.structures.append(Tower(xPos = 650, yPos = 4500, alliance = "a"))
@@ -36,8 +38,11 @@ class StructureTracker():
         for i in self.structures:
             i.drawStructure(Cam)
                 
-    def runTowerActions(self, Game):
+    def runTowerActions(self, Game, Cam):
         # return
         for i in self.structures:
-            i.lockTarget(Game)
-            i.defaultAttack(Game)
+            if i.type == "tower":
+                i.lockTarget(Game)
+                i.defaultAttack(Game)
+            elif i.type == "nexus":
+                i.checkDead(Game, Cam)
