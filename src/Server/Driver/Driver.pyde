@@ -43,6 +43,10 @@ def draw():
     global S # Server
     SM.sendData(S, Game)
     
+    C = S.available()
+    if(C != None):
+        SM.readData(C, Game)
+    
     background(0)
     
     # Still used by the server for developer and spectator modes
@@ -65,7 +69,6 @@ def draw():
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
     
-    
 def keyPressed():
     KManage.keyInput(str(key))
     
@@ -84,3 +87,4 @@ def mousePressed():
 def mouseDragged(): 
     if(mouseButton == 3): # Middle click
         MManage.middleClick(Cam)
+        

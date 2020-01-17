@@ -36,7 +36,7 @@ def setup():
     
     # Connect to the server’s IP address and port
     global C
-    C = Client(this, "172.17.16.230", 5204); #Replace with your server’s IP and port
+    C = Client(this, "192.168.2.19", 5204); #Replace with your server’s IP and port
     
 def draw():
     if(C.available() > 0):
@@ -44,6 +44,8 @@ def draw():
             CM.manageInput(C.readString(), Game)
         else:
             CM.setUpClient(C.readString(), Game)
+    CM.writeData(C, Game)
+        
     background(0)
     Game.incTime()
     KManage.runActions(Cam, Game, Map, MManage)
