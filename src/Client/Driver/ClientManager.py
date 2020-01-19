@@ -18,7 +18,7 @@ class ClientManager():
         
         self.caughtUp = True
     
-    def manageInput(self, input, Game):
+    def manageInput(self, input, Game, Cam):
         p = Game.player
         
         # Converts white space seperated input into an array
@@ -32,6 +32,8 @@ class ClientManager():
                 Game.player = int(input[1])
                 print("Player " + str(Game.player))
                 self.hasPlayerID = True
+                Cam.xshift = -1 * Game.PT.players[Game.player].x + 1960/2
+                Cam.yshift = -1 * Game.PT.players[Game.player].y + 1080/2
         else:
             if(input[0] == "game_time"):
                 Game.time = int(input[1])

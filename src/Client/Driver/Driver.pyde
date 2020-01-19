@@ -16,9 +16,9 @@ MManage = MouseManager()
 KManage = KeyManager()
 Cam = Camera(0,0)
 Map = Map()
-TeamA = Alliance("A")
-TeamB = Alliance("B")
-TeamN = Alliance("N") # Neutral creep
+TeamA = Alliance("a")
+TeamB = Alliance("b")
+TeamN = Alliance("c") # Neutral creep
 Game = GameTracker()
 GUI = GUI()
 CM = ClientManager()
@@ -43,7 +43,7 @@ def setup():
 def draw():
     if(C.available() > 0):
         if(CM.caughtUp):
-            CM.manageInput(C.readString(), Game)
+            CM.manageInput(C.readString(), Game, Cam)
         else:
             CM.setUpClient(C.readString(), Game)
     CM.writeData(C, Game)
@@ -58,12 +58,21 @@ def draw():
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
     Game.ST.runTowerActions(Game)
-    Game.CT.drawCreep(Cam, TeamA)
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
-    Game.PT.drawPlayers(Cam, TeamA)
-    TeamA.updateVision(Game)
-    TeamA.drawVision(Cam)
+    
+    # Alliance specific processes
+    if(Game.player >= 0 and Game.player <= 4): # Team A
+        Game.CT.drawCreep(Cam, TeamA)
+        Game.PT.drawPlayers(Cam, TeamA)
+        TeamA.updateVision(Game)
+        TeamA.drawVision(Cam)
+    elif(Game.player >= 5 and Game.player <= 9): # Team B
+        Game.CT.drawCreep(Cam, TeamB)
+        Game.PT.drawPlayers(Cam, TeamB)
+        TeamB.updateVision(Game)
+        TeamB.drawVision(Cam)
+    
     Map.drawNodes(Game, Cam, MManage)
     GUI.drawGui(Game, Cam)
     
