@@ -37,6 +37,14 @@ class ClientManager():
         else:
             if(input[0] == "game_time"):
                 Game.time = int(input[1])
+                
+            if(input[0] == "player_pos"):
+                for i in range(20):
+                    if(is_int(input[i+1])):
+                        if(i % 2 == 1):
+                            Game.PT.players[int(i/2)].x = int(input[i+1])
+                        else:
+                            Game.PT.players[int(i/2)].y = int(input[i+1])
             
     def writeData(self, C, Game):        
         p = Game.player

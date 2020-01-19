@@ -119,5 +119,5 @@ class Attackable(Entity, object):
                 i.drawProjectile()
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)
-                self.projectiles.remove(i)
-
+                if(i in self.projectiles):
+                    self.projectiles.remove(i)
