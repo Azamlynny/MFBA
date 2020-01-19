@@ -30,10 +30,10 @@ def setup():
     fullScreen()
     Map.loadMap()
     
-    # Focuses the Camera on the player
-    Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
-    Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-    
+    # Focuses the Camera on the center of the map
+    Cam.xshift = -1 * 2500 + 1960 / 2
+    Cam.yshift = -1 * 2500 + 1080 / 2
+        
     # Connect to the server’s IP address and port
     global C
     C = Client(this, "192.168.2.19", 5204); #Replace with your server’s IP and port
