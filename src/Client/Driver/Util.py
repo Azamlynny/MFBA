@@ -3,3 +3,10 @@ def sd(Cam, x, y, wd, ht): # Should Draw
         return True
     else:
         return False
+    
+def is_int(input):
+    try:
+        num = int(input)
+    except ValueError:
+        return False
+    return True

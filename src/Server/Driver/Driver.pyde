@@ -45,7 +45,7 @@ def draw():
     
     C = S.available()
     if(C != None):
-        SM.readData(C, Game)
+        SM.readData(S, C, Game)
     
     background(0)
     

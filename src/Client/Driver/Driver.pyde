@@ -23,8 +23,8 @@ Game = GameTracker()
 GUI = GUI()
 CM = ClientManager()
 
-def setup():
-    frameRate(60)
+def setup(): 
+    frameRate(30) # Send the initial packets slower to ensure they arrive correctly 
     size(1960, 1080, P2D)
     smooth(3)
     fullScreen()
@@ -37,6 +37,8 @@ def setup():
     # Connect to the server’s IP address and port
     global C
     C = Client(this, "192.168.2.19", 5204); #Replace with your server’s IP and port
+    CM.connectClient(C)
+    frameRate(60) # Switch to 60 fps after connecting
     
 def draw():
     if(C.available() > 0):
