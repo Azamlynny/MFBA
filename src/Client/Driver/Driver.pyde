@@ -24,10 +24,10 @@ GUI = GUI()
 CM = ClientManager()
 
 def setup(): 
-    frameRate(30) # Send the initial packets slower to ensure they arrive correctly 
     size(1960, 1080, P2D)
-    smooth(3)
     fullScreen()
+    frameRate(30) # Send the initial packets slower to ensure they arrive correctly 
+    smooth(3)
     Map.loadMap()
     
     # Focuses the Camera on the center of the map
@@ -36,7 +36,7 @@ def setup():
         
     # Connect to the server’s IP address and port
     global C
-    C = Client(this, "192.168.2.19", 5204); #Replace with your server’s IP and port
+    C = Client(this, "127.0.0.1", 5204); #Replace with your server’s IP and port
     CM.connectClient(C)
     frameRate(60) # Switch to 60 fps after connecting
     

@@ -10,18 +10,12 @@ class ServerManager():
         # self.clients.append("placeholder") # Placeholder client for dev testing
         
     def sendData(self, S, Game):
-        S.write("game_time " + str(Game.time) + " \n")
+        out = ""
+        out += "game_time " + str(Game.time) + " e_game_time"
+        # S.write("game_time " + str(Game.time) + " \n")
         
-        S.write("player_pos" + " " + str(Game.PT.players[0].x) + " " + str(Game.PT.players[0].y) + " " + str(Game.PT.players[1].x) + " " + str(Game.PT.players[1].y) + " " + str(Game.PT.players[2].x) + " " + str(Game.PT.players[2].y) + " " + str(Game.PT.players[3].x) + " " + str(Game.PT.players[3].y) + " " + str(Game.PT.players[4].x) + " " + str(Game.PT.players[4].y) + " " + str(Game.PT.players[5].x) + " " + str(Game.PT.players[5].y) + " " + str(Game.PT.players[6].x) + " " + str(Game.PT.players[6].y) + " " + str(Game.PT.players[7].x) + " " + str(Game.PT.players[7].y) + " " + str(Game.PT.players[8].x) + " " + str(Game.PT.players[8].y) + " " + str(Game.PT.players[9].x) + " " + str(Game.PT.players[9].y)) 
-
-
-
-
-
-
-
- 
-
+        # S.write("player_pos" + " " + str(Game.PT.players[0].x) + " " + str(Game.PT.players[0].y) + " " + str(Game.PT.players[1].x) + " " + str(Game.PT.players[1].y) + " " + str(Game.PT.players[2].x) + " " + str(Game.PT.players[2].y) + " " + str(Game.PT.players[3].x) + " " + str(Game.PT.players[3].y) + " " + str(Game.PT.players[4].x) + " " + str(Game.PT.players[4].y) + " " + str(Game.PT.players[5].x) + " " + str(Game.PT.players[5].y) + " " + str(Game.PT.players[6].x) + " " + str(Game.PT.players[6].y) + " " + str(Game.PT.players[7].x) + " " + str(Game.PT.players[7].y) + " " + str(Game.PT.players[8].x) + " " + str(Game.PT.players[8].y) + " " + str(Game.PT.players[9].x) + " " + str(Game.PT.players[9].y)) 
+        S.write(out)
         
     def readData(self, S, C, Game):
         input = C.readString()

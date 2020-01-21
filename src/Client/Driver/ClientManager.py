@@ -53,5 +53,6 @@ class ClientManager():
             C.write("reqPlayerID" + " " + self.IP)
         else:
             if(p != None):
-                C.write("player " + str(C.ip()) + " " + str(int(Game.PT.players[p].x)) + " " + str(int(Game.PT.players[p].y)))
+                return
+                # C.write("player " + str(C.ip()) + " " + str(int(Game.PT.players[p].x)) + " " + str(int(Game.PT.players[p].y)))
                 # print("player " + str(int(Game.PT.players[0].x)) + " " + str(int(Game.PT.players[0].y)))
