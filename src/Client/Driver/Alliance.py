@@ -16,7 +16,7 @@ class Alliance():
             for x in range (self.resolution):
                 visionSuccess = False
                 for p in Game.PT.players:
-                    if(p.alliance == "a"):
+                    if(p.alliance == self.name):
                         if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
                             visionSuccess = True
@@ -24,7 +24,7 @@ class Alliance():
                 if(visionSuccess):
                     continue
                 for p in Game.ST.structures:
-                    if(p.alliance == "a"):
+                    if(p.alliance == self.name):
                         if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
                             visionSuccess = True
@@ -32,12 +32,13 @@ class Alliance():
                 if(visionSuccess):
                     continue
                 for p in Game.CT.creep:
-                    if(p.alliance == "a"):
+                    if(p.alliance == self.name):
                         if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
                             self.vision[x][y] = True
                             break
-                        else:
-                            self.vision[x][y] = False # Change back to False
+                        
+                # If none of the players, structures, or creep provide vision then set the vision tile to False                
+                self.vision[x][y] = False # Change back to False
                        
     def drawVision(self, Cam):
         fill(0,200)

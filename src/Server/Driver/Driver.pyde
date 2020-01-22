@@ -1,3 +1,5 @@
+add_library('net')
+
 from Entity import *
 from KeyManager import *
 from MouseManager import *
@@ -8,6 +10,7 @@ from GameTracker import *
 from GUI import *
 from StructureTracker import *
 from Creep import *
+from ServerManager import *
 
 MManage = MouseManager()
 KManage = KeyManager()
@@ -18,7 +21,7 @@ TeamB = Alliance("B")
 TeamN = Alliance("N") # Neutral creep
 Game = GameTracker()
 GUI = GUI()
-
+SM = ServerManager()
 
 def setup():
     frameRate(60)
@@ -30,29 +33,41 @@ def setup():
     # Focuses the Camera on the player
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-    
+    global S # Server
+    S = Server(this, 5204)
+    SM.IP = S.ip()
+    print("Server IP4v Address")
+    print(S.ip())
     
 def draw():
+    global S # Server
+    SM.sendData(S, Game)
+    
+    C = S.available()
+    if(C != None):
+        SM.readData(S, C, Game)
+    
     background(0)
-    Game.incTime()
-    KManage.runActions(Cam, Game, Map, MManage)
+    
+    # Still used by the server for developer and spectator modes
+    KManage.runActions(Cam, Game, Map, MManage) 
     Cam.updateCam()
     Map.drawMap(Cam)
-    Game.updateGrid(Game, Map)
-    Game.runDebuffs(Cam)
-    Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
+    Game.CT.drawCreep(Cam, TeamA)
+    Game.PT.drawPlayers(Cam, TeamA)
+    Map.drawNodes(Game, Cam, MManage) # Only draws when in developer mode
+    GUI.drawGui(Game, Cam)
+
+    # Game calculations sent to clients
+    Game.incTime()
+    Game.runDebuffs(Cam)
+    Game.updateGrid(Game, Map)
+    Game.runProjectiles(Cam, Game)
     Game.ST.runTowerActions(Game)
     Game.CT.runCreepActions(Game, Map, GUI)
-    Game.CT.drawCreep(Cam, TeamA)
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
-    Game.PT.drawPlayers(Cam, TeamA)
-    TeamA.updateVision(Game)
-    TeamA.drawVision(Cam)
-    Map.drawNodes(Game, Cam, MManage)
-    GUI.drawGui(Game, Cam)
-    
     
 def keyPressed():
     KManage.keyInput(str(key))
@@ -63,10 +78,13 @@ def keyReleased():
     
 def mousePressed():
     if(mouseButton == 37): # Left click
-        MManage.leftClick(Game, Cam, GUI, Map)    
-    if(mouseButton == 39): # Right click
-        MManage.rightClick(Game, Cam)
+        MManage.leftClick(Game, Cam, GUI, Map)
+   
+    # The server does not control a player but can still spectate GUI and scroll around the map 
+    # if(mouseButton == 39): # Right click
+    #     MManage.rightClick(Game, Cam)
 
 def mouseDragged(): 
     if(mouseButton == 3): # Middle click
         MManage.middleClick(Cam)
+        

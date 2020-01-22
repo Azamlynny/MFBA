@@ -125,7 +125,7 @@ class Player(Mob, object):
             self.x = self.respawnX
             self.y = self.respawnY
             for i in Game.PT.players:
-                print(i)
+                #print(i)
                 if i.target == self:
                     i.target = None
             for i in Game.ST.structures:
