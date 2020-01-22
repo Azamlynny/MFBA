@@ -11,18 +11,23 @@ class ServerManager():
         
     def sendData(self, S, Game):
         # Appending game time
-        out = ""
+        out = " d d start "
+        
         out += "game_time " + str(Game.time) + " e_game_time "
 
         # Appending creep position
-        temp = "creep_pos "
-        for i in Game.CT.creep:
-            temp += str(i.x) + " " + str(i.y) + " "
-        temp += "e_creep_pos"
+        # temp = "creep_info "
+        # for i in Game.CT.creep:
+        #     temp += str(int(i.x)) + " " + str(int(i.y)) + " " + str(i.alliance) + " " + str(int(i.hp)) + " "
+        # temp += "e_creep_info "
+        # out += temp
+        # print(out)
+        
+        temp = "player_pos" + " " + str(Game.PT.players[0].x) + " " + str(Game.PT.players[0].y) + " " + str(Game.PT.players[1].x) + " " + str(Game.PT.players[1].y) + " " + str(Game.PT.players[2].x) + " " + str(Game.PT.players[2].y) + " " + str(Game.PT.players[3].x) + " " + str(Game.PT.players[3].y) + " " + str(Game.PT.players[4].x) + " " + str(Game.PT.players[4].y) + " " + str(Game.PT.players[5].x) + " " + str(Game.PT.players[5].y) + " " + str(Game.PT.players[6].x) + " " + str(Game.PT.players[6].y) + " " + str(Game.PT.players[7].x) + " " + str(Game.PT.players[7].y) + " " + str(Game.PT.players[8].x) + " " + str(Game.PT.players[8].y) + " " + str(Game.PT.players[9].x) + " " + str(Game.PT.players[9].y) + " e_player_pos " 
+        
         out += temp
         
-        
-        # S.write("player_pos" + " " + str(Game.PT.players[0].x) + " " + str(Game.PT.players[0].y) + " " + str(Game.PT.players[1].x) + " " + str(Game.PT.players[1].y) + " " + str(Game.PT.players[2].x) + " " + str(Game.PT.players[2].y) + " " + str(Game.PT.players[3].x) + " " + str(Game.PT.players[3].y) + " " + str(Game.PT.players[4].x) + " " + str(Game.PT.players[4].y) + " " + str(Game.PT.players[5].x) + " " + str(Game.PT.players[5].y) + " " + str(Game.PT.players[6].x) + " " + str(Game.PT.players[6].y) + " " + str(Game.PT.players[7].x) + " " + str(Game.PT.players[7].y) + " " + str(Game.PT.players[8].x) + " " + str(Game.PT.players[8].y) + " " + str(Game.PT.players[9].x) + " " + str(Game.PT.players[9].y)) 
+        out += "end d d "
         S.write(out)
         
     def readData(self, S, C, Game):

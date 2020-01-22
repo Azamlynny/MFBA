@@ -38,6 +38,7 @@ def setup():
     global C
     C = Client(this, "127.0.0.1", 5204); #Replace with your server’s IP and port
     CM.connectClient(C)
+    Game.CT.spawnCreep()
     frameRate(60) # Switch to 60 fps after connecting
     
 def draw():
@@ -46,6 +47,7 @@ def draw():
             CM.manageInput(C.readString(), Game, Cam)
         else:
             CM.setUpClient(C.readString(), Game)
+        C.clear()
     CM.writeData(C, Game)
         
     background(0)
