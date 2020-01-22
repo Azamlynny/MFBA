@@ -25,6 +25,12 @@ class ClientManager():
         input = input.split("\n")
         input = input[0].encode('utf8').split(' ')
         
+        if("start" in input):
+            a = input.index("start")
+            b = input.index("end")
+            input = input[a+1:b]
+        
+        print(input)
         
         if(self.hasPlayerID == False):
             if(str(input[0]) == self.IP and is_int(input[1])):
@@ -40,16 +46,20 @@ class ClientManager():
                 game_time = input[a+1:b]
                 if(is_int(game_time[0])):
                     Game.time = int(game_time[0])
-            # if(input[0] == "game_time"):
-            #     Game.time = int(input[1])
-                
-            # if(input[0] == "player_pos"):
-            #     for i in range(20):
-            #         if(is_int(input[i+1])):
-            #             if(i % 2 == 1):
-            #                 Game.PT.players[int(i/2)].x = int(input[i+1])
-            #             else:
-            #                 Game.PT.players[int(i/2)].y = int(input[i+1])
+                        
+            
+            # if("creep_info" in input):
+            #     a = input.index("creep_info")
+            #     b = input.index("e_creep_info")
+            #     creep = input[a+1:b]
+            #     count = 0
+            #     if(len(creep) >= 29):
+            #         for i in range(0,30,4):
+            #             print(str(len(creep)) + " " + str(i) + " " + str(len(Game.CT.creep)) + " " + str(count))
+            #             Game.CT.creep[count].y = int(creep[i+1])
+            #             Game.CT.creep[count].alliance = str(creep[i+2])
+            #             Game.CT.creep[count].hp = int(creep[i+3])
+            #             count += 1
             
     def writeData(self, C, Game):        
         p = Game.player

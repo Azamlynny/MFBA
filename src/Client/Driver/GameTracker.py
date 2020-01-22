@@ -42,7 +42,6 @@ class GameTracker():
                 for j in range(x, x+wd):
                     self.grid[j][o] = True
         for i in Game.CT.creep:
-            x = int(i.x / self.divis)
             y = int(i.y / self.divis)
             wd = int(i.wd / self.divis)
             ht = int(i.ht / self.divis)

@@ -29,7 +29,6 @@ class CreepTracker():
     
         # Action offloaded to the server    
     def spawnCreep(self):
-        
         # Top Lane
         # Team A 
         self.creep.append(Creep(xPos = 340, yPos = 3601, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 4))
