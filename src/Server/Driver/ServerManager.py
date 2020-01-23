@@ -10,9 +10,10 @@ class ServerManager():
         # self.clients.append("placeholder") # Placeholder client for dev testing
         
     def sendData(self, S, Game):
+        # if(Game.time % 2 == 0): # Only send data to clients every other frame - Currently messes up debuff
         # Appending game time
         out = " d d start "
-        
+    
         out += "game_time " + str(Game.time) + " e_game_time "
 
         # Appending creep position
@@ -22,13 +23,13 @@ class ServerManager():
         # temp += "e_creep_info "
         # out += temp
         # print(out)
-        
+    
         temp = "player_pos" + " " + str(Game.PT.players[0].x) + " " + str(Game.PT.players[0].y) + " " + str(Game.PT.players[1].x) + " " + str(Game.PT.players[1].y) + " " + str(Game.PT.players[2].x) + " " + str(Game.PT.players[2].y) + " " + str(Game.PT.players[3].x) + " " + str(Game.PT.players[3].y) + " " + str(Game.PT.players[4].x) + " " + str(Game.PT.players[4].y) + " " + str(Game.PT.players[5].x) + " " + str(Game.PT.players[5].y) + " " + str(Game.PT.players[6].x) + " " + str(Game.PT.players[6].y) + " " + str(Game.PT.players[7].x) + " " + str(Game.PT.players[7].y) + " " + str(Game.PT.players[8].x) + " " + str(Game.PT.players[8].y) + " " + str(Game.PT.players[9].x) + " " + str(Game.PT.players[9].y) + " e_player_pos " 
-        
+    
         out += temp
-        
+    
         out += "end d d "
-        S.write(out)
+
         
     def readData(self, S, C, Game):
         input = C.readString()

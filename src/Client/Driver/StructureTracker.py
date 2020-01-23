@@ -5,6 +5,8 @@ class StructureTracker():
     def __init__(self):
         self.structures = []
         # Team A
+        # Nexus
+        self.structures.append(Nexus(xPos = 500, yPos = 4500, alliance = "a"))
         # Nexus towers
         self.structures.append(Tower(xPos = 500, yPos = 4350, alliance = "a"))
         self.structures.append(Tower(xPos = 650, yPos = 4500, alliance = "a"))
@@ -19,6 +21,8 @@ class StructureTracker():
         self.structures.append(Tower(xPos = 1750, yPos = 3250, alliance = "a"))
         
         # Team B
+        # Nexus
+        self.structures.append(Nexus(xPos = 4400, yPos = 450, alliance = "b"))
         # Nexus towers
         self.structures.append(Tower(xPos = 4400, yPos = 600, alliance = "b"))
         self.structures.append(Tower(xPos = 4250, yPos = 450, alliance = "b"))
@@ -36,8 +40,11 @@ class StructureTracker():
         for i in self.structures:
             i.drawStructure(Cam)
                 
-    def runTowerActions(self, Game):
+    def runTowerActions(self, Game, Cam):
         # return
         for i in self.structures:
-            i.lockTarget(Game)
-            i.defaultAttack(Game)
+            if i.type == "tower":
+                i.lockTarget(Game)
+                i.defaultAttack(Game)
+            elif i.type == "nexus":
+                i.checkDead(Game, Cam)

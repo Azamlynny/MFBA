@@ -64,7 +64,7 @@ def draw():
     Game.runDebuffs(Cam)
     Game.updateGrid(Game, Map)
     Game.runProjectiles(Cam, Game)
-    Game.ST.runTowerActions(Game)
+    Game.ST.runTowerActions(Game, Cam)
     Game.CT.runCreepActions(Game, Map, GUI)
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)

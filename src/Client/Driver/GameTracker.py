@@ -15,6 +15,7 @@ class GameTracker():
         self.editingTree = False
         self.editingNodes = False
         self.player = -1 # Which player the client controls
+        self.winner = None
         
     def updateGrid(self, Game, Map):
         for o in range(self.res): # Reset grid
