@@ -12,6 +12,7 @@ from StructureTracker import *
 from Creep import *
 from ClientManager import *
 
+ip = "127.0.1.1" #replace with server's IP
 MManage = MouseManager()
 KManage = KeyManager()
 Cam = Camera(0,0)
@@ -36,7 +37,7 @@ def setup():
         
     # Connect to the server’s IP address and port
     global C
-    C = Client(this, "127.0.0.1", 5204); #Replace with your server’s IP and port
+    C = Client(this, ip, 5204); #Replace with your server’s IP and port
     CM.connectClient(C)
     Game.CT.spawnCreep()
     frameRate(60) # Switch to 60 fps after connecting
