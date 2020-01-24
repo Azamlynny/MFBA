@@ -27,3 +27,9 @@ Processing's [network library](https://www.processing.org/reference/libraries/ne
 ### Pathfinding
 adam you do dis
 
+## Play this Game
+To play this game, clone this repository, and make sure you have [Processing](https://processing.org/download/) and its [Python Mode](https://py.processing.org/) installed. 
+
+Then, open and start the server up, and note that computer's local IP address. This computer also has developer priveliges, so you can use the key combination \[Insert key combo\] to edit the map's trees, and \[Insert key combo\] to edit the pathfinding nodes.
+
+Next, open and start the client, replacing the `ip` variable in Driver.pyde to the server's IP address. You will then connect, and be given control of one of 10 players, connecting in ascending order. Players 0-4 are blue team, 5-9 are red team.
