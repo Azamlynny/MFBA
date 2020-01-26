@@ -24,7 +24,9 @@ class ClientManager():
         # Converts white space seperated input into an array
         input = input.split("\n")
         input = input[0].encode('utf8').split(' ')
-        
+    
+        print(input)
+                
         if("start" in input):
             a = input.index("start")
             b = input.index("end")
@@ -48,18 +50,7 @@ class ClientManager():
                     Game.time = int(game_time[0])
                         
             
-            # if("creep_info" in input):
-            #     a = input.index("creep_info")
-            #     b = input.index("e_creep_info")
-            #     creep = input[a+1:b]
-            #     count = 0
-            #     if(len(creep) >= 29):
-            #         for i in range(0,30,4):
-            #             print(str(len(creep)) + " " + str(i) + " " + str(len(Game.CT.creep)) + " " + str(count))
-            #             Game.CT.creep[count].y = int(creep[i+1])
-            #             Game.CT.creep[count].alliance = str(creep[i+2])
-            #             Game.CT.creep[count].hp = int(creep[i+3])
-            #             count += 1
+       
             
     def writeData(self, C, Game):        
         p = Game.player

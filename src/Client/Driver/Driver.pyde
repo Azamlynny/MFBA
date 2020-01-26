@@ -25,7 +25,7 @@ CM = ClientManager()
 
 def setup(): 
     size(1960, 1080, P2D)
-    fullScreen()
+    fullScreen() 
     frameRate(30) # Send the initial packets slower to ensure they arrive correctly 
     smooth(3)
     Map.loadMap()
@@ -43,6 +43,7 @@ def setup():
     
 def draw():
     if(C.available() > 0):
+        print("t")
         if(CM.caughtUp):
             CM.manageInput(C.readString(), Game, Cam)
         else:
