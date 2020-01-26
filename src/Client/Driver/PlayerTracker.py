@@ -25,9 +25,7 @@ class PlayerTracker():
         for i in self.players:
             if(sd(Cam,i.x,i.y,i.wd,i.ht)):
                 if(Alliance.vision[int(i.x / scale)][int(i.y / scale)]):
-                    if any(j.debuff == "dead" for j in i.debuffs):
-                        pass
-                    else:
+                    if not any(j.debuff == "dead" for j in i.debuffs):
                         i.drawPlayer()
                         i.drawHealth()
                 
