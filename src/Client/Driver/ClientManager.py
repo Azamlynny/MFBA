@@ -30,7 +30,7 @@ class ClientManager():
             b = input.index("end")
             input = input[a+1:b]
         
-        print(input)
+        # print(input)
         
         if(self.hasPlayerID == False):
             if(str(input[0]) == self.IP and is_int(input[1])):
@@ -77,5 +77,7 @@ class ClientManager():
         else:
             if(p != None):
                 return
-                # C.write("player " + str(C.ip()) + " " + str(int(Game.PT.players[p].x)) + " " + str(int(Game.PT.players[p].y)))
-                # print("player " + str(int(Game.PT.players[0].x)) + " " + str(int(Game.PT.players[0].y)))
+    
+    def writeMouse(self, C, Game, x, y):
+        out = " d d mouse_in " + str(Game.player) + " " + str(int(x)) + " " + str(int(y)) + " e_mouse_in d d "
+        C.write(out)

@@ -59,9 +59,10 @@ def draw():
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
+    
     # Game.ST.runTowerActions(Game, Cam) # Server side
-    Game.PT.runPlayerActions(Game, Cam)
-    Game.PT.updateMoving(Game)
+    # Game.PT.runPlayerActions(Game, Cam) # Server side
+    # Game.PT.updateMoving(Game) # Server side
     
     # Alliance specific processes
     if(Game.player >= 0 and Game.player <= 4): # Team A
@@ -90,7 +91,7 @@ def mousePressed():
     if(mouseButton == 37): # Left click
         MManage.leftClick(Game, Cam, GUI, Map)    
     if(mouseButton == 39): # Right click
-        MManage.rightClick(Game, Cam)
+        MManage.rightClick(Game, Cam, C, CM)
 
 def mouseDragged(): 
     if(mouseButton == 3): # Middle click

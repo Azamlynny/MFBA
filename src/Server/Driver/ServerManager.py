@@ -35,7 +35,7 @@ class ServerManager():
             S.write(out)
             # print(out)
         
-    def readData(self, S, C, Game):
+    def readData(self, S, C, Game, MManage):
         input = C.readString()
         input = input.split('\n')
         input = input[0].encode('utf8').split(' ')
@@ -61,8 +61,13 @@ class ServerManager():
         
         # Server only reads data from clients it can validate        
         if(player != -1):        
-            if(input[0] == "player"):
-                if(is_int(input[2]) and is_int(input[3])):
-                    Game.PT.players[player].x = int(input[2])
-                    Game.PT.players[player].y = int(input[3])
+            if("mouse_in" in input):
+                a = input.index("mouse_in")
+                b = input.index("e_mouse_in")
+                mouse = input[a+1:b]
+                # print(mouse[0] + " " + mouse[1] + " " + mouse[2])
+                p = int(mouse[0]) # Player number/ID
+                x = int(mouse[1])
+                y = int(mouse[2])
+                MManage.rightClick(Game, p, x, y)
     

@@ -45,7 +45,7 @@ def draw():
     C = S.available()
     SM.connectingClient = False 
     if(C != None):
-        SM.readData(S, C, Game)
+        SM.readData(S, C, Game, MManage)
         
     SM.sendData(S, Game)
     
