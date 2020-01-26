@@ -18,6 +18,8 @@ class Sanservino(Player, object):
         self.drawRings()
     
     def ability1(self, Game, Cam):
+        """Activate ability 1 if selected and if in range"""
+        # Uhm will give the target a stun debuff
         if self.target != None:
             if self.distance(self.target) <= self.ab1range ** 2:
                 self.target.debuffs.append(Debuff("stun", 1, 3))
@@ -26,6 +28,8 @@ class Sanservino(Player, object):
         return
     
     def ability2(self, Game, Cam):
+        """Activate ability 2 if selected and if in range"""
+        # Pop Quiz will deal a large amount of damage to a target. If it kills the target, then its cooldown is reset.
         if self.target != None and self.target.type == "player":
             if self.distance(self.target) <= self.ab2range ** 2:
                 self.target.hp -= self.atk + 100 #temp; think of a formula that's balanced
@@ -33,8 +37,8 @@ class Sanservino(Player, object):
                     self.debuffs.append(Debuff("ab2cd", 1, self.ab2cooldown))
                 self.ab2select = False
         return
-    def checkLevelUp(self):
-        if (self.lvl < 25):
-            if self.xp >= xpToLevel[self.lvl]:
-                self.xp -= xpToLevel[self.lvl]
-                self.lvl += 1
+    # def checkLevelUp(self):
+    #     if (self.lvl < 25):
+    #         if self.xp >= xpToLevel[self.lvl]:
+    #             self.xp -= xpToLevel[self.lvl]
+    #             self.lvl += 1

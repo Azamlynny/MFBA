@@ -41,7 +41,6 @@ class StructureTracker():
             i.drawStructure(Cam)
                 
     def runTowerActions(self, Game, Cam):
-        # return
         for i in self.structures:
             if i.type == "tower":
                 i.lockTarget(Game)

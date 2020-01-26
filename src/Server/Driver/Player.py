@@ -58,6 +58,7 @@ class Player(Mob, object):
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
     
     def drawRings(self):
+        """Draw the range of your ability (if selected)"""
         stroke(170, 178, 191)
         noFill()
         if(self.ab1select):
@@ -87,8 +88,9 @@ class Player(Mob, object):
                 self.checkLevelUp()
     
     def ability1(self, Game, Cam):
+        """Activate ability 1 if selected and if in range"""
         return
-        #remove and check mana
+        #remove and check mana (TODO)
         # if self.checkRange(target):
         #     pass
         # elif self.alliance == target.alliance:
@@ -100,8 +102,9 @@ class Player(Mob, object):
         #     target.hp -= round(mainDmg * armorMultiplier)
     
     def ability2(self, Game, Cam):
+        """Activate ability 1 if selected and if in range"""
         return
-        #remove and check mana
+        #remove and check mana (TODO)
         # if self.checkRange(target):
         #     pass
         # elif self.alliance == target.alliance:
@@ -113,9 +116,16 @@ class Player(Mob, object):
         #     target.hp -= round(mainDmg * armorMultiplier)
 
     def checkLevelUp(self):
-        if self.xp >= xpToLevel[self.lvl]:
-            self.xp -= xpToLevel[self.lvl]
-            self.lvl += 1
+        """Check is xp is sufficient for level up, then process stats for leveling"""
+        if (self.lvl < 25):
+            if self.xp >= xpToLevel[self.lvl]:
+                self.xp -= xpToLevel[self.lvl]
+                self.lvl += 1
+                #for now, all attributes increase by 5%
+                self.atk += round(0.05 * self.atk)
+                self.armor += round(0.05 * self.armor)
+                self.strength += round(0.05 * self.strength)
+                self.hpMax += round(0.05 * self.hpMax)
     
     def checkHealth(self, Game, Cam):
         if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):

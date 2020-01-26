@@ -10,6 +10,7 @@ class Nexus(Structure, object):
         super(Nexus, self).__init__(wd = 150, ht = 150, strength = 5, speed = 0, hp = 1000, hpMax = 1000, hpRegen = 0, atk = 0, atkSpeed = 0.0, armor = 5, atkRange = 0, visionRange = 650, atkType = "none", projWidth = 0, type = "nexus", **kwds)
         
     def checkDead(self, Game, Cam):
+        """Check if the Nexus is dead. The opposing alliance wins if so."""
         if Game.winner != None:
             #for whenever a very close race where both teams are on the nexus happens
             return
@@ -39,6 +40,7 @@ class Tower(Structure, object):
         self.type = "tower"
 
     def lockTarget(self, Game):
+        """Selects Targets in a way such that Players are targeted over creeps"""
         if(self.hp > 0):
             for i in Game.CT.creep:
                 if self.distance(i) <= self.atkRange ** 2 and self.alliance != i.alliance:

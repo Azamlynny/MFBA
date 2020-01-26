@@ -10,7 +10,7 @@ class Alliance():
         self.structures = []
         #self.structures.append(Structure(xPos = 6, yPos = 6, strength = 5, speed = 100, hp = 250, hpRegen = 1.5, atk = 10, armor = 3, atkRange = 100, alliance = "a"))
         
-    # Server has true sight of the entire map and odes not need to update vision
+    # Server has true sight of the entire map and does not need to update vision
     # def updateVision(self, Game):
     #     scale = 5000 / self.resolution
     #     for y in range (self.resolution):

@@ -21,13 +21,12 @@ class PlayerTracker():
         self.players.append(Player(xPos = 4900, yPos = 500, wd = 70, ht = 70, strength = 5, speed = 3, hp = 450, hpMax = 500, hpRegen = 5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee"))
      
     def drawPlayers(self, Cam, Alliance):
+        """Draw players and their healths"""
         scale = 5000 / Alliance.resolution
         for i in self.players:
             if(sd(Cam,i.x,i.y,i.wd,i.ht)):
                 if(Alliance.vision[int(i.x / scale)][int(i.y / scale)]):
-                    if any(j.debuff == "dead" for j in i.debuffs):
-                        pass
-                    else:
+                    if not any(j.debuff == "dead" for j in i.debuffs): #check if they're dead, and don't draw them if they are
                         i.drawPlayer()
                         i.drawHealth()
                 
