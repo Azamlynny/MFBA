@@ -41,11 +41,13 @@ def setup():
     
 def draw():
     global S # Server
-    SM.sendData(S, Game)
     
     C = S.available()
+    SM.connectingClient = False 
     if(C != None):
         SM.readData(S, C, Game)
+        
+    SM.sendData(S, Game)
     
     background(0)
     
