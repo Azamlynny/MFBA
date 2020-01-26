@@ -30,6 +30,15 @@ class ServerManager():
                 
             out += temp
             
+            temp = "creep "
+
+            for i in Game.CT.creep:
+                temp += str(int(i.x)) + " " + str(int(i.y)) + " " + str(int(i.hp)) + " " + str(i.alliance) + " "
+
+            temp += "e_creep "
+
+            out += temp
+            
             out += "end d d "
             
             S.write(out)

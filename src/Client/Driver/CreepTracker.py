@@ -5,14 +5,24 @@ class CreepTracker():
 
     def __init__(self):
         self.creep = []
-                  
+        self.creepx = []
+        self.creepy = []
+        self.creephp = []
+        self.creepAlliance = []
+
     def drawCreep(self, Cam, Alliance):
         scale = 5000 / Alliance.resolution
-        for i in self.creep:
-            if(sd(Cam,i.x,i.y,i.wd,i.ht)):
-                if(Alliance.vision[int(i.x / scale)][int(i.y / scale)]):
-                    i.drawCreep()
-                    i.drawHealth()
+        for i in range(0,len(self.creepx)):
+            if(sd(Cam,self.creepx[i],self.creepy[i],40,40)):
+                if(Alliance.vision[int(self.creepx[i] / scale)][int(self.creepy[i] / scale)]):
+                    if(self.creepAlliance[i] == "a"):
+                        fill(0,0,255)
+                    elif(self.creepAlliance[i] == "b"):
+                        fill(255,0,0)
+                    else:
+                        fill(0,255,0)        
+                    rect(self.creepx[i] - 20,self.creepy[i] - 20, 40, 40)
+                    # i.drawHealth()
                         
         # Action offloaded to the server    
     # def runCreepActions(self, Game, Map, GUI):

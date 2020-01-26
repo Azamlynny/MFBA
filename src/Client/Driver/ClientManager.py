@@ -68,6 +68,24 @@ class ClientManager():
                 structure_hp = input[a+1:b]
                 for i in range(0,18):
                     Game.ST.structures[i].hp = int(structure_hp[i])
+                    
+            if("creep" in input):
+                a = input.index("creep")
+                b = input.index("e_creep")
+                creep = input[a+1:b]
+                Game.CT.creepx = []
+                Game.CT.creepy = []
+                Game.CT.creephp = []
+                Game.CT.creepAlliance = []
+                for i in range(0, len(creep)):
+                    if(i % 4 == 0):
+                        Game.CT.creepx.append(int(creep[i]))
+                    elif(i % 4 == 1):
+                        Game.CT.creepy.append(int(creep[i]))
+                    elif(i % 4 == 2):
+                        Game.CT.creephp.append(int(creep[i]))
+                    elif(i % 4 == 3):
+                        Game.CT.creepAlliance.append(creep[i])
             
     def writeData(self, C, Game):        
         p = Game.player
