@@ -108,7 +108,7 @@ class Attackable(Entity, object):
         for i in self.debuffs:
             i.dec()
             if(i.time <= 0):
-                # Reset Stats after death debuff expires
+                # Reset Stats after debuff expires
                 if self.type == "player" and i.debuff == "dead":
                     self.target = None
                     self.hp = self.hpMax

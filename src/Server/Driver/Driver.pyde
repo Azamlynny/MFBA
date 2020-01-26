@@ -1,6 +1,5 @@
-add_library('net') #processing's network library
+add_library('net')
 
-#import from our class files
 from Entity import *
 from KeyManager import *
 from MouseManager import *
@@ -13,7 +12,6 @@ from StructureTracker import *
 from Creep import *
 from ServerManager import *
 
-#initialize Managers, Cameras, etc.
 MManage = MouseManager()
 KManage = KeyManager()
 Cam = Camera(0,0)
@@ -35,22 +33,21 @@ def setup():
     # Focuses the Camera on the player
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-    #create Server
-    global S #Server
+    global S # Server
     S = Server(this, 5204)
     SM.IP = S.ip()
-    print("Server IP4v Address")
+    print("Server IPv4 Address")
     print(S.ip())
     
 def draw():
     global S # Server
     
-    #Send and receive data from/to server
-    SM.sendData(S, Game)
-    
     C = S.available()
+    SM.connectingClient = False 
     if(C != None):
-        SM.readData(S, C, Game)
+        SM.readData(S, C, Game, MManage)
+        
+    SM.sendData(S, Game)
     
     background(0)
     

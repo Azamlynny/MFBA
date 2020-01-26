@@ -24,13 +24,13 @@ class ClientManager():
         # Converts white space seperated input into an array
         input = input.split("\n")
         input = input[0].encode('utf8').split(' ')
-        
+                    
         if("start" in input):
             a = input.index("start")
             b = input.index("end")
             input = input[a+1:b]
         
-        print(input)
+        # print(input)
         
         if(self.hasPlayerID == False):
             if(str(input[0]) == self.IP and is_int(input[1])):
@@ -46,20 +46,46 @@ class ClientManager():
                 game_time = input[a+1:b]
                 if(is_int(game_time[0])):
                     Game.time = int(game_time[0])
-                        
             
-            # if("creep_info" in input):
-            #     a = input.index("creep_info")
-            #     b = input.index("e_creep_info")
-            #     creep = input[a+1:b]
-            #     count = 0
-            #     if(len(creep) >= 29):
-            #         for i in range(0,30,4):
-            #             print(str(len(creep)) + " " + str(i) + " " + str(len(Game.CT.creep)) + " " + str(count))
-            #             Game.CT.creep[count].y = int(creep[i+1])
-            #             Game.CT.creep[count].alliance = str(creep[i+2])
-            #             Game.CT.creep[count].hp = int(creep[i+3])
-            #             count += 1
+            if("player_pos" in input):
+                a = input.index("player_pos")
+                b = input.index("e_player_pos")
+                player_pos = input[a+1:b]
+                for i in range(0,10):
+                    Game.PT.players[i].x = int(player_pos[i * 2])
+                    Game.PT.players[i].y = int(player_pos[i * 2 + 1])
+            
+            if("player_hp" in input):
+                a = input.index("player_hp")
+                b = input.index("e_player_hp")
+                player_hp = input[a+1:b]
+                for i in range(0,10):
+                    Game.PT.players[i].hp = int(player_hp[i])
+                    
+            if("structure_hp" in input):
+                a = input.index("structure_hp")
+                b = input.index("e_structure_hp")
+                structure_hp = input[a+1:b]
+                for i in range(0,18):
+                    Game.ST.structures[i].hp = int(structure_hp[i])
+                    
+            if("creep" in input):
+                a = input.index("creep")
+                b = input.index("e_creep")
+                creep = input[a+1:b]
+                Game.CT.creepx = []
+                Game.CT.creepy = []
+                Game.CT.creephp = []
+                Game.CT.creepAlliance = []
+                for i in range(0, len(creep)):
+                    if(i % 4 == 0):
+                        Game.CT.creepx.append(int(creep[i]))
+                    elif(i % 4 == 1):
+                        Game.CT.creepy.append(int(creep[i]))
+                    elif(i % 4 == 2):
+                        Game.CT.creephp.append(int(creep[i]))
+                    elif(i % 4 == 3):
+                        Game.CT.creepAlliance.append(creep[i])
             
     def writeData(self, C, Game):        
         p = Game.player
@@ -69,5 +95,7 @@ class ClientManager():
         else:
             if(p != None):
                 return
-                # C.write("player " + str(C.ip()) + " " + str(int(Game.PT.players[p].x)) + " " + str(int(Game.PT.players[p].y)))
-                # print("player " + str(int(Game.PT.players[0].x)) + " " + str(int(Game.PT.players[0].y)))
+    
+    def writeMouse(self, C, Game, x, y):
+        out = " d d mouse_in " + str(Game.player) + " " + str(int(x)) + " " + str(int(y)) + " e_mouse_in d d "
+        C.write(out)

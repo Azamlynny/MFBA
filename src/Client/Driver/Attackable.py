@@ -108,7 +108,7 @@ class Attackable(Entity, object):
                         Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
                     self.hpRegen = i.modifier
-            self.debuffs.remove(i)
+                self.debuffs.remove(i)
             
     def moveProjectiles(self, Cam, Game):
         for i in self.projectiles:
@@ -120,4 +120,3 @@ class Attackable(Entity, object):
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)
                 self.projectiles.remove(i)
-

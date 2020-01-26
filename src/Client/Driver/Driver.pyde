@@ -12,7 +12,7 @@ from StructureTracker import *
 from Creep import *
 from ClientManager import *
 
-ip = "127.0.1.1" #replace with server's IP
+ip = "127.0.0.1" #Change to Server's IP
 MManage = MouseManager()
 KManage = KeyManager()
 Cam = Camera(0,0)
@@ -26,7 +26,7 @@ CM = ClientManager()
 
 def setup(): 
     size(1960, 1080, P2D)
-    fullScreen()
+    fullScreen() 
     frameRate(30) # Send the initial packets slower to ensure they arrive correctly 
     smooth(3)
     Map.loadMap()
@@ -39,7 +39,6 @@ def setup():
     global C
     C = Client(this, ip, 5204); #Replace with your server’s IP and port
     CM.connectClient(C)
-    Game.CT.spawnCreep()
     frameRate(60) # Switch to 60 fps after connecting
     
 def draw():
@@ -60,9 +59,10 @@ def draw():
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
-    Game.ST.runTowerActions(Game, Cam)
-    Game.PT.runPlayerActions(Game, Cam)
-    Game.PT.updateMoving(Game)
+    
+    # Game.ST.runTowerActions(Game, Cam) # Server side
+    # Game.PT.runPlayerActions(Game, Cam) # Server side
+    # Game.PT.updateMoving(Game) # Server side
     
     # Alliance specific processes
     if(Game.player >= 0 and Game.player <= 4): # Team A
@@ -91,7 +91,7 @@ def mousePressed():
     if(mouseButton == 37): # Left click
         MManage.leftClick(Game, Cam, GUI, Map)    
     if(mouseButton == 39): # Right click
-        MManage.rightClick(Game, Cam)
+        MManage.rightClick(Game, Cam, C, CM)
 
 def mouseDragged(): 
     if(mouseButton == 3): # Middle click

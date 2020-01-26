@@ -56,27 +56,32 @@ class MouseManager():
                         GUI.type = "creep"
                         return
                     
-    def rightClick(self, Game, Cam):
+    def rightClick(self, Game, Cam, C, CM):
         p = Game.player
         if(p != None):
-            Game.PT.players[p].ab1select = False
-            Game.PT.players[p].ab2select = False
-            Game.PT.players[p].pathfindTo(mouseX - Cam.xshift, mouseY - Cam.yshift, Game)
-            Game.PT.players[p].target = None
-            for i in Game.PT.players:
-                if(i == Game.PT.players[p]):
-                    continue
-                if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
-                    Game.PT.players[p].target = i
-                    return
-            for i in Game.ST.structures:
-                if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
-                    Game.PT.players[p].target = i
-                    return
-            for i in Game.CT.creep:
-                if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
-                    Game.PT.players[p].target = i
-                    return    
+            x = mouseX - Cam.xshift
+            y = mouseY - Cam.yshift
+            CM.writeMouse(C, Game, x, y)
+            
+            # Server side target selection code
+            # Game.PT.players[p].ab1select = False
+            # Game.PT.players[p].ab2select = False
+            # Game.PT.players[p].pathfindTo(mouseX - Cam.xshift, mouseY - Cam.yshift, Game)
+            # Game.PT.players[p].target = None
+            # for i in Game.PT.players:
+            #     if(i == Game.PT.players[p]):
+            #         continue
+            #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
+            #         Game.PT.players[p].target = i
+            #         return
+            # for i in Game.ST.structures:
+            #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
+            #         Game.PT.players[p].target = i
+            #         return
+            # for i in Game.CT.creep:
+            #     if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2 and i.hp > 0):
+            #         Game.PT.players[p].target = i
+            #         return    
             
     def lockPlayerTarget(self, Game, Cam):
         p = Game.player

@@ -31,12 +31,17 @@ class Alliance():
                             break
                 if(visionSuccess):
                     continue
-                for p in Game.CT.creep:
-                    if(p.alliance == self.name):
-                        if(p.visionRange ** 2 > p.distancePT(x * scale, y * scale)):
+                for p in range(0,len(Game.CT.creepx)):
+                    if(Game.CT.creepAlliance[p] == self.name):
+                        distance = (Game.CT.creepx[p] - x * scale)**2 + (Game.CT.creepy[p] - y * scale)**2
+                        # print(distance)
+                        if(500 ** 2 > distance):
                             self.vision[x][y] = True
+                            visionSuccess = True
                             break
-                        
+                if(visionSuccess):
+                    continue
+                
                 # If none of the players, structures, or creep provide vision then set the vision tile to False                
                 self.vision[x][y] = False # Change back to False
                        
