@@ -59,7 +59,7 @@ def draw():
     Game.runDebuffs(Cam)
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
-    Game.ST.runTowerActions(Game, Cam)
+    # Game.ST.runTowerActions(Game, Cam) # Server side
     Game.PT.runPlayerActions(Game, Cam)
     Game.PT.updateMoving(Game)
     

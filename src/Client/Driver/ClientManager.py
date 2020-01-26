@@ -48,9 +48,26 @@ class ClientManager():
                     Game.time = int(game_time[0])
             
             if("player_pos" in input):
-                a = input.index("game_time")
-                b = input.index("e_game_time")
+                a = input.index("player_pos")
+                b = input.index("e_player_pos")
                 player_pos = input[a+1:b]
+                for i in range(0,10):
+                    Game.PT.players[i].x = int(player_pos[i * 2])
+                    Game.PT.players[i].y = int(player_pos[i * 2 + 1])
+            
+            if("player_hp" in input):
+                a = input.index("player_hp")
+                b = input.index("e_player_hp")
+                player_hp = input[a+1:b]
+                for i in range(0,10):
+                    Game.PT.players[i].hp = int(player_hp[i])
+                    
+            if("structure_hp" in input):
+                a = input.index("structure_hp")
+                b = input.index("e_structure_hp")
+                structure_hp = input[a+1:b]
+                for i in range(0,18):
+                    Game.ST.structures[i].hp = int(structure_hp[i])
             
     def writeData(self, C, Game):        
         p = Game.player
