@@ -46,9 +46,11 @@ class ClientManager():
                 game_time = input[a+1:b]
                 if(is_int(game_time[0])):
                     Game.time = int(game_time[0])
-                        
             
-       
+            if("player_pos" in input):
+                a = input.index("game_time")
+                b = input.index("e_game_time")
+                player_pos = input[a+1:b]
             
     def writeData(self, C, Game):        
         p = Game.player
