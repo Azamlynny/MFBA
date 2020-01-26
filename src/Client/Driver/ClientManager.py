@@ -24,9 +24,7 @@ class ClientManager():
         # Converts white space seperated input into an array
         input = input.split("\n")
         input = input[0].encode('utf8').split(' ')
-    
-        print(input)
-                
+                    
         if("start" in input):
             a = input.index("start")
             b = input.index("end")

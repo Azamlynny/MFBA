@@ -23,9 +23,14 @@ class ServerManager():
         
         out += temp
                 
+        temp = "structure_hp" + " " + str(Game.ST.structures[0].hp) + " " + str(Game.ST.structures[1].hp) + " " + str(Game.ST.structures[2].hp) + " " + str(Game.ST.structures[3].hp) + " " + str(Game.ST.structures[4].hp) + " " + str(Game.ST.structures[5].hp) + " " + str(Game.ST.structures[6].hp) + " " + str(Game.ST.structures[7].hp) + " " + str(Game.ST.structures[8].hp) + " " + str(Game.ST.structures[9].hp) + " " + str(Game.ST.structures[10].hp) + " " + str(Game.ST.structures[11].hp) + " " + str(Game.ST.structures[12].hp) + " " + str(Game.ST.structures[13].hp) + " " + str(Game.ST.structures[14].hp) + " " + str(Game.ST.structures[15].hp) + " " + str(Game.ST.structures[16].hp) + " " + str(Game.ST.structures[17].hp) + " e_structure_hp "
+            
+        out += temp
+        
         out += "end d d "
         
-        print(out)
+        S.write(out)
+        # print(out)
 
         
     def readData(self, S, C, Game):
