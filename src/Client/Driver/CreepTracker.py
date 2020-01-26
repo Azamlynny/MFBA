@@ -15,15 +15,26 @@ class CreepTracker():
         for i in range(0,len(self.creepx)):
             if(sd(Cam,self.creepx[i],self.creepy[i],40,40)):
                 if(Alliance.vision[int(self.creepx[i] / scale)][int(self.creepy[i] / scale)]):
+                    # Draw the creep
                     if(self.creepAlliance[i] == "a"):
                         fill(0,0,255)
                     elif(self.creepAlliance[i] == "b"):
                         fill(255,0,0)
                     else:
                         fill(0,255,0)        
-                    rect(self.creepx[i] - 20,self.creepy[i] - 20, 40, 40)
-                    # i.drawHealth()
-                        
+                    rect(self.creepx[i] - 20, self.creepy[i] - 20, 40, 40)
+                    
+                    # Draw creep health bar
+                    fill(0,0,0)
+                    rect(self.creepx[i] - 20, self.creepy[i] - (35), 40, 5, 5, 5, 5, 5)
+                    
+                    if(self.creepAlliance[i] == "a"):
+                        fill(0,204,20)
+                    else:
+                        fill(255,0,0)
+                    if self.creephp[i] >= 0:
+                        rect(self.creepx[i] - 20, self.creepy[i] - (35), round(40 * self.creephp[i]/100), 5, 5, 5, 5, 5)
+                                                
         # Action offloaded to the server    
     # def runCreepActions(self, Game, Map, GUI):
     #     for i in self.creep:
