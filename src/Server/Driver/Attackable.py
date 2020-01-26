@@ -117,7 +117,7 @@ class Attackable(Entity, object):
                         Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
                     self.hpRegen = i.modifier #hpRegen is set to 0 when dead so the gui looks correct
-            self.debuffs.remove(i) #once debuff expires, remove debuff from the Attackable
+                self.debuffs.remove(i) #once debuff expires, remove debuff from the Attackable
             
     def moveProjectiles(self, Cam, Game):
         """Move projectiles, check for collision, and dodo basicAttack once hit"""
