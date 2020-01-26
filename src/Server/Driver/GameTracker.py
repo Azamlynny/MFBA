@@ -17,6 +17,7 @@ class GameTracker():
         self.winner = None
         
     def updateGrid(self, Game, Map):
+        """Process hitboxes"""
         for o in range(self.res): # Reset grid
             for j in range(self.res):
                 self.grid[j][o] = False
@@ -53,7 +54,8 @@ class GameTracker():
                     self.grid[j][o] = True
         
     def incTime(self):
-        if(self.time % 1800 == 0):
+        """Increment game time"""
+        if(self.time % 1800 == 0): # Spawn creeps
             self.CT.spawnCreep()
         self.time += 1
         

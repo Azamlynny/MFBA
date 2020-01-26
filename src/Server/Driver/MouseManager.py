@@ -53,7 +53,8 @@ class MouseManager():
                         GUI.type = "creep"
                         return
                    
-       # The server does not control a player 
+    # The server does not control a player 
+    
     # def rightClick(self, Game, Cam):
     #     Game.PT.players[0].ab1select = False
     #     Game.PT.players[0].ab2select = False
@@ -74,7 +75,8 @@ class MouseManager():
     #             Game.PT.players[0].target = i
     #             return    
             
-        # Client exclusive function - Server does not control a player
+    # Client exclusive function - Server does not control a player
+
     # def lockPlayerTarget(self, Game, Cam):
     #     player = Game.PT.players[0]
     #     for i in Game.PT.players:

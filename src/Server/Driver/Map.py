@@ -1,4 +1,4 @@
-from Tree import *
+ifrom Tree import *
 from Util import *
 
 class Map():
