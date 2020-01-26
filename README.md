@@ -55,22 +55,22 @@ Look for the play button in the top right corner of Processing IDE
 #### c. Note down Server IP
 The IP is printed in the IDE console, but may indicate a loopback address. in this case, open your command prompt
 ##### i. Find IP in Windows with cmd
-run `ipconfig`, and find your local IP:
+Run `ipconfig`:
 
 ![ipconfig on cmd](/img/Windows_cmd_ip.png)
 
 ##### ii. Find IP in Linux (Bash)
-run `ifconfig` and find your local IP:
+Run `ifconfig`:
 
 ![ifconfig on bash](/img/Linux_Bash_ip.png)
 
 ##### iii. Find IP in MacOS
-run `ifconfig` and find your local IP:
+Run `ifconfig`:
 
 ![ifconfig on MacOS](/img/MacOS_ip.png)
 
 #### iv. Find IP in Powershell
-run `Get-NetIPAddress | Format-Table`:
+Run `Get-NetIPAddress | Format-Table`:
 
 ![Get-NetIPAddress on Powershell](/img/windows_powershell.png)
 
