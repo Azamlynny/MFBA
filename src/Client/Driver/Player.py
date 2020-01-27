@@ -91,7 +91,6 @@ class Player(Mob, object):
             self.xvel = 0
             self.yvel = 0                
             mainDmg = (self.atk + self.strength)
-            #TODO: add flat and percent bonuses after adding effects and debuffs
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
             target.hp -= round(mainDmg * armorMultiplier)
             if(target.hp <= 0 and target.type == "player"):
@@ -111,7 +110,6 @@ class Player(Mob, object):
         #     pass
         # else:
         #     mainDmg = (self.atk + self.strength) * 1.5
-        #     #TODO: add flat and percent bonuses after adding effects and debuffs
         #     armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
         #     target.hp -= round(mainDmg * armorMultiplier)
     
@@ -124,7 +122,6 @@ class Player(Mob, object):
         #     pass
         # else:
         #     mainDmg = (self.atk + self.strength)
-        #     #TODO: add flat and percent bonuses after adding effects and debuffs
         #     armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
         #     target.hp -= round(mainDmg * armorMultiplier)
 

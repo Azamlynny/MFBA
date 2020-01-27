@@ -26,7 +26,6 @@ class KeyManager():
         
         if(p != None):
             if(' ' in self.inputs): # Space
-                # TODO: bug needs fixing where nostroke() stops working once space is pressed
                 Cam.xshift = -1 * Game.PT.players[p].x + 1960/2
                 Cam.yshift = -1 * Game.PT.players[p].y + 1080/2
             if('q' in self.inputs and not (any(i.debuff == "ab1cd" for i in Game.PT.players[0].debuffs))):

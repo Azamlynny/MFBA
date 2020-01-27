@@ -6,7 +6,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type = "", projWidth = 10, **kwds): #TODO: add debuffs
+    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type = "", projWidth = 10, **kwds): 
         super(Attackable, self).__init__(**kwds)
         self.hpMax = hpMax
         self.hp = hp
@@ -65,7 +65,6 @@ class Attackable(Entity, object):
         self.xvel = 0
         self.yvel = 0                
         mainDmg = (self.atk + self.strength)
-        #TODO: add flat and percent bonuses after adding effects and debuffs
         armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
         target.hp -= round(mainDmg * armorMultiplier)
         if(target.hp <= 0):

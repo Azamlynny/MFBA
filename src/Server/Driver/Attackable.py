@@ -6,7 +6,7 @@ import math
 
 class Attackable(Entity, object):
     
-    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type = "", projWidth = 10, **kwds): #TODO: add debuffs
+    def __init__(self, strength, speed, hp, hpMax, hpRegen, atk, atkSpeed, armor, atkRange, alliance, visionRange, atkType, type = "", projWidth = 10, **kwds):
         super(Attackable, self).__init__(**kwds)
         self.hpMax = hpMax
         self.hp = hp
@@ -68,7 +68,6 @@ class Attackable(Entity, object):
         self.xvel = 0
         self.yvel = 0                
         mainDmg = (self.atk + self.strength)
-        #TODO: add flat and percent bonuses after adding effects and debuffs
         armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor))) #this formula is a simplified version from Dota's
         target.hp -= round(mainDmg * armorMultiplier)
         if(target.hp <= 0):
@@ -113,11 +112,11 @@ class Attackable(Entity, object):
                     self.target = None
                     self.hp = self.hpMax
                     if Game.PT.players[0] == self:
-                        #reset Camera focus
+                        # Reset Camera focus
                         Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
                         Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
-                    self.hpRegen = i.modifier #hpRegen is set to 0 when dead so the gui looks correct
-                self.debuffs.remove(i) #once debuff expires, remove debuff from the Attackable
+                    self.hpRegen = i.modifier # hpRegen is set to 0 when dead so the gui looks correct
+                self.debuffs.remove(i) # Once debuff expires, remove debuff from the Attackable
             
     def moveProjectiles(self, Cam, Game):
         """Move projectiles, check for collision, and do basicAttack once hit"""

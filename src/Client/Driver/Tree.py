@@ -2,7 +2,7 @@ from Entity import *
 
 class Tree(Entity, object):
 
-    def __init__(self, treeType, **kwds): #TODO: add debuffs
+    def __init__(self, treeType, **kwds):
         super(Tree, self).__init__(wd = 75, ht = 75, **kwds)
         self.treeType = treeType
         
