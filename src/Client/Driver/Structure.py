@@ -33,7 +33,7 @@ class Nexus(Structure, object):
         if(self.hp > 0):
             self.drawHealth()
             
-        def drawHealth(self):
+    def drawHealth(self):
         """Draw health bar above Nexus"""
         fill(0,0,0)
         rect(self.x - self.wd/2, self.y - (self.ht - 50), self.wd, 5, 5, 5, 5, 5)
