@@ -2,7 +2,11 @@
 
 MFBA is a MOBA-style game written in [Processing.py](https://py.processing.org), with characters you know and love from Magnet High School, like Mr. Sanservino.
 
+#### Presentation
+
 The presentation is found [here](https://docs.google.com/presentation/d/1IYn48w6rhyWR2i4wQwp98KQwt2uIdncMYtXzNo8GIo4/edit?usp=sharing).
+
+#### MLA Works Cited
 
 The MLA works cited is found [here](https://docs.google.com/document/d/1yPlwbJphD4gEpndE1LGwYaXe-jZQnb_xqFxa9Q-K_MU/edit?usp=sharing).
 
