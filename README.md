@@ -2,13 +2,13 @@
 
 MFBA is a MOBA-style game written in [Processing.py](https://py.processing.org), with characters you know and love from Magnet High School, like Mr. Sanservino.
 
-#### Presentation
+### Presentation
 
-The presentation is found [here](https://docs.google.com/presentation/d/1IYn48w6rhyWR2i4wQwp98KQwt2uIdncMYtXzNo8GIo4/edit?usp=sharing).
+The presentation can be found [here](https://docs.google.com/presentation/d/1IYn48w6rhyWR2i4wQwp98KQwt2uIdncMYtXzNo8GIo4/edit?usp=sharing).
 
-#### MLA Works Cited
+### MLA Works Cited
 
-The MLA works cited is found [here](https://docs.google.com/document/d/1yPlwbJphD4gEpndE1LGwYaXe-jZQnb_xqFxa9Q-K_MU/edit?usp=sharing).
+The MLA works cited can be found [here](https://docs.google.com/document/d/1yPlwbJphD4gEpndE1LGwYaXe-jZQnb_xqFxa9Q-K_MU/edit?usp=sharing).
 
 ## Features
 
@@ -31,7 +31,6 @@ Object "trackers" (like `PlayerTracker`, `StructureTracker`, `CreepTracker`, etc
 
 ### Networking
 Processing's [network library](https://www.processing.org/reference/libraries/net/) also works for Processing.py. This allows for us to implement multiplayer. A single server instance to be running, and processing all game actions, while client code renders and displays the game to the players. Server does all computations in order to prevent cheating by tampering with packets.
-
 
 ### Pathfinding
 adam you do dis
