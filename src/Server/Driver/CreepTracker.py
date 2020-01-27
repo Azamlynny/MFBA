@@ -37,38 +37,38 @@ class CreepTracker():
         self.creep.append(Creep(xPos = 340, yPos = 3801, wd = 40, ht = 40, atkRange = 250, alliance = "a", visionRange = 500, atkType = "ranged", startNode = 4))
 
         # Team B
+        self.creep.append(Creep(xPos = 3898, yPos = 350, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
+        self.creep.append(Creep(xPos = 4198, yPos = 450, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
         self.creep.append(Creep(xPos = 3898, yPos = 450, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
-        self.creep.append(Creep(xPos = 3898, yPos = 450, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
-        self.creep.append(Creep(xPos = 3898, yPos = 450, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
-        self.creep.append(Creep(xPos = 3898, yPos = 450, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
-        self.creep.append(Creep(xPos = 3898, yPos = 450, wd = 40, ht = 40, atkRange = 250, alliance = "b", visionRange = 500, atkType = "ranged", startNode = 21))
+        self.creep.append(Creep(xPos = 3598, yPos = 450, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 21))
+        self.creep.append(Creep(xPos = 3898, yPos = 550, wd = 40, ht = 40, atkRange = 250, alliance = "b", visionRange = 500, atkType = "ranged", startNode = 21))
         
         # Middle Lane
         # Team A
+        self.creep.append(Creep(xPos = 900, yPos = 3996, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
         self.creep.append(Creep(xPos = 900, yPos = 4096, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
-        self.creep.append(Creep(xPos = 900, yPos = 4096, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
-        self.creep.append(Creep(xPos = 900, yPos = 4096, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
-        self.creep.append(Creep(xPos = 900, yPos = 4096, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
-        self.creep.append(Creep(xPos = 900, yPos = 4096, wd = 40, ht = 40, atkRange = 250, alliance = "a", visionRange = 500, atkType = "ranged", startNode = 26))
+        self.creep.append(Creep(xPos = 930, yPos = 4096, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
+        self.creep.append(Creep(xPos = 870, yPos = 4096, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 26))
+        self.creep.append(Creep(xPos = 900, yPos = 4196, wd = 40, ht = 40, atkRange = 250, alliance = "a", visionRange = 500, atkType = "ranged", startNode = 26))
         
         # Team B
+        self.creep.append(Creep(xPos = 4005, yPos = 763, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
+        self.creep.append(Creep(xPos = 3705, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
         self.creep.append(Creep(xPos = 4005, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
-        self.creep.append(Creep(xPos = 4005, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
-        self.creep.append(Creep(xPos = 4005, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
-        self.creep.append(Creep(xPos = 4005, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
-        self.creep.append(Creep(xPos = 4005, yPos = 863, wd = 40, ht = 40, atkRange = 250, alliance = "b", visionRange = 500, atkType = "ranged", startNode = 41))
+        self.creep.append(Creep(xPos = 4305, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
+        self.creep.append(Creep(xPos = 4005, yPos = 963, wd = 40, ht = 40, atkRange = 250, alliance = "b", visionRange = 500, atkType = "ranged", startNode = 41))
     
         # Bottom Lane
         # Team A
+        self.creep.append(Creep(xPos = 1403, yPos = 4524, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
+        self.creep.append(Creep(xPos = 1103, yPos = 4624, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
         self.creep.append(Creep(xPos = 1403, yPos = 4624, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
-        self.creep.append(Creep(xPos = 1403, yPos = 4624, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
-        self.creep.append(Creep(xPos = 1403, yPos = 4624, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
-        self.creep.append(Creep(xPos = 1403, yPos = 4624, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
-        self.creep.append(Creep(xPos = 1403, yPos = 4624, wd = 40, ht = 40, atkRange = 250, alliance = "a", visionRange = 500, atkType = "ranged", startNode = 50))
+        self.creep.append(Creep(xPos = 1703, yPos = 4624, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 50))
+        self.creep.append(Creep(xPos = 1403, yPos = 4724, wd = 40, ht = 40, atkRange = 250, alliance = "a", visionRange = 500, atkType = "ranged", startNode = 50))
         
         # Team B
+        self.creep.append(Creep(xPos = 4506, yPos = 919, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
         self.creep.append(Creep(xPos = 4506, yPos = 1019, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
-        self.creep.append(Creep(xPos = 4506, yPos = 1019, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
-        self.creep.append(Creep(xPos = 4506, yPos = 1019, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
-        self.creep.append(Creep(xPos = 4506, yPos = 1019, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
-        self.creep.append(Creep(xPos = 4506, yPos = 1019, wd = 40, ht = 40, atkRange = 250, alliance = "b", visionRange = 500, atkType = "ranged", startNode = 66))
+        self.creep.append(Creep(xPos = 4206, yPos = 1019, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
+        self.creep.append(Creep(xPos = 4806, yPos = 1019, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 66))
+        self.creep.append(Creep(xPos = 4506, yPos = 1119, wd = 40, ht = 40, atkRange = 250, alliance = "b", visionRange = 500, atkType = "ranged", startNode = 66))

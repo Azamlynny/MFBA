@@ -2,6 +2,8 @@ add_library('net')
 
 from Util import *
 
+clientOrder = [0, 5, 1, 6, 2, 7, 3, 8, 4, 9]
+
 class ServerManager():
     
     def __init__(self):
@@ -89,7 +91,7 @@ class ServerManager():
         
         if(input[0] == "reqPlayerID"): # Requesting player ID
             # print("req") # Debugging
-            S.write(" d d start " + str(input[1]) + " " + str(len(self.clients) - 1) + " end d d ")
+            S.write(" d d start " + str(input[1]) + " " + str(clientOrder[len(self.clients) - 1]) + " end d d ")
             # Sends IP and plyer ID
             self.connectingClient = True
 

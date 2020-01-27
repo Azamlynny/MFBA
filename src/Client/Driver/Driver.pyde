@@ -12,7 +12,7 @@ from StructureTracker import *
 from Creep import *
 from ClientManager import *
 
-ip = "192.168.2.19" # Change to Server's IP
+ip = "127.0.0.1" # Change to Server's IP
 MManage = MouseManager()
 KManage = KeyManager()
 Cam = Camera(0,0)
