@@ -68,11 +68,13 @@ def draw():
     if(Game.player >= 0 and Game.player <= 4): # Team A
         Game.CT.drawCreep(Cam, TeamA)
         Game.PT.drawPlayers(Cam, TeamA)
+        Game.PT.drawProjectiles(Cam, TeamA)
         TeamA.updateVision(Game)
         TeamA.drawVision(Cam)
     elif(Game.player >= 5 and Game.player <= 9): # Team B
         Game.CT.drawCreep(Cam, TeamB)
         Game.PT.drawPlayers(Cam, TeamB)
+        Game.PT.drawProjectiles(Cam, TeamA)
         TeamB.updateVision(Game)
         TeamB.drawVision(Cam)
     

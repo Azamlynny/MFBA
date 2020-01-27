@@ -7,6 +7,9 @@ class PlayerTracker():
 
     def __init__(self):
         self.players = []
+        self.projx = [] # For projectiles
+        self.projy = [] # For projectiles
+        self.projwd = [] # For projectiles
         # Team A
         self.players.append(Fang(xPos = 100, yPos = 4500, wd = 50, ht = 50, strength = 5, speed = 12, hp = 250, hpMax = 250, hpRegen = 250, atk = 60, atkSpeed = 10.0, armor = 3, atkRange = 300, alliance = "a", visionRange = 700, atkType = "ranged"))
         self.players.append(Player(xPos = 200, yPos = 4600, wd = 70, ht = 70, strength = 5, speed = 12, hp = 450, hpMax = 500, hpRegen = 5, atk = 20, atkSpeed = 1.0, armor = 3, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee"))        
@@ -31,6 +34,14 @@ class PlayerTracker():
                         i.drawPlayer()
                         i.drawHealth()
                 
+    def drawProjectiles(self, Cam, Alliance):
+        scale = 5000 / Alliance.resolution
+        for i in range(0,len(self.projx)):
+            if(sd(Cam,self.projx[i],self.projy[i],self.projwd[i],self.projwd[i])):
+                if(Alliance.vision[int(self.projx[i] / scale)][int(self.projy[i] / scale)]):
+                    fill(0)
+                    ellipse(self.projx[i],self.projy[i],self.projwd[i],self.projwd[i])
+    
     def runPlayerActions(self, Game, Cam):
         for i in self.players:
             i.defaultAttack(Game)

@@ -70,3 +70,5 @@ class GameTracker():
             i.moveProjectiles(Cam, Game)
         for i in self.ST.structures:
             i.moveProjectiles(Cam, Game)
+        for i in self.CT.creep:
+            i.moveProjectiles(Cam, Game)

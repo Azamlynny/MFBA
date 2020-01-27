@@ -87,6 +87,21 @@ class ClientManager():
                     elif(i % 4 == 3):
                         Game.CT.creepAlliance.append(creep[i])
             
+            if("projectiles" in input):
+                a = input.index("projectiles")
+                b = input.index("e_projectiles")
+                proj = input[a+1:b]
+                Game.PT.projx = []
+                Game.PT.projy = []
+                Game.PT.projwd = []
+                for i in range(0, len(proj)):
+                    if(i % 3 == 0):
+                        Game.PT.projx.append(int(proj[i]))
+                    elif(i % 3 == 1):
+                        Game.PT.projy.append(int(proj[i]))
+                    elif(i % 3 == 2):
+                        Game.PT.projwd.append(int(proj[i]))
+            
     def writeData(self, C, Game):        
         p = Game.player
         

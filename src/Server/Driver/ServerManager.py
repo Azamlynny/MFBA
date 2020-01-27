@@ -13,23 +13,27 @@ class ServerManager():
     def sendData(self, S, Game):
         # print(self.connectingClient)
         if(not self.connectingClient):
-            # Appending game time
-            out = " d d start "
+            out = " d d start " # Buffer for packet merges
         
+            # Appending game time
             out += "game_time " + str(Game.time) + " e_game_time "
         
+            # Appending player position
             temp = "player_pos" + " " + str(int(Game.PT.players[0].x)) + " " + str(int(Game.PT.players[0].y))  + " " + str(int(Game.PT.players[1].x)) + " " + str(int(Game.PT.players[1].y))  + " " + str(int(Game.PT.players[2].x)) + " " + str(int(Game.PT.players[2].y)) + " " + str(int(Game.PT.players[3].x)) + " " + str(int(Game.PT.players[3].y)) + " " + str(int(Game.PT.players[4].x)) + " " + str(int(Game.PT.players[4].y)) + " " + str(int(Game.PT.players[5].x)) + " " + str(int(Game.PT.players[5].y)) + " " + str(int(Game.PT.players[6].x)) + " " + str(int(Game.PT.players[6].y)) + " " + str(int(Game.PT.players[7].x)) + " " + str(int(Game.PT.players[7].y)) + " " + str(int(Game.PT.players[8].x)) + " " + str(int(Game.PT.players[8].y)) + " " + str(int(Game.PT.players[9].x)) + " " + str(int(Game.PT.players[9].y)) + " e_player_pos " 
             
             out += temp
             
+            # Appending player health
             temp = "player_hp" + " " + str(int(Game.PT.players[0].hp)) + " " + str(int(Game.PT.players[1].hp)) + " " + str(int(Game.PT.players[2].hp)) + " " + str(int(Game.PT.players[3].hp)) + " " + str(int(Game.PT.players[4].hp)) + " " + str(int(Game.PT.players[5].hp)) + " " + str(int(Game.PT.players[6].hp)) + " " + str(int(Game.PT.players[7].hp)) + " " + str(int(Game.PT.players[8].hp)) + " " + str(int(Game.PT.players[9].hp)) + " e_player_hp " 
             
             out += temp
-                    
+            
+            # Appending structure health
             temp = "structure_hp" + " " + str(int(Game.ST.structures[0].hp)) + " " + str(int(Game.ST.structures[1].hp)) + " " + str(int(Game.ST.structures[2].hp)) + " " + str(int(Game.ST.structures[3].hp)) + " " + str(int(Game.ST.structures[4].hp)) + " " + str(int(Game.ST.structures[5].hp)) + " " + str(int(Game.ST.structures[6].hp)) + " " + str(int(Game.ST.structures[7].hp)) + " " + str(int(Game.ST.structures[8].hp)) + " " + str(int(Game.ST.structures[9].hp)) + " " + str(int(Game.ST.structures[10].hp)) + " " + str(int(Game.ST.structures[11].hp)) + " " + str(int(Game.ST.structures[12].hp)) + " " + str(int(Game.ST.structures[13].hp)) + " " + str(int(Game.ST.structures[14].hp)) + " " + str(int(Game.ST.structures[15].hp)) + " " + str(int(Game.ST.structures[16].hp)) + " " + str(int(Game.ST.structures[17].hp)) + " e_structure_hp "
                 
             out += temp
             
+            # Appending creep position, health, and alliance
             temp = "creep "
 
             for i in Game.CT.creep:
@@ -39,8 +43,29 @@ class ServerManager():
 
             out += temp
             
-            out += "end d d "
             
+            # Appending projectiles
+            temp = "projectiles " 
+            
+            for i in Game.PT.players:
+                if(i.atkType == "ranged"):
+                    for o in i.projectiles:
+                        temp += str(int(o.x)) + " " + str(int(o.y)) + " " + str(int(o.wd)) + " "
+            for i in Game.CT.creep:
+                if(i.atkType == "ranged"):
+                    for o in i.projectiles:
+                        temp += str(int(o.x)) + " " + str(int(o.y)) + " " + str(int(o.wd)) + " "
+            for i in Game.ST.structures:
+                if(i.atkType == "ranged"):
+                    for o in i.projectiles:
+                        temp += str(int(o.x)) + " " + str(int(o.y)) + " " + str(int(o.wd)) + " "
+            temp += "e_projectiles "
+
+            out += temp
+            
+            
+            out += "end d d " # Buffer for packet merges
+
             S.write(out)
             # print(out)
         

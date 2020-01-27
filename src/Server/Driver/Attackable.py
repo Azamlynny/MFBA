@@ -120,7 +120,7 @@ class Attackable(Entity, object):
                 self.debuffs.remove(i) #once debuff expires, remove debuff from the Attackable
             
     def moveProjectiles(self, Cam, Game):
-        """Move projectiles, check for collision, and dodo basicAttack once hit"""
+        """Move projectiles, check for collision, and do basicAttack once hit"""
         for i in self.projectiles:
             if any(j.debuff == "dead" for j in i.Target.debuffs):
                 self.projectiles.remove(i)
