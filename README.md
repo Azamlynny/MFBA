@@ -27,7 +27,7 @@ This project makes heavy use of OOP. We can use the class `Entity` as an example
 
 This allows for most functions that all `Attackable` objects do (like attacking, debuff processing, etc.) to be inherited to all classes. The `Entity` class is used for movement and collisions checking on all objects at once.
 
-Object "trackers" (like `PlayerTracker`, `Structuretracker`, `CreepTracker`, etc.) have a list of all elements they track and process the relevant functions for those elements every game tick.
+Object "trackers" (like `PlayerTracker`, `StructureTracker`, `CreepTracker`, etc.) have a list of all elements they track and process the relevant functions for those elements every game tick.
 
 ### Networking
 Processing's [network library](https://www.processing.org/reference/libraries/net/) also works for Processing.py. This allows for us to implement multiplayer. A single server instance to be running, and processing all game actions, while client code renders and displays the game to the players. Server does all computations in order to prevent cheating by tampering with packets.
