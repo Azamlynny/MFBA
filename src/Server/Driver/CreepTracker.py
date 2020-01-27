@@ -54,7 +54,7 @@ class CreepTracker():
         self.creep.append(Creep(xPos = 900, yPos = 4196, wd = 40, ht = 40, atkRange = 250, alliance = "a", visionRange = 500, atkType = "ranged", startNode = 26))
         
         # Team B
-        self.creep.append(Creep(xPos = 4005, yPos = 763, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
+        self.creep.append(Creep(xPos = 4005, yPos = 803, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
         self.creep.append(Creep(xPos = 3705, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
         self.creep.append(Creep(xPos = 4005, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
         self.creep.append(Creep(xPos = 4305, yPos = 863, wd = 40, ht = 40, atkRange = 100, alliance = "b", visionRange = 500, atkType = "melee", startNode = 41))
