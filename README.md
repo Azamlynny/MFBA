@@ -33,7 +33,8 @@ Object "trackers" (like `PlayerTracker`, `StructureTracker`, `CreepTracker`, etc
 Processing's [network library](https://www.processing.org/reference/libraries/net/) also works for Processing.py. This allows for us to implement multiplayer. A single server instance to be running, and processing all game actions, while client code renders and displays the game to the players. Server does all computations in order to prevent cheating by tampering with packets.
 
 ### Pathfinding
-adam you do dis
+![pathfinding example](/img/PathFind.PNG)
+The map has a series of nodes throughout all of the lanes. The blue alliance creep traverse up the graph from node to node and the red alliance creep traverse downwards. If a player of an opposing alliance intercepts a creep, the creep will pathfind towards them. If the distance between the aggressor is too large, the creep will return to the previous node it was at.
 
 # Download and Setup
 
