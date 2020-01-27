@@ -111,10 +111,6 @@ class Attackable(Entity, object):
                 if self.type == "player" and i.debuff == "dead":
                     self.target = None
                     self.hp = self.hpMax
-                    if Game.PT.players[0] == self:
-                        # Reset Camera focus
-                        Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
-                        Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
                     self.hpRegen = i.modifier # hpRegen is set to 0 when dead so the gui looks correct
                 self.debuffs.remove(i) # Once debuff expires, remove debuff from the Attackable
             

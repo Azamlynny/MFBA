@@ -29,7 +29,7 @@ class Map():
         print("Nodes Loaded")
         
     def drawMap(self, Cam):
-        """Draw map image"""x
+        """Draw map image"""
         fill(245)
         rect(0,0,5000,5000)
         image(self.img, 0,0, 5000, 5000)
