@@ -129,17 +129,20 @@ class Player(Mob, object):
 
     def checkLevelUp(self):
         """Check is xp is sufficient for level up, then process stats for leveling"""
-        if(self.lastxp > self.xp):
-            self.lvl += 1
-            #for now, all attributes increase by 5%
-            self.atk += round(0.05 * self.atk)
-            self.armor += round(0.05 * self.armor)
-            self.strength += round(0.05 * self.strength)
-            self.hp += int((0.05 * self.hpMax))
-            self.hpMax += int((0.05 * self.hpMax))
-            self.hpRegen += 0.05 * self.hpRegen
-        self.lastxp = self.xp
-    
+        if (self.lvl < 25):
+            if self.xp >= xpToLevel[self.lvl]:
+                self.xp -= xpToLevel[self.lvl]
+                self.lvl += 1
+                #for now, all attributes increase by 5%
+                self.atk += round(0.1 * self.atk)
+                self.atkSpeed += round(0.05 * self.atkSpeed)
+                self.armor += round(0.05 * self.armor)
+                self.strength += round(0.1 * self.strength)
+                self.hp += int((0.05 * self.hpMax))
+                self.hpMax += int((0.05 * self.hpMax))
+                self.hpRegen += 0.05 * self.hpRegen
+                
+                        
     def checkHealth(self, Game, Cam):
         """Check health and process death"""
         if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):
