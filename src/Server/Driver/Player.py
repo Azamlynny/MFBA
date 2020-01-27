@@ -60,7 +60,7 @@ class Player(Mob, object):
         elif(self.name == "Mr. Weisser"):
             fill(0,0,102)
         elif(self.name == "Mr. Nowakowski"):
-            fill(255, 218, 184)
+            fill(153, 204, 255)
         elif(self.name == "Mr. McMenamin"):
             fill(255, 153, 153)
         elif(self.name == "Mr. Sanservino"):

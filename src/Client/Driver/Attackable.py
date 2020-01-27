@@ -79,15 +79,16 @@ class Attackable(Entity, object):
             self.target = None
 
     def drawHealth(self):
+        """Draw health bar above Attackable"""
         fill(0,0,0)
-        rect(self.x - self.wd/2, self.y - (self.ht - 5), self.wd, 5, 5, 5, 5, 5)
+        rect(self.x - self.wd/2, self.y - (self.ht - 13), self.wd, 5, 5, 5, 5, 5)
         
         if(self.alliance == "a"):
             fill(0,204,20)
         else:
             fill(255,0,0)
         if self.hp >= 0:
-            rect(self.x - self.wd/2, self.y - (self.ht-5), round(self.wd * self.hp/self.hpMax), 5, 5, 5, 5, 5)
+            rect(self.x - self.wd/2, self.y - (self.ht-13), round(self.wd * self.hp/self.hpMax), 5, 5, 5, 5, 5)
             
     def runDebuffs(self, Game, Cam):
         if(self.hp + self.hpRegen <= self.hpMax):
