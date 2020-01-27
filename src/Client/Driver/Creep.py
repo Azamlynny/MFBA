@@ -3,7 +3,7 @@ from Mob import *
 class Creep(Mob, object):
     
     def __init__(self, startNode, **kwds):
-        super(Creep, self).__init__(type = "creep", strength = 5, speed = 5, hp = 100, hpMax = 100, hpRegen = 0.5, atk = 9, atkSpeed = 1.0, armor = 3, **kwds)
+        super(Creep, self).__init__(type = "creep", strength = 5, speed = 4, hp = 100, hpMax = 100, hpRegen = 0.5, atk = 5, atkSpeed = 1.0, armor = 3, **kwds)
         self.startNode = startNode
         self.currentNode = self.startNode
         self.NODE_TRAVERSAL_ERROR = 25
@@ -52,12 +52,12 @@ class Creep(Mob, object):
         
         if(self.target == None):
             self.atkCooldown = 0
-            for i in Game.PT.players:
+            for i in Game.CT.creep:
                 if(i.alliance != self.alliance and i.hp > 0):
                     if(self.distance(i) <= self.AGRO_RANGE ** 2):
                         self.target = i
                         return
-            for i in Game.CT.creep:
+            for i in Game.PT.players:
                 if(i.alliance != self.alliance and i.hp > 0):
                     if(self.distance(i) <= self.AGRO_RANGE ** 2):
                         self.target = i

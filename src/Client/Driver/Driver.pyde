@@ -44,7 +44,7 @@ def setup():
 def draw():
     if(C.available() > 0):
         if(CM.caughtUp):
-            CM.manageInput(C.readString(), Game, Cam)
+            CM.manageInput(C.readString(), Game, Cam, GUI)
         else:
             CM.setUpClient(C.readString(), Game)
         C.clear()
@@ -77,7 +77,7 @@ def draw():
     elif(Game.player >= 5 and Game.player <= 9): # Team B
         Game.CT.drawCreep(Cam, TeamB)
         Game.PT.drawPlayers(Cam, TeamB)
-        Game.PT.drawProjectiles(Cam, TeamA)
+        Game.PT.drawProjectiles(Cam, TeamB)
         TeamB.updateVision(Game)
         TeamB.drawVision(Cam)
     

@@ -60,20 +60,23 @@ class MouseManager():
         Game.PT.players[p].pathfindTo(x, y, Game)
         Game.PT.players[p].target = None
         for i in Game.PT.players:
-            if(i == Game.PT.players[p]):
-                continue
-            if(x >= i.x - i.wd/2 and x <= i.x + i.wd/2 and y >= i.y - i.ht/2 and y <= i.y + i.ht/2 and i.hp > 0):
-                Game.PT.players[p].target = i
-                return
+            if(Game.PT.players[p].alliance != i.alliance):
+                if(i == Game.PT.players[p]):
+                    continue
+                if(x >= i.x - i.wd/2 and x <= i.x + i.wd/2 and y >= i.y - i.ht/2 and y <= i.y + i.ht/2 and i.hp > 0):
+                    Game.PT.players[p].target = i
+                    return
         for i in Game.ST.structures:
-            if(x >= i.x - i.wd/2 and x <= i.x + i.wd/2 and y >= i.y - i.ht/2 and y <= i.y + i.ht/2 and i.hp > 0):
-                Game.PT.players[p].target = i
-                return
+            if(Game.PT.players[p].alliance != i.alliance):
+                if(x >= i.x - i.wd/2 and x <= i.x + i.wd/2 and y >= i.y - i.ht/2 and y <= i.y + i.ht/2 and i.hp > 0):
+                    Game.PT.players[p].target = i
+                    return
         for i in Game.CT.creep:
-            if(x >= i.x - i.wd/2 and x <= i.x + i.wd/2 and y >= i.y - i.ht/2 and y <= i.y + i.ht/2 and i.hp > 0):
-                Game.PT.players[p].target = i
-                return    
-            
+            if(Game.PT.players[p].alliance != i.alliance):
+                if(x >= i.x - i.wd/2 and x <= i.x + i.wd/2 and y >= i.y - i.ht/2 and y <= i.y + i.ht/2 and i.hp > 0):
+                    Game.PT.players[p].target = i
+                    return    
+                
     #     Client exclusive function - Server does not control a player
     # def lockPlayerTarget(self, Game, Cam):
     #     player = Game.PT.players[0]

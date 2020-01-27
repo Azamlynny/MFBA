@@ -18,7 +18,7 @@ class ClientManager():
         
         self.caughtUp = True
     
-    def manageInput(self, input, Game, Cam):
+    def manageInput(self, input, Game, Cam, GUI):
         p = Game.player
         
         # Converts white space seperated input into an array
@@ -35,6 +35,7 @@ class ClientManager():
         if(self.hasPlayerID == False):
             if(str(input[0]) == self.IP and is_int(input[1])):
                 Game.player = int(input[1])
+                GUI.playerSlot = int(input[1])
                 print("Player " + str(Game.player))
                 self.hasPlayerID = True
                 Cam.xshift = -1 * Game.PT.players[Game.player].x + 1960/2
