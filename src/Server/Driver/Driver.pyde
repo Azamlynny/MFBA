@@ -49,6 +49,11 @@ def draw():
         
     SM.sendData(S, Game)
     
+    if(Cam.spectatorMode):
+        scale(0.22)
+    else:
+        scale(1)
+    
     background(0)
     
     # Still used by the server for developer and spectator modes

@@ -97,3 +97,11 @@ class KeyManager():
             Cam.drawRings = True
         else:
             Cam.drawRings = False
+            
+        # Toggle Spectator Mode
+        
+        if('0' in self.inputs):
+            if(Cam.spectatorMode):
+                Cam.spectatorMode = False
+            else:
+                Cam.spectatorMode = True

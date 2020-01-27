@@ -5,6 +5,7 @@ class Camera():
         self.yshift = startY 
         self.moveSpeed = 25
         self.drawRings = False
+        self.spectatorMode = False
         
     def updateCam(self):
         """Move camera by (xshift, yshift)"""
