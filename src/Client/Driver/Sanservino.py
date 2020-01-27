@@ -33,8 +33,8 @@ class Sanservino(Player, object):
                     self.debuffs.append(Debuff("ab2cd", 1, self.ab2cooldown))
                 self.ab2select = False
         return
-    def checkLevelUp(self):
-        if (self.lvl < 25):
-            if self.xp >= xpToLevel[self.lvl]:
-                self.xp -= xpToLevel[self.lvl]
-                self.lvl += 1
+    # def checkLevelUp(self):
+    #     if (self.lvl < 25):
+    #         if self.xp >= xpToLevel[self.lvl]:
+    #             self.xp -= xpToLevel[self.lvl]
+    #             self.lvl += 1

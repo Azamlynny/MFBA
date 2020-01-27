@@ -47,6 +47,7 @@ class Player(Mob, object):
         self.type = "player"
         self.ab1targetable = False
         self.ab2targetable = False
+        self.lastxp = 0 # Last xp value received from the server
 
     def drawPlayer(self):
         if(self.alliance == "a"):
@@ -113,9 +114,16 @@ class Player(Mob, object):
         #     target.hp -= round(mainDmg * armorMultiplier)
 
     def checkLevelUp(self):
-        if self.xp >= xpToLevel[self.lvl]:
-            self.xp -= xpToLevel[self.lvl]
+        """Check is xp is sufficient for level up, then process stats for leveling"""
+        if(self.lastxp > self.xp):
             self.lvl += 1
+            #for now, all attributes increase by 5%
+            self.atk += round(0.05 * self.atk)
+            self.armor += round(0.05 * self.armor)
+            self.strength += round(0.05 * self.strength)
+            self.hp += int((0.05 * self.hpMax))
+            self.hpMax += int((0.05 * self.hpMax))
+        self.lastxp = self.xp
     
     def checkHealth(self, Game, Cam):
         if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):

@@ -56,9 +56,12 @@ def draw():
     Cam.updateCam()
     Map.drawMap(Cam)
     Game.updateGrid(Game, Map)
-    Game.runDebuffs(Cam)
+    # Game.runDebuffs(Cam) # Server side
     Game.runProjectiles(Cam, Game)
     Game.ST.drawStructures(Cam)
+    
+    for i in Game.PT.players: # Facilitate local level up calculations on client side
+        i.checkLevelUp()
     
     # Game.ST.runTowerActions(Game, Cam) # Server side
     # Game.PT.runPlayerActions(Game, Cam) # Server side

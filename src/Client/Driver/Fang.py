@@ -40,11 +40,11 @@ class Fang(Player, object):
         return
         
         
-    def checkLevelUp(self):
-        if (self.lvl < 25):
-            if self.xp >= xpToLevel[self.lvl]:
-                self.xp -= xpToLevel[self.lvl]
-                self.lvl += 1
+    # def checkLevelUp(self):
+    #     if (self.lvl < 25):
+    #         if self.xp >= xpToLevel[self.lvl]:
+    #             self.xp -= xpToLevel[self.lvl]
+    #             self.lvl += 1
             
         
             

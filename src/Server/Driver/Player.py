@@ -86,6 +86,10 @@ class Player(Mob, object):
                 self.xp += 60
                 self.target = None
                 self.checkLevelUp()
+            if(target.hp <= 0 and target.type == "tower"):
+                self.xp += 220
+                self.target = None
+                self.checkLevelUp()
     
     def ability1(self, Game, Cam):
         """Activate ability 1 if selected and if in range"""
@@ -125,7 +129,9 @@ class Player(Mob, object):
                 self.atk += round(0.05 * self.atk)
                 self.armor += round(0.05 * self.armor)
                 self.strength += round(0.05 * self.strength)
-                self.hpMax += round(0.05 * self.hpMax)
+                self.hp += int((0.05 * self.hpMax))
+                self.hpMax += int((0.05 * self.hpMax))
+                
     
     def checkHealth(self, Game, Cam):
         if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):
