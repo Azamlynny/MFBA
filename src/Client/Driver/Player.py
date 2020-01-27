@@ -50,12 +50,27 @@ class Player(Mob, object):
         self.lastxp = 0 # Last xp value received from the server
 
     def drawPlayer(self):
-        if(self.alliance == "a"):
-            fill(0,0,255)
-        elif(self.alliance == "b"):
-            fill(255,0,0)
-        else:
-            fill(0,255,0)
+        if(self.name == "Dr. Fang"):
+            fill(255, 255, 0)    
+        elif(self.name == "Mr. Raite"):
+            fill(82, 255, 249)
+        elif(self.name == "Mrs. Gerstein"):
+            fill(204, 0, 204)
+        elif(self.name == "Dr. Jidarian"):
+            fill(153, 255, 102)
+        elif(self.name == "Mr. Weisser"):
+            fill(0,0,102)
+        elif(self.name == "Mr. Nowakowski"):
+            fill(255, 218, 184)
+        elif(self.name == "Mr. McMenamin"):
+            fill(255, 153, 153)
+        elif(self.name == "Mr. Sanservino"):
+            fill(243, 110, 255)
+        elif(self.name == "Mrs. Valley"):
+            fill(255, 174, 0)
+        elif(self.name == "Mr. Delprete"):
+            fill(161, 136, 122)
+
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
     
     def drawRings(self):
