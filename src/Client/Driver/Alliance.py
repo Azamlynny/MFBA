@@ -8,7 +8,6 @@ class Alliance():
         self.resolution = 25
         self.vision = [[False for i in range(self.resolution)] for j in range(self.resolution)] 
         self.structures = []
-        #self.structures.append(Structure(xPos = 6, yPos = 6, strength = 5, speed = 100, hp = 250, hpRegen = 1.5, atk = 10, armor = 3, atkRange = 100, alliance = "a"))
         
     def updateVision(self, Game):
         scale = 5000 / self.resolution

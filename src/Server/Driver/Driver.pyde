@@ -1,4 +1,4 @@
-add_library('net')
+add_library('net') # Imports processing Network library
 
 from Entity import *
 from KeyManager import *
@@ -18,45 +18,45 @@ Cam = Camera(0,0)
 Map = Map()
 TeamA = Alliance("a")
 TeamB = Alliance("b")
-TeamN = Alliance("n") # Neutral creep
 Game = GameTracker()
 GUI = GUI()
 SM = ServerManager()
 
 def setup():
     frameRate(60)
-    size(1960, 1080, P2D)
-    smooth(3)
+    size(1960, 1080, P2D) # P2D uses OpenGL's faster rendering system
+    smooth(3) # Reduce anti-aliasing for better FPS
     fullScreen()
     Map.loadMap()
     
     # Focuses the Camera on the player
     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2
     Cam.yshift = -1 * Game.PT.players[0].y + 1080/2
+    
     global S # Server
-    S = Server(this, 5204)
+    S = Server(this, 5204) # Web Socket 5204
     SM.IP = S.ip()
     print("Server IPv4 Address")
     print(S.ip())
     
 def draw():
+    # Server processes
     global S # Server
     
-    C = S.available()
-    SM.connectingClient = False 
-    if(C != None):
+    C = S.available() 
+    SM.connectingClient = False
+    if(C != None): # If there is data from the clients
         SM.readData(S, C, Game, MManage)
-        
     SM.sendData(S, Game)
     
     if(Cam.spectatorMode):
-        scale(0.22)
+        scale(0.22) # Zoom out for spectator mode
     else:
         scale(1)
     
     background(0)
     
-    # Still used by the server for developer and spectator modes
+    # Drawing processees
     KManage.runActions(Cam, Game, Map, MManage) 
     Cam.updateCam()
     Map.drawMap(Cam)
@@ -82,8 +82,7 @@ def keyPressed():
 def keyReleased():
     KManage.keyRemove(str(key))
     
-    
-def mousePressed():
+def mousePressed(): 
     if(mouseButton == 37): # Left click
         MManage.leftClick(Game, Cam, GUI, Map)
    
@@ -91,7 +90,7 @@ def mousePressed():
     # if(mouseButton == 39): # Right click
     #     MManage.rightClick(Game, Cam)
 
-def mouseDragged(): 
+def mouseDragged(): # Used to pan the camera
     if(mouseButton == 3): # Middle click
         MManage.middleClick(Cam)
         
