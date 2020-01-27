@@ -111,21 +111,18 @@ Keep in mind that your local IP will look like one of the following:
 * Running Client Code is the same as Server code. Just remember to replace the `ip` variable in Driver.pyde with the server's ip address.
 
 ## Controls
-* Mouse
+* __Mouse__
     * __Right Click__ will move your character. If you right click an Attackable (Player, Creep, Tower), your player will pathfind to attack it.
-    * __Left Click__ will use a special ability if selected. Otherwise, if you click an Attackable, you can see its GUI.
-    * __Middle Click__ pans the camera.
-* Keyboard
-    * __Q__ will select special ability 1
-    * __E__ will select special ability 2
+    * __Left Click__ will show the health of the object clicked on in the GUI.
+    * __Middle Click__ + __Drag__ pans the camera.
+* __Keyboard__
     * __W,A,S,D__ will pan the camera.
-    * __Space__ will lock the camera on your player
-    * __Grave/Tilde (`/~)__ will deselect abilities
-* Developer Mode (Server only)
+    * __Space__ will pan the camera onto your player
+* __Developer Mode__ (Server only)
     * Tree editing
         * __J, K, L (simultaneously)__ will toggle tree editing mode.
         * __Left Click__ will place trees
-        * __T__ will delete the last tree placed
+        * __T__ will delete the trees saved in memory (Holding down for too long can result in mass tree deletion)
         * __O__ will write your current tree configuration to a txt file.
     * Pathfinding Node editing
         * ___H, J, K (simultaneously)__ will toggle node editing mode.
