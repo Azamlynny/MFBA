@@ -107,7 +107,7 @@ class GUI():
         if Game.ST.structures[0].hp <= 0 or Game.ST.structures[9].hp <= 0:
             textSize(128)
             textAlign(CENTER, CENTER)
-            if Game.ST.structures[9].hp <= 0 and Game.ST.structures[0]/hp <= 0:
+            if Game.ST.structures[9].hp <= 0 and Game.ST.structures[0].hp <= 0:
                 fill (0, 255, 0)
                 text("Both Nexuses are dead. Check with server for winner", x+540, y-480)
             elif Game.ST.structures[9].hp <= 0:
