@@ -1,5 +1,3 @@
-# Fang is never used, as abilities didn't work out in the end.
-
 # from Player import *
 
 # class Fang(Player, object):
@@ -41,11 +39,9 @@
 #         return
         
         
-    # def checkLevelUp(self):
-    #     if (self.lvl < 25):
-    #         if self.xp >= xpToLevel[self.lvl]:
-    #             self.xp -= xpToLevel[self.lvl]
-    #             self.lvl += 1
-            
-        
+#     def checkLevelUp(self):
+#         if (self.lvl < 25):
+#             if self.xp >= xpToLevel[self.lvl]:
+#                 self.xp -= xpToLevel[self.lvl]
+#                 self.lvl += 1
             

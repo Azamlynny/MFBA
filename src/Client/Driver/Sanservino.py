@@ -1,5 +1,3 @@
-# Sanservino is never used, as abilities didn't work out in the end.
-
 # from Player import *
 # class Sanservino(Player, object):
 #     def __init__(self, **kwds):

@@ -1,6 +1,7 @@
 from Player import * 
-from Fang import *
-from Sanservino import *
+# Fang and Sanservino are not used now
+# from Fang import *
+# from Sanservino import *
 from Util import *
 
 class PlayerTracker():
