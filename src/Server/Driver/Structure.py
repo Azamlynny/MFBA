@@ -7,8 +7,9 @@ class Structure(Attackable, object):
                 
 class Nexus(Structure, object):
     def __init__(self, **kwds):
-        super(Nexus, self).__init__(wd = 150, ht = 150, strength = 5, speed = 0, hp = 1000, hpMax = 1000, hpRegen = 0, atk = 0, atkSpeed = 0.0, armor = 5, atkRange = 0, visionRange = 650, atkType = "none", projWidth = 0, type = "nexus", **kwds)
-        self.Name = "Nexus"
+        super(Nexus, self).__init__(wd = 150, ht = 150, strength = 5, speed = 0, hp = 1000, hpMax = 1000, hpRegen = 5, atk = 0, atkSpeed = 0.0, armor = 5, atkRange = 0, visionRange = 650, atkType = "none", projWidth = 0, type = "nexus", **kwds)
+        self.name = "Nexus"
+        
     def checkDead(self, Game, Cam):
         """Check if the Nexus is dead. The opposing alliance wins if so."""
         if Game.winner != None:
