@@ -7,10 +7,12 @@ class MouseManager():
         self.nodePlaceIndex = 0
                 
     def middleClick(self, Cam):
+        """Middle click pans camera"""
         Cam.xshift += mouseX - pmouseX
         Cam.yshift += mouseY - pmouseY
     
     def leftClick(self, Game, Cam, GUI, Map):
+        """Run all functions for left click"""
         p = Game.player
         if(p != None):
             # Clients cannot access developer tools
@@ -57,6 +59,7 @@ class MouseManager():
                         return
                     
     def rightClick(self, Game, Cam, C, CM):
+        """manage right click functions"""
         p = Game.player
         if(p != None):
             x = mouseX - Cam.xshift
@@ -84,6 +87,7 @@ class MouseManager():
             #         return    
             
     def lockPlayerTarget(self, Game, Cam):
+        """lock target for abilities"""
         p = Game.player
         if(p != None):
             player = Game.PT.players[p]

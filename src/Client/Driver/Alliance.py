@@ -10,6 +10,7 @@ class Alliance():
         self.structures = []
         
     def updateVision(self, Game):
+        """Updates array of entities in your alliance's shared vision"""
         scale = 5000 / self.resolution
         for y in range (self.resolution):
             for x in range (self.resolution):
@@ -33,7 +34,6 @@ class Alliance():
                 for p in range(0,len(Game.CT.creepx)):
                     if(Game.CT.creepAlliance[p] == self.name):
                         distance = (Game.CT.creepx[p] - x * scale)**2 + (Game.CT.creepy[p] - y * scale)**2
-                        # print(distance)
                         if(500 ** 2 > distance):
                             self.vision[x][y] = True
                             visionSuccess = True
@@ -45,6 +45,7 @@ class Alliance():
                 self.vision[x][y] = False # Change back to False
                        
     def drawVision(self, Cam):
+        """Draw fog over where your alliance doesn't have vision"""
         fill(0,200)
         noStroke()
         scale = 5000 / self.resolution

@@ -9,6 +9,7 @@ class Map():
         self.laneNodes = [[0 for i in range(2)] for j in range(self.laneNodesNum)] 
         
     def loadMap(self):
+        """Load map image, trees, nodes"""
         print("Loading Map")
         fin = open("map.txt", 'r')
         for aline in fin:
@@ -28,6 +29,7 @@ class Map():
         print("Nodes Loaded")
         
     def drawMap(self, Cam):
+        """Draw map image"""x
         fill(245)
         rect(0,0,5000,5000)
         image(self.img, 0,0, 5000, 5000)
@@ -36,6 +38,7 @@ class Map():
                 i.drawTree()
     
     def drawNodes(self, Game, Cam, MouseManager):
+        """Draw pathfinding nodes; only for developer mode"""
         if(Game.editingNodes):
             count = 0
             for i in self.laneNodes:

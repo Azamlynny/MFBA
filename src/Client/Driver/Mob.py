@@ -11,6 +11,7 @@ class Mob(Attackable, object):
         self.goaly = None
       
     def pathfindTo(self,x,y,Game):
+        """Pathfind to a certain x and y position"""
         self.goalx = x
         self.goaly = y
         dist = math.sqrt((y-self.y)**2 + (x-self.x)**2)
@@ -23,6 +24,7 @@ class Mob(Attackable, object):
             self.yvel = 0
     
     def move(self, Game):
+        """Move objects and check hitboxes"""
         if(self.xvel != 0 or self.yvel != 0) and not any(i.debuff == "stun" for i in self.debuffs): # Only performs hitbox checks for moving objects
             if(abs(self.x - self.goalx) < 5 and abs(self.y - self.goaly) < 5): # Stop the object when it reaches its goal with a small tolerance
                 self.xvel = 0

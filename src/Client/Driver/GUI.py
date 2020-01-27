@@ -8,11 +8,14 @@ class GUI():
         self.type = "player"
         
     def drawGui(self, Game, Cam):
+        """Draw GUI and various aspects like abilities, etc."""
         fill(103, 108, 126, 200)
         x = -Cam.xshift + 430 # Top left corner of the GUI panel
         y = -Cam.yshift + 930
         w = 1100
         h = 150
+        
+        # Allows for viewing attributes of any Attackable
         if(self.type == "player"):
             p1 = Game.PT.players[self.playerSlot]
         elif(self.type == "structure"):

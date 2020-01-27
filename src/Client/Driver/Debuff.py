@@ -5,6 +5,7 @@ class Debuff:
         self.debuff = debuff
         self.modifier = modifier
     
-    def dec(self): 
+    def dec(self):
+        """Decrease debuffs per game tick"""
         self.time -= 1 
         

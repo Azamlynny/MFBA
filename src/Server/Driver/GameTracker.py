@@ -61,11 +61,13 @@ class GameTracker():
         
                     
     def runDebuffs(self, Cam):
+        """Run debuff processing"""
         if(self.time % 60 == 0):
             for i in self.PT.players:
                 i.runDebuffs(self, Cam)
                 
     def runProjectiles(self,Cam, Game):
+        """Run projectile processing"""
         for i in self.PT.players:
             i.moveProjectiles(Cam, Game)
         for i in self.ST.structures:

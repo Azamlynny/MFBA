@@ -15,6 +15,8 @@ class GUI():
             y = -Cam.yshift + 930
             w = 1100
             h = 150
+            
+            # Allows for viewing attributes of any Attackable
             if(self.type == "player"):
                 p1 = Game.PT.players[self.playerSlot]
             elif(self.type == "structure"):

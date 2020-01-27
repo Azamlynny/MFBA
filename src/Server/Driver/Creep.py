@@ -12,6 +12,7 @@ class Creep(Mob, object):
         self.type = "creep"
 
     def runAI(self, Game, Map):
+        """Run Creep pathfinding and target selection"""
         self.checkAgro(Game, Map)
         if(self.target == None):
             self.moveNode(Game, Map)
@@ -27,6 +28,7 @@ class Creep(Mob, object):
                 self.pathfindTo(Map.laneNodes[self.currentNode][0], Map.laneNodes[self.currentNode][1], Game)
         
     def moveNode(self, Game, Map):
+        """Set target node for pathfinding"""
         if(self.distancePT(Map.laneNodes[self.currentNode][0], Map.laneNodes[self.currentNode][1]) <= self.NODE_TRAVERSAL_ERROR**2):
             if(self.alliance == "a" and self.currentNode < 69):
                 self.currentNode += 1
@@ -34,6 +36,7 @@ class Creep(Mob, object):
                 self.currentNode -= 1
             
     def drawCreep(self):
+        """Draw Creep"""
         if(self.alliance == "a"):
             fill(0,0,255)
         elif(self.alliance == "b"):
@@ -43,6 +46,7 @@ class Creep(Mob, object):
         rect(self.x - self.wd/2,self.y - self.ht/2, self.wd, self.ht)
         
     def checkAgro(self, Game, Map):
+        """Select target for creeps"""
         if(self.target != None):
             if(self.distance(self.target) > self.AGRO_RANGE ** 2):
                 self.target = None

@@ -37,14 +37,17 @@ class Attackable(Entity, object):
         self.ab2cooldown = 10
     
     def distance(self, target):
+        """Distance formula between self and target, squared so we can keep working with ints"""
         return (self.x - target.x)**2 + (self.y - target.y)**2
 
     def checkRange(self, target):
-        if self.distance(target) > self.atkRange**2:
+        """Checks if target is within self's range"""
+        if self.distance(target) > self.atkRange**2: # atkRange is squared to compare with squared distance
             return True
         return False
     
     def defaultAttack(self, Game):
+        """Check if conditions are correct for attack, then executes basicAttack or projectileAttack if they are"""
         if(self.atkCooldown <= 0 and self.target != None):
             if self.checkRange(self.target):
                 pass
@@ -71,6 +74,7 @@ class Attackable(Entity, object):
             self.target = None
 
     def projectileAttack(self, Game, Target):
+        """Spawn Projectile that follows player"""
         self.xvel = 0
         self.yvel = 0
         self.projectiles.append(Projectile(self.x,self.y, self.projWidth, 10, Game, Target))
@@ -90,6 +94,7 @@ class Attackable(Entity, object):
             rect(self.x - self.wd/2, self.y - (self.ht-13), round(self.wd * self.hp/self.hpMax), 5, 5, 5, 5, 5)
             
     def runDebuffs(self, Game, Cam):
+        """Check various debuff effects and process their cooldowns"""
         if(self.hp + self.hpRegen <= self.hpMax):
             self.hp += self.hpRegen
         else:
@@ -111,11 +116,12 @@ class Attackable(Entity, object):
                 self.debuffs.remove(i)
             
     def moveProjectiles(self, Cam, Game):
+        """Move projectiles, check for collision, and do basicAttack once hit"""
         for i in self.projectiles:
-            if any(j.debuff == "dead" for j in i.Target.debuffs):
+            if any(j.debuff == "dead" for j in i.Target.debuffs): # Remove any projectiles for dead players
                 self.projectiles.remove(i)
             i.move(Game)
-            if(sd(Cam,i.x,i.y,i.wd,i.wd)):
+            if(sd(Cam,i.x,i.y,i.wd,i.wd)): # Only draw projectiles within camera vision
                 i.drawProjectile()
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)

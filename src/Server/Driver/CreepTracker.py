@@ -7,6 +7,7 @@ class CreepTracker():
         self.creep = []
                   
     def drawCreep(self, Cam, Alliance):
+        """Draw all creeps in vision and their healths"""
         scale = 5000 / Alliance.resolution
         for i in self.creep:
             if(sd(Cam,i.x,i.y,i.wd,i.ht)):
@@ -18,16 +19,17 @@ class CreepTracker():
                         i.drawHealth()
                 
     def runCreepActions(self, Game, Map, GUI):
+        """Run all creep-related actions"""
         for i in self.creep:
             if(i.hp <= 0):
                 if(GUI.type == "creep"):
                     GUI.playerSlot = 0
-                    GUI.type = "player"
-                self.creep.remove(i)
+                    GUI.type = "player" # Reset GUI to player if it dies
+                self.creep.remove(i) # Remove the creep if it dies
             i.runAI(Game, Map)
     
     def spawnCreep(self):
-        
+        """Generate creep waves"""
         # Top Lane
         # Team A 
         self.creep.append(Creep(xPos = 340, yPos = 3601, wd = 40, ht = 40, atkRange = 100, alliance = "a", visionRange = 500, atkType = "melee", startNode = 4))

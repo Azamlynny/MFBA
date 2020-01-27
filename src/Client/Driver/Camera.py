@@ -7,4 +7,5 @@ class Camera():
         self.drawRings = False
         
     def updateCam(self):
+        """move Camera by xshift, yshift"""
         translate(self.xshift, self.yshift)

@@ -135,7 +135,7 @@ class Player(Mob, object):
             self.strength += round(0.05 * self.strength)
             self.hp += int((0.05 * self.hpMax))
             self.hpMax += int((0.05 * self.hpMax))
-            self.hpRegen += 0.05 * self.hpMax
+            self.hpRegen += 0.05 * self.hpRegen
         self.lastxp = self.xp
     
     def checkHealth(self, Game, Cam):

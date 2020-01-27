@@ -18,6 +18,7 @@ class GameTracker():
         self.winner = None
         
     def updateGrid(self, Game, Map):
+        """Process hitboxes"""
         for o in range(self.res): # Reset grid
             for j in range(self.res):
                 self.grid[j][o] = False
@@ -53,6 +54,7 @@ class GameTracker():
                     self.grid[j][o] = True
         
     def incTime(self):
+        """Increment game time"""
              # Action offloaded onto the server
         # if(self.time % 1800 == 0):
         #     self.CT.spawnCreep()
@@ -60,11 +62,13 @@ class GameTracker():
         
                     
     def runDebuffs(self, Cam):
+        """Run debuff processing"""
         if(self.time % 60 == 0):
             for i in self.PT.players:
                 i.runDebuffs(self, Cam)
                 
     def runProjectiles(self,Cam, Game):
+        """Run projectile processing"""
         for i in self.PT.players:
             i.moveProjectiles(Cam, Game)
         for i in self.ST.structures:

@@ -10,15 +10,18 @@ class ClientManager():
         self.hasPlayerID = False
         
     def connectClient(self, C):
+        """Establish connection to server by requesting player number"""
         self.IP = str(C.ip())
         C.write("CIP" + " " + str(C.ip()))
         print("My IP: " + C.ip())
     
     def setUpClient(self, input, Game):
-        
+        """Sets up Client"""
+        # Function is here for future features and expansion
         self.caughtUp = True
     
     def manageInput(self, input, Game, Cam, GUI):
+        """Manage and process all data to be sent to server"""
         p = Game.player
         
         # Converts white space seperated input into an array
@@ -110,7 +113,8 @@ class ClientManager():
                     elif(i % 3 == 2):
                         Game.PT.projwd.append(int(proj[i]))
             
-    def writeData(self, C, Game):        
+    def writeData(self, C, Game):
+        """Send data to server"""
         p = Game.player
         
         if(self.hasPlayerID == False):

@@ -42,7 +42,7 @@ class Attackable(Entity, object):
 
     def checkRange(self, target):
         """Checks if target is within self's range"""
-        if self.distance(target) > self.atkRange**2:
+        if self.distance(target) > self.atkRange**2: # atkRange is squared to compare with squared distance
             return True
         return False
     
@@ -121,10 +121,10 @@ class Attackable(Entity, object):
     def moveProjectiles(self, Cam, Game):
         """Move projectiles, check for collision, and do basicAttack once hit"""
         for i in self.projectiles:
-            if any(j.debuff == "dead" for j in i.Target.debuffs):
+            if any(j.debuff == "dead" for j in i.Target.debuffs): # Remove any projectiles for dead players
                 self.projectiles.remove(i)
             i.move(Game)
-            if(sd(Cam,i.x,i.y,i.wd,i.wd)):
+            if(sd(Cam,i.x,i.y,i.wd,i.wd)): # Only draw projectiles within camera vision
                 i.drawProjectile()
             if(round(math.sqrt((i.x - i.Target.x)**2 + (i.y - i.Target.y)**2)) < 15): # 15 pixel tolerance for projectiles colliding
                 self.basicAttack(i.Target)

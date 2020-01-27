@@ -22,6 +22,7 @@ class Node:
         return Math.sqrt((self.x - x)**2 + (self.y - y)**2)
     
     def drawNode(self, Map):
+        """Draw nodes, should only be active for developer mode"""
         fill(255)
         ellipse(self.x, self.y, 25, 25)
         fill(0)

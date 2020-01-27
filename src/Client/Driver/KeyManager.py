@@ -5,16 +5,20 @@ class KeyManager():
         self.outputted = False
         
     def keyInput(self, input):
+        """Adds key to inputs list"""
         if(input not in self.inputs):
             self.inputs.append(input)    
     
     def keyRemove(self, input):
+        """Removes key from inputs list"""
         if(input in self.inputs):
             self.inputs.remove(input)    
         
     def runActions(self, Cam, Game, Map, MManage):
+        """Process all key pressed actions"""
         p = Game.player
         
+        # Pan Camera with WASD
         if('w' in self.inputs):
             Cam.yshift += Cam.moveSpeed
         if('a' in self.inputs):
@@ -24,16 +28,20 @@ class KeyManager():
         if('d' in self.inputs):
             Cam.xshift -= Cam.moveSpeed
         
+        
         if(p != None):
             if(' ' in self.inputs): # Space
                 Cam.xshift = -1 * Game.PT.players[p].x + 1960/2
                 Cam.yshift = -1 * Game.PT.players[p].y + 1080/2
-            if('q' in self.inputs and not (any(i.debuff == "ab1cd" for i in Game.PT.players[0].debuffs))):
-                Game.PT.players[p].ab1select = True
-                Game.PT.players[p].ab2select = False
-            if('e' in self.inputs and not (any(i.debuff == "ab2cd" for i in Game.PT.players[0].debuffs))):
-                Game.PT.players[p].ab2select = True
-                Game.PT.players[p].ab1select = False
+            
+            # Abilities didn't work out in the end.
+            # if('q' in self.inputs and not (any(i.debuff == "ab1cd" for i in Game.PT.players[0].debuffs))):
+            #     Game.PT.players[p].ab1select = True
+            #     Game.PT.players[p].ab2select = False
+            # if('e' in self.inputs and not (any(i.debuff == "ab2cd" for i in Game.PT.players[0].debuffs))):
+            #     Game.PT.players[p].ab2select = True
+            #     Game.PT.players[p].ab1select = False
+            
             if('`' in self.inputs):
                 Game.PT.players[p].ab2select = False
                 Game.PT.players[p].ab1select = False

@@ -5,14 +5,17 @@ class KeyManager():
         self.outputted = False
         
     def keyInput(self, input):
+        """Adds key to inputs list"""
         if(input not in self.inputs):
             self.inputs.append(input)    
     
     def keyRemove(self, input):
+        """Removes key from inputs list"""
         if(input in self.inputs):
             self.inputs.remove(input)    
         
     def runActions(self, Cam, Game, Map, MManage):
+        """Process all key pressed actions"""
         
         # Pan Camera with WASD
         if('w' in self.inputs):
@@ -24,7 +27,7 @@ class KeyManager():
         if('d' in self.inputs):
             Cam.xshift -= Cam.moveSpeed
         
-        # Keyboard keys for player input - Server does not control a player    
+        # Keyboard keys for player input - Server does not control a player
             
         # if(' ' in self.inputs): # Space fixes camera on your position
         #     Cam.xshift = -1 * Game.PT.players[0].x + 1960/2

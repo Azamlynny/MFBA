@@ -11,6 +11,7 @@ class CreepTracker():
         self.creepAlliance = []
 
     def drawCreep(self, Cam, Alliance):
+        """Draw Creep; Client only draws creep, but doesn't process them"""
         scale = 5000 / Alliance.resolution
         for i in range(0,len(self.creepx)):
             if(sd(Cam,self.creepx[i],self.creepy[i],40,40)):

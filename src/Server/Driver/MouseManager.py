@@ -8,10 +8,12 @@ class MouseManager():
         self.nodePlaceIndex = 0
                 
     def middleClick(self, Cam):
+        """Middle click pans camera"""
         Cam.xshift += mouseX - pmouseX
         Cam.yshift += mouseY - pmouseY
     
     def leftClick(self, Game, Cam, GUI, Map):
+        """Run all functions for left click"""
         if(Game.editingTree):
             # Map Tree editor
             Map.objects.append(Tree(xPos = mouseX - Cam.xshift, yPos = mouseY - Cam.yshift, treeType = self.treePlaceIndex))
@@ -54,7 +56,9 @@ class MouseManager():
                         return
                    
     # The server does not control a player but the client sends right click data to the server to manage
-    def rightClick(self, Game, p, x, y): # p = player 
+    def rightClick(self, Game, p, x, y): 
+
+        # p = player 
         Game.PT.players[p].ab1select = False
         Game.PT.players[p].ab2select = False
         Game.PT.players[p].pathfindTo(x, y, Game)
@@ -79,6 +83,7 @@ class MouseManager():
                 
     #     Client exclusive function - Server does not control a player
     # def lockPlayerTarget(self, Game, Cam):
+    #     """lock target for abilities"""
     #     player = Game.PT.players[0]
     #     for i in Game.PT.players:
     #         if(mouseX - Cam.xshift >= i.x - i.wd/2 and mouseX - Cam.xshift <= i.x + i.wd/2 and mouseY - Cam.yshift >= i.y - i.ht/2 and mouseY - Cam.yshift <= i.y + i.ht/2): #if you clicked on a player
