@@ -28,6 +28,11 @@ class ServerManager():
             
             out += temp
             
+            # Appending player experience
+            temp = "player_xp" + " " + str(int(Game.PT.players[0].xp)) + " " + str(int(Game.PT.players[1].xp)) + " " + str(int(Game.PT.players[2].xp)) + " " + str(int(Game.PT.players[3].xp)) + " " + str(int(Game.PT.players[4].xp)) + " " + str(int(Game.PT.players[5].xp)) + " " + str(int(Game.PT.players[6].xp)) + " " + str(int(Game.PT.players[7].xp)) + " " + str(int(Game.PT.players[8].xp)) + " " + str(int(Game.PT.players[9].xp)) + " e_player_xp "
+            
+            out += temp
+            
             # Appending structure health
             temp = "structure_hp" + " " + str(int(Game.ST.structures[0].hp)) + " " + str(int(Game.ST.structures[1].hp)) + " " + str(int(Game.ST.structures[2].hp)) + " " + str(int(Game.ST.structures[3].hp)) + " " + str(int(Game.ST.structures[4].hp)) + " " + str(int(Game.ST.structures[5].hp)) + " " + str(int(Game.ST.structures[6].hp)) + " " + str(int(Game.ST.structures[7].hp)) + " " + str(int(Game.ST.structures[8].hp)) + " " + str(int(Game.ST.structures[9].hp)) + " " + str(int(Game.ST.structures[10].hp)) + " " + str(int(Game.ST.structures[11].hp)) + " " + str(int(Game.ST.structures[12].hp)) + " " + str(int(Game.ST.structures[13].hp)) + " " + str(int(Game.ST.structures[14].hp)) + " " + str(int(Game.ST.structures[15].hp)) + " " + str(int(Game.ST.structures[16].hp)) + " " + str(int(Game.ST.structures[17].hp)) + " e_structure_hp "
                 

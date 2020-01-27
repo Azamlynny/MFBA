@@ -62,6 +62,13 @@ class ClientManager():
                 for i in range(0,10):
                     Game.PT.players[i].hp = int(player_hp[i])
                     
+            if("player_xp" in input):
+                a = input.index("player_xp")
+                b = input.index("e_player_xp")
+                player_xp = input[a+1:b]
+                for i in range(0,10):
+                    Game.PT.players[i].xp = int(player_xp[i])
+            
             if("structure_hp" in input):
                 a = input.index("structure_hp")
                 b = input.index("e_structure_hp")
