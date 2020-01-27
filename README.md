@@ -44,7 +44,9 @@ adam you do dis
 ![Select Python Mode](img/Add_Python_Mode.png)
 
 #### c. Clone our repository
-`git clone https://github.com/Azamlynny/MFBA.git'
+```
+git clone https://github.com/Azamlynny/MFBA.git
+```
 
 ### 2. Start Server
 
