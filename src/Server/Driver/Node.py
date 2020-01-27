@@ -39,4 +39,3 @@ class Node:
                 if(o.name == i):
                     line(self.x, self.y, o.x, o.y)
         noStroke()
-    

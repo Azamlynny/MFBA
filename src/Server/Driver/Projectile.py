@@ -19,6 +19,7 @@ class Projectile:
                 self.type = "structure"
         
     def move(self, Game):
+        """Move projectiles"""
         if(self.type == "player"):
             self.Target = Game.PT.players[self.index]
         elif(self.type == "structure"):
@@ -37,6 +38,7 @@ class Projectile:
         self.y += self.yvel            
         
     def drawProjectile(self):
+        """Draw Projectiles"""
         fill(0)
         ellipse(self.x-5, self.y-5, self.wd, self.wd)
     

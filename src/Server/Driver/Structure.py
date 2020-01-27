@@ -22,6 +22,7 @@ class Nexus(Structure, object):
                 Game.winner = "a"
     
     def drawStructure(self, Cam):
+        """Draw Nexus"""
         if(self.alliance == "a"):
             fill(0,0,255)
         elif(self.alliance == "b"):
@@ -72,6 +73,7 @@ class Tower(Structure, object):
             
                 
     def defaultAttack(self, Game):
+        """Modified default attack for towers"""
         if(self.atkCooldown <= 0 and self.target != None):
             if(self.atkType == "ranged"):
                 self.projectileAttack(Game, self.target)
@@ -82,6 +84,7 @@ class Tower(Structure, object):
             self.atkCooldown -= 1  
     
     def drawStructure(self, Cam):
+        """Draw Tower"""
         if(self.alliance == "a"):
             fill(0,0,255)
         elif(self.alliance == "b"):

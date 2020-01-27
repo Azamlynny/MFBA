@@ -22,7 +22,7 @@ class Node:
         return Math.sqrt((self.x - x)**2 + (self.y - y)**2)
     
     def drawNode(self, Map):
-        """Draw nodes, should only be active for developer mode"""
+
         fill(255)
         ellipse(self.x, self.y, 25, 25)
         fill(0)
@@ -30,6 +30,7 @@ class Node:
         self.drawConnections(Map)
         
     def drawConnections(self, Map):
+        """Draw connections between nodes, should only be for developer mode"""
         stroke(255,50)
         strokeWeight(4)
         for i in self.adj:

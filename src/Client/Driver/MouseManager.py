@@ -59,7 +59,7 @@ class MouseManager():
                         return
                     
     def rightClick(self, Game, Cam, C, CM):
-        """manage right click functions"""
+        """Manage right click functions"""
         p = Game.player
         if(p != None):
             x = mouseX - Cam.xshift

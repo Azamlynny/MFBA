@@ -7,6 +7,7 @@ class Tree(Entity, object):
         self.treeType = treeType
         
     def drawTree(self):
+        """Draw tree"""
         if(self.treeType == 0):
             fill(40,140,70)
         elif(self.treeType == 1):

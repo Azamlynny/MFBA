@@ -46,9 +46,12 @@ class PlayerTracker():
                         i.drawHealth()
                 
     def runPlayerActions(self, Game, Cam):
+        """Run all player-related functions"""
         for i in self.players:
             i.defaultAttack(Game)
             i.checkHealth(Game, Cam)
     def updateMoving(self, Game):
+        """Update and move players"""
         for i in self.players:
             i.move(Game)
+            

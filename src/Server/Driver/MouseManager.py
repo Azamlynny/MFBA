@@ -57,7 +57,7 @@ class MouseManager():
                    
     # The server does not control a player but the client sends right click data to the server to manage
     def rightClick(self, Game, p, x, y): 
-
+        """Manage right click functions"""
         # p = player 
         Game.PT.players[p].ab1select = False
         Game.PT.players[p].ab2select = False

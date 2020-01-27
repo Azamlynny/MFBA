@@ -13,6 +13,7 @@ class ServerManager():
         self.connectingClient = False
         
     def sendData(self, S, Game):
+        """Send Data to clients"""
         # print(self.connectingClient)
         if(not self.connectingClient):
             out = " d d start " # Buffer for packet merges
@@ -77,6 +78,7 @@ class ServerManager():
             # print(out)
         
     def readData(self, S, C, Game, MManage):
+        """Read data from clients"""
         input = C.readString()
         input = input.split('\n')
         input = input[0].encode('utf8').split(' ')

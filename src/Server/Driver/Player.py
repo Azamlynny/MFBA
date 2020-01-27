@@ -93,6 +93,8 @@ class Player(Mob, object):
             mainDmg = (self.atk + self.strength)
             armorMultiplier = 1 - ((0.052 * target.armor)/(0.9 + 0.048 * abs(target.armor)))
             target.hp -= round(mainDmg * armorMultiplier)
+            
+            # Different XP gained for killing different attackables
             if(target.hp <= 0 and target.type == "player"):
                 self.xp += target.lvl * 50 + 60
                 self.checkLevelUp()
@@ -145,14 +147,16 @@ class Player(Mob, object):
                 
     
     def checkHealth(self, Game, Cam):
+        """Check health and process death"""
         if self.hp <= 0 and not any(i.debuff == "dead" for i in self.debuffs):
-            self.debuffs.append(Debuff("dead", self.hpRegen, respawnCooldown[self.lvl - 1]))
+            self.debuffs.append(Debuff("dead", self.hpRegen, respawnCooldown[self.lvl - 1])) # Give player "dead" debuff if they are dead and don't have it
             self.hpRegen = 0
         elif any(i.debuff == "dead" for i in self.debuffs):
+            # Keep player at their respawn position
             self.x = self.respawnX
             self.y = self.respawnY
+            # Reset any players' and towers' targets
             for i in Game.PT.players:
-                #print(i)
                 if i.target == self:
                     i.target = None
             for i in Game.ST.structures:
