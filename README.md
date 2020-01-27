@@ -10,7 +10,7 @@ The presentation can be found [here](https://docs.google.com/presentation/d/1IYn
 
 The MLA works cited can be found [here](https://docs.google.com/document/d/1yPlwbJphD4gEpndE1LGwYaXe-jZQnb_xqFxa9Q-K_MU/edit?usp=sharing).
 
-## Features
+# Features
 
 ### Object-Oriented Programming
 This project makes heavy use of OOP. We can use the class `Entity` as an example. `Entity` is an object largely inherited to represent anything drawn on the screen. Entity's subclasses are used in the following fashion:
@@ -37,7 +37,7 @@ adam you do dis
 
 # Download and Setup
 
-## 1. Download relevant software 
+## 1. Download Relevant Software 
 ### a. Download [processing](https://processing.org)
 
 ### b. Install Python Mode
@@ -49,7 +49,7 @@ adam you do dis
 
 ![Select Python Mode](img/Add_Python_Mode.png)
 
-### c. Clone our repository
+### c. Clone the Repository
 ```
 git clone https://github.com/Azamlynny/MFBA.git
 ```
@@ -64,22 +64,34 @@ Look for the play button in the top right corner of Processing IDE
 The IP is printed in the IDE console, but may indicate a loopback address. in this case, open your command prompt
 
 #### i. Find IPv4 in Windows with cmd
-Run `ipconfig`:
+Execute
+```
+ipconfig
+```
 
 ![ipconfig on cmd](/img/Windows_cmd_ip.png)
 
 #### ii. Find IPv4 in Linux (Bash)
-Run `ifconfig`:
+Execute
+```
+ifconfig
+```
 
 ![ifconfig on bash](/img/Linux_Bash_ip.png)
 
 #### iii. Find IPv4 in MacOS
-Run `ifconfig`:
+Execute
+```
+ifconfig
+```
 
 ![ifconfig on MacOS](/img/MacOS_ip.png)
 
-### iv. Find IPv4 in Powershell
-Run `Get-NetIPAddress | Format-Table`:
+#### iv. Find IPv4 in Powershell
+Execute
+```
+Get-NetIPAddress | Format-Table
+```
 
 ![Get-NetIPAddress on Powershell](/img/windows_powershell.png)
 
