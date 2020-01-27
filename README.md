@@ -13,19 +13,21 @@ The MLA works cited is found [here](https://docs.google.com/document/d/1yPlwbJph
 ## Features
 
 ### Object-Oriented Programming
-This project makes heavy use of OOP. We can use the example of Attackables. Anything attackable is in the class attackable, and each type of attackable inherits from attackable in the following fasion:
+This project makes heavy use of OOP. We can use the class `Entity` as an example. `Entity` is an object largely inherited to represent anything drawn on the screen. Entity's subclasses are used in the following fashion:
 
-* `Attackable`
-    * `Mob`
-        * `Player`
-        * `Creep`
-    * `Structure`
-        * `Tower`
-        * `Nexus`
+* `Entity` 
+   * `Tree`
+   * `Attackable`
+       * `Mob`
+           * `Player`
+           * `Creep`
+       * `Structure`
+           * `Tower`
+           * `Nexus`
 
-This allows for most functions that all attackables do (like attacking, debuff processing, etc.) to be inherited to all classes. Similarly, almost everything inherits from the `Entity` class. That way, movement, collisions, etc. on all objects at once.
+This allows for most functions that all `Attackable` objects do (like attacking, debuff processing, etc.) to be inherited to all classes. The `Entity` class is used for movement and collisions checking on all objects at once.
 
-We also created classes for "trackers" (like PlayerTracker, StructureStracker, etc.) that are called in the main driver code. Each one of these has a list of all elements it tracks, and processes the relevant functions for those elements every game tick.
+Object "trackers" (like `PlayerTracker`, `Structuretracker`, `CreepTracker`, etc.) have a list of all elements they track and process the relevant functions for those elements every game tick.
 
 ### Networking
 Processing's [network library](https://www.processing.org/reference/libraries/net/) also works for Processing.py. This allows for us to implement multiplayer. A single server instance to be running, and processing all game actions, while client code renders and displays the game to the players. Server does all computations in order to prevent cheating by tampering with packets.
