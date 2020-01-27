@@ -104,12 +104,15 @@ class GUI():
         text(int(frameRate), 10 - Cam.xshift, 10 - Cam.yshift)
         
         # End of game message
-        if Game.winner != None:
+        if Game.ST.structures[0].hp <= 0 or Game.ST.structures[9].hp <= 0:
             textSize(128)
             textAlign(CENTER, CENTER)
-            if Game.winner == "a":
+            if Game.ST.structures[9].hp <= 0 and Game.ST.structures[0]/hp <= 0:
+                fill (0, 255, 0)
+                text("Both Nexuses are dead. Check with server for winner", x+540, y-480)
+            elif Game.ST.structures[9].hp <= 0:
                 fill(0, 0, 255)
-                text("Blue Alliance Wins", x+540, y-480)
-            if Game.winner == "b":
+                text("Blue Alliance Wins. Check with server if close", x+540, y-480)
+            elif Game.ST.structures[0]:
                 fill(255, 0, 0)
                 text("Red Alliance Wins", x+540, y-480)
