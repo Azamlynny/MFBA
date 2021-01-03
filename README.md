@@ -131,6 +131,6 @@ Keep in mind that your local IP will look like one of the following:
         * __T__ will delete the trees saved in memory (Holding down for too long can result in mass tree deletion)
         * __O__ will write your current tree configuration to a txt file.
     * Pathfinding Node editing
-        * ___H, J, K (simultaneously)__ will toggle node editing mode.
+        * __H, J, K (simultaneously)__ will toggle node editing mode.
         * __Left Click__ will place nodes
         * __P__ will save your current node configuration to a txt file.
